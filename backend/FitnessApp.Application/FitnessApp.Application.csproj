@@ -5,9 +5,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs/" />
+    <Folder Include="DTOs/Admin/" />
     <Folder Include="Factories/" />
-    <Folder Include="Interfaces/" />
+    <Folder Include="Interfaces/Admin/" />
+    <Folder Include="Interfaces/Authentication/" />
+    <Folder Include="Interfaces/Users/" />
+    <Folder Include="Services/" />
+    <Folder Include="Services/Admin/" />
+    <Folder Include="Services/Authentication/" />
+    <Folder Include="Services/Users/" />
   </ItemGroup>
 
   <PropertyGroup>

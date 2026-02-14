@@ -1,9 +1,9 @@
 using System;
 using FitnessApp.Domain.Entities.Users;
 
-namespace FitnessApp.Application.Interfaces;
+namespace FitnessApp.Application.Interfaces.Repositories;
 
-public interface ITrenerRepository
+public interface ITrainerRepository
 {
     Task<Trainer?> GetByIdAsync(int id);
     Task<Trainer?> GetByUserIdAsync(int userId);
