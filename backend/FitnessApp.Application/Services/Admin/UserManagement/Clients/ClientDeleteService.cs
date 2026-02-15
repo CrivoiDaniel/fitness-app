@@ -21,7 +21,7 @@ public class ClientDeleteService : IClientDeleteService
     /// delete - permanently removes client and user from database
     /// </summary>
     public async Task DeleteAsync(int userId)
-{
+    {
     // 1. Get user
     var user = await _userRepository.GetByIdAsync(userId);
     
@@ -36,6 +36,6 @@ public class ClientDeleteService : IClientDeleteService
     await _userRepository.DeleteAsync(user);
     
     // Done! Both User and Client are deleted
-}
+    }   
 
 }

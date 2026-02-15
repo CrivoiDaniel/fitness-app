@@ -7,7 +7,10 @@ public interface ITrainerRepository
 {
     Task<Trainer?> GetByIdAsync(int id);
     Task<Trainer?> GetByUserIdAsync(int userId);
-    Task<Trainer> AddAsync(Trainer trainer);    
+    Task<List<Trainer>> GetAllAsync();
+    Task<List<Trainer>> GetActiveTrainersAsync();
+    Task<bool> ExistsByUserIdAsync(int userId);
+    Task<Trainer> AddAsync(Trainer trainer);
     Task UpdateAsync(Trainer trainer);
-
+    Task DeleteAsync(Trainer trainer);
 }

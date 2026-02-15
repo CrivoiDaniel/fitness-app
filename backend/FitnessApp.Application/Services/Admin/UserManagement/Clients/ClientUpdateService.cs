@@ -92,7 +92,7 @@ public class ClientUpdateService : IClientUpdateService
             clientUpdated = true;
         }
         
-        // ========== SAVE CHANGES ==========
+        // save
         
         if (userUpdated)
             await _userRepository.UpdateAsync(client.user);

@@ -43,6 +43,17 @@ public class Trainer : BaseEntity
         YearsOfExperience = years;
         UpdateTimestamp();
     }
+    public void SetYearsOfExperience(int yearsOfExperience)
+{
+    if (yearsOfExperience < 0)
+        throw new ArgumentException("Years of experience cannot be negative");
+    
+    if (yearsOfExperience > 50)
+        throw new ArgumentException("Years of experience seems unrealistic");
+    
+    YearsOfExperience = yearsOfExperience;
+    UpdatedAt = DateTime.UtcNow;
+}
     public void UpdateRating(decimal rating)
     {
         if(rating < 0 || rating > 5)

@@ -17,12 +17,20 @@ public class AdminTrainerController : ControllerBase
 {
     // ========== FIELDS ==========
     private readonly ITrainerCreationService _trainerCreationService;
+    private readonly ITrainerQueryService _trainerQueryService;
+    private readonly ITrainerUpdateService _trainerUpdateService;
+    private readonly ITrainerDeleteService _trainerDeletionService;
+
     // TODO: Add ITrainerUpdateService, ITrainerDeletionService
 
     // ========== CONSTRUCTOR ==========
-    public AdminTrainerController(ITrainerCreationService trainerCreationService)
+    public AdminTrainerController(ITrainerCreationService trainerCreationService, ITrainerQueryService trainerQueryService,  ITrainerUpdateService trainerUpdateService,
+        ITrainerDeleteService trainerDeletionService)
     {
         _trainerCreationService = trainerCreationService;
+        _trainerQueryService = trainerQueryService;
+        _trainerUpdateService = trainerUpdateService;
+        _trainerDeletionService = trainerDeletionService;
     }
 
     // ========== PUBLIC METHODS (CRUD) ==========
@@ -65,13 +73,17 @@ public class AdminTrainerController : ControllerBase
     /// </summary>
     /// <param name="id">Trainer's user ID</param>
     /// <returns>Trainer details</returns>
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(TrainerDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> GetTrainer(int id)
+    public async Task<ActionResult<TrainerDetailsDto>> GetTrainer([FromRoute] int id)
     {
-        // TODO: Implement ITrainerQueryService.GetByIdAsync()
-        return Ok(new { message = "TODO: Implement GetTrainer" });
+        var trainer = await _trainerQueryService.GetByIdAsync(id);
+        
+        if (trainer == null)
+            return NotFound(new { message = $"Trainer with user ID {id} not found" });
+        
+        return Ok(trainer);
     }
 
     /// <summary>
@@ -80,11 +92,11 @@ public class AdminTrainerController : ControllerBase
     /// </summary>
     /// <returns>List of all trainers</returns>
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAllTrainers()
+    [ProducesResponseType(typeof(List<TrainerDetailsDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<TrainerDetailsDto>>> GetAllTrainers()
     {
-        // TODO: Implement ITrainerQueryService.GetAllAsync()
-        return Ok(new { message = "TODO: Implement GetAllTrainers" });
+        var Trainers = await _trainerQueryService.GetAllAsync();
+        return Ok(Trainers);
     }
 
     /// <summary>
@@ -94,14 +106,34 @@ public class AdminTrainerController : ControllerBase
     /// <param name="id">Trainer's user ID</param>
     /// <param name="dto">Updated trainer data</param>
     /// <returns>Updated trainer</returns>
-    [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(TrainerDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateTrainer(int id, [FromBody] object dto)
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<TrainerDetailsDto>> UpdateTrainer(
+        [FromRoute] int id,
+        [FromBody] UpdateTrainerDto dto)
     {
-        // TODO: Implement ITrainerUpdateService.UpdateAsync()
-        return Ok(new { message = "TODO: Implement UpdateTrainer" });
+        try
+        {
+            var updatedTrainer = await _trainerUpdateService.UpdateAsync(id, dto);
+            return Ok(updatedTrainer);
+        }
+        catch (InvalidOperationException ex)
+        {
+            // Trainer not found OR Email already in use
+            if (ex.Message.Contains("not found"))
+                return NotFound(new { message = ex.Message });
+            else
+                return Conflict(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
     }
+
 
     /// <summary>
     /// Admin deletes Trainer (soft delete)
@@ -109,12 +141,27 @@ public class AdminTrainerController : ControllerBase
     /// </summary>
     /// <param name="id">Trainer's user ID</param>
     /// <returns>Success message</returns>
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> DeleteTrainer(int id)
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> DeleteTrainer([FromRoute] int id)
     {
-        // TODO: Implement ITrainerDeletionService.DeleteAsync()
-        return Ok(new { message = "TODO: Implement DeleteTrainer" });
+        try
+        {
+            await _trainerDeletionService.DeleteAsync(id);
+            return Ok(new 
+            { 
+                message = $"Trainer with user ID {id} has been permanently deleted",
+                warning = "This action cannot be undone!"
+            });
+        }
+        catch (InvalidOperationException e)
+        {
+            if (e.Message.Contains("not found"))
+                return NotFound(new { message = e.Message });
+            else
+                return BadRequest(new { message = e.Message });
+        }
     }
 }

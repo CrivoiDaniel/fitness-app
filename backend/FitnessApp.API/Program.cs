@@ -83,6 +83,9 @@ builder.Services.AddScoped<IClientDeleteService, ClientDeleteService>();
 
 // Admin - Trainer services
 builder.Services.AddScoped<ITrainerCreationService, TrainerCreationService>();
+builder.Services.AddScoped<ITrainerQueryService, TrainerQueryService>();
+builder.Services.AddScoped<ITrainerUpdateService, TrainerUpdateService>();   
+builder.Services.AddScoped<ITrainerDeleteService, TrainerDeleteService>(); 
 
 // ========== CORS CONFIGURATION ==========
 

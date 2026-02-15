@@ -26,6 +26,29 @@ public class TrainerRepository : ITrainerRepository
             .FirstOrDefaultAsync(t => t.user.Id == userId);
     }
 
+    public async Task<List<Trainer>> GetAllAsync()
+    {
+        return await _context.Trainers
+            .Include(c => c.user)
+            .OrderByDescending(c => c.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<List<Trainer>> GetActiveTrainersAsync()
+    {
+        return await _context.Trainers
+            .Include(c => c.user)
+            .Where(c => c.user.IsActive)
+            .OrderByDescending( c => c.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<bool> ExistsByUserIdAsync(int userId)
+    {
+        return await _context.Trainers
+            .AnyAsync(c => c.UserId == userId);
+    }
+
     public async Task<Trainer> AddAsync(Trainer trainer)
     {
         await _context.Trainers.AddAsync(trainer);
@@ -35,6 +58,12 @@ public class TrainerRepository : ITrainerRepository
     public async Task UpdateAsync(Trainer trainer)
     {
         _context.Trainers.Update(trainer);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Trainer trainer)
+    {
+        _context.Trainers.Remove(trainer);
         await _context.SaveChangesAsync();
     }
 }
