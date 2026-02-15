@@ -57,7 +57,7 @@ public class User : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(passwordHash))
         {
-            throw new ArgumentException("Password hash cannot be null or empty.");
+            throw new ArgumentException("Password cannot be null or empty.");
         }
         PasswordHash = passwordHash;
         UpdateTimestamp();
@@ -72,6 +72,32 @@ public class User : BaseEntity
 
         PhoneNumber = phoneNumber.Trim();
         UpdateTimestamp();
+    }
+    public void ChangeEmail(string newEmail)
+    {
+    if (string.IsNullOrWhiteSpace(newEmail))
+        throw new ArgumentException("Email cannot be empty");
+    
+    Email = newEmail.ToLower().Trim();
+    UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void UpdateFirstName(string firstName)
+    {
+    if (string.IsNullOrWhiteSpace(firstName))
+        throw new ArgumentException("First name cannot be empty");
+    
+    FirstName = firstName.Trim();
+    UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void UpdateLastName(string lastName)
+    {
+    if (string.IsNullOrWhiteSpace(lastName))
+        throw new ArgumentException("Last name cannot be empty");
+    
+    LastName = lastName.Trim();
+    UpdatedAt = DateTime.UtcNow;
     }
 
     public void Activate()

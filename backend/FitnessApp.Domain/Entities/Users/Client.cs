@@ -21,10 +21,13 @@ public class Client : BaseEntity
     // {/* Validation Input  */}
     public void SetDateOfBirth(DateTime dateOfBirth)
     {
-        if (dateOfBirth > DateTime.UtcNow.AddYears(-15))
-        {
-            throw new ArgumentException("Client must be at least 15 years old.");
-        }
+        var age = DateTime.UtcNow.Year - dateOfBirth.Year;
+
+        if (age < 15)
+            throw new ArgumentException("Client must be at least 15 years old");
+
+        if (age > 120)
+            throw new ArgumentException("Invalid date of birth");
         DateOfBirth = dateOfBirth;
         UpdateTimestamp();
     }

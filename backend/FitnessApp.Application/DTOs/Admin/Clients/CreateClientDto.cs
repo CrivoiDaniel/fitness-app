@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace FitnessApp.Application.DTOs.Admin;
+namespace FitnessApp.Application.DTOs.Admin.Clients;
 
 public class CreateClientDto
 {

@@ -1,13 +1,14 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using FitnessApp.Application.DTOs.Admin.Clients;
 using FitnessApp.Application.DTOs.Admin;
 using FitnessApp.Application.Factories;
-using FitnessApp.Application.Interfaces.Admin;
+using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Domain.Enums;
 
-namespace FitnessApp.Application.Services.Admin;
+namespace FitnessApp.Application.Services.Admin.UserManagement.Clients;
 
 /// <summary>
 /// Service for creating clients by Admin

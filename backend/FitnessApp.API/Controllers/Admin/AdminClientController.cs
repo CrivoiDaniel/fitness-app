@@ -1,31 +1,33 @@
 using System;
+using FitnessApp.Application.DTOs.Admin.Clients;
 using FitnessApp.Application.DTOs.Admin;
-using FitnessApp.Application.Interfaces.Admin;
+using FitnessApp.Application.Interfaces.Admin.Clients;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FitnessApp.API.Controllers.Admin;
 
 /// <summary>
 /// Controller for Admin operations on Clients
-/// RESTful API design - Single Resource (Client)
-/// SRP - Responsible ONLY for Client CRUD operations
 /// </summary>
 [ApiController]
 [Route("api/admin/clients")]
 // TODO: Add [Authorize(Roles = "Admin")] when implementing JWT
 public class AdminClientController : ControllerBase
 {
-    // ========== FIELDS ==========
     private readonly IClientCreationService _clientCreationService;
-    // TODO: Add IClientUpdateService, IClientDeletionService, IClientQueryService
+    private readonly IClientQueryService _clientQueryService;
+    private readonly IClientUpdateService _clientUpdateService;
+    private readonly IClientDeleteService _clientDeletionService;
 
-    // ========== CONSTRUCTOR ==========
-    public AdminClientController(IClientCreationService clientCreationService)
+
+    public AdminClientController(IClientCreationService clientCreationService, IClientQueryService clientQueryService,  IClientUpdateService clientUpdateService,
+        IClientDeleteService clientDeletionService)
     {
         _clientCreationService = clientCreationService;
+        _clientQueryService = clientQueryService;
+        _clientUpdateService = clientUpdateService;
+        _clientDeletionService = clientDeletionService;
     }
-
-    // ========== PUBLIC METHODS (CRUD) ==========
 
     /// <summary>
     /// Admin creates a new Client
@@ -44,7 +46,7 @@ public class AdminClientController : ControllerBase
         {
             var response = await _clientCreationService.CreateAsync(dto);
             return CreatedAtAction(
-                nameof(GetClient),           // ✅ Acum metoda există
+                nameof(GetClient),           
                 new { id = response.UserId },
                 response
             );
@@ -65,56 +67,103 @@ public class AdminClientController : ControllerBase
     /// </summary>
     /// <param name="id">Client's user ID</param>
     /// <returns>Client details</returns>
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(ClientDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> GetClient(int id)  // ← Verifică că parametrul e "int id"
+    public async Task<ActionResult<ClientDetailsDto>> GetClient([FromRoute] int id)
     {
-        // TODO: Implement IClientQueryService.GetByIdAsync()
-        return Ok(new { message = $"TODO: Implement GetClient for ID {id}" });
+        var client = await _clientQueryService.GetByIdAsync(id);
+        
+        if (client == null)
+            return NotFound(new { message = $"Client with user ID {id} not found" });
+        
+        return Ok(client);
     }
 
     /// <summary>
     /// Admin gets all Clients
     /// GET /api/admin/clients
     /// </summary>
-    /// <returns>List of all clients</returns>
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAllClients()
+    [ProducesResponseType(typeof(List<ClientDetailsDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<ClientDetailsDto>>> GetAllClients()
     {
-        // TODO: Implement IClientQueryService.GetAllAsync()
-        return Ok(new { message = "TODO: Implement GetAllClients" });
+        var clients = await _clientQueryService.GetAllAsync();
+        return Ok(clients);
+    }
+
+    /// <summary>
+    /// Admin gets active Clients only
+    /// GET /api/admin/clients/active
+    /// </summary>
+    [HttpGet("active")]
+    [ProducesResponseType(typeof(List<ClientDetailsDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<ClientDetailsDto>>> GetActiveClients()
+    {
+        var clients = await _clientQueryService.GetActiveClientsAsync();
+        return Ok(clients);
     }
 
     /// <summary>
     /// Admin updates Client profile
     /// PUT /api/admin/clients/{id}
+    /// Admin can modify: email, name, phone, status, all fitness data
     /// </summary>
-    /// <param name="id">Client's user ID</param>
-    /// <param name="dto">Updated client data</param>
-    /// <returns>Updated client</returns>
-    [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(ClientDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> UpdateClient(int id, [FromBody] object dto)
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ClientDetailsDto>> UpdateClient(
+        [FromRoute] int id,
+        [FromBody] UpdateClientDto dto)
     {
-        // TODO: Implement IClientUpdateService.UpdateAsync()
-        return Ok(new { message = $"TODO: Implement UpdateClient for ID {id}" });
+        try
+        {
+            var updatedClient = await _clientUpdateService.UpdateAsync(id, dto);
+            return Ok(updatedClient);
+        }
+        catch (InvalidOperationException ex)
+        {
+            // Client not found OR Email already in use
+            if (ex.Message.Contains("not found"))
+                return NotFound(new { message = ex.Message });
+            else
+                return Conflict(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
     }
-
+    
     /// <summary>
-    /// Admin deletes Client (soft delete)
-    /// DELETE /api/admin/clients/{id}
+    /// Admin permanently deletes Client (hard delete - DANGEROUS!)
+    /// DELETE /api/admin/clients/{id}/permanent
+    /// Use only for GDPR compliance or data cleanup
     /// </summary>
-    /// <param name="id">Client's user ID</param>
-    /// <returns>Success message</returns>
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> DeleteClient(int id)
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> DeleteClient([FromRoute] int id)
     {
-        // TODO: Implement IClientDeletionService.DeleteAsync()
-        return Ok(new { message = $"TODO: Implement DeleteClient for ID {id}" });
+        try
+        {
+            await _clientDeletionService.DeleteAsync(id);
+            return Ok(new 
+            { 
+                message = $"Client with user ID {id} has been permanently deleted",
+                warning = "This action cannot be undone!"
+            });
+        }
+        catch (InvalidOperationException e)
+        {
+            if (e.Message.Contains("not found"))
+                return NotFound(new { message = e.Message });
+            else
+                return BadRequest(new { message = e.Message });
+        }
     }
+ 
 }

@@ -45,8 +45,9 @@ public class UserRepository : IUserRepository
         return await _context.Users.AnyAsync(u => u.Email == email.ToLower());
     }
 
-    public Task<bool> ExistsAsync(int id)
+    public async Task DeleteAsync(User user)
     {
-        throw new NotImplementedException();
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
     }
 }

@@ -2,21 +2,31 @@ using Microsoft.EntityFrameworkCore;
 using FitnessApp.Infrastructure.Data;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Infrastructure.Repositories;
+
+// ========== USING STATEMENTS - ADMIN CLIENTS ==========
+using FitnessApp.Application.Interfaces.Admin.Clients;
+using FitnessApp.Application.Services.Admin.UserManagement.Clients;
+
+// ========== USING STATEMENTS - ADMIN TRAINERS ==========
+using FitnessApp.Application.Interfaces.Admin.Trainers;
+using FitnessApp.Application.Services.Admin.UserManagement.Trainers;
+
+// ========== USING STATEMENTS - AUTHENTICATION ==========
 using FitnessApp.Application.Interfaces.Authentication;
-using FitnessApp.Application.Services.Authentication;
+
+// ========== USING STATEMENTS - USERS ==========
 using FitnessApp.Application.Interfaces.Users;
 using FitnessApp.Application.Services.Users;
-using FitnessApp.Application.Interfaces.Admin;
-using FitnessApp.Application.Services.Admin;
+
+// ========== USING STATEMENTS - FACTORIES ==========
 using FitnessApp.Application.Factories;
+using FitnessApp.Application.Services.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // ========== ADD SERVICES TO THE CONTAINER ==========
 
 builder.Services.AddControllers();
-
-// OpenAPI/Swagger for .NET 10
 builder.Services.AddOpenApi();
 
 // ========== DATABASE CONFIGURATION ==========
@@ -65,8 +75,13 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 
-// Admin services
+// ✅ Admin - Client services (ADD THESE!)
 builder.Services.AddScoped<IClientCreationService, ClientCreationService>();
+builder.Services.AddScoped<IClientQueryService, ClientQueryService>();
+builder.Services.AddScoped<IClientUpdateService, ClientUpdateService>();   
+builder.Services.AddScoped<IClientDeleteService, ClientDeleteService>();  
+
+// Admin - Trainer services
 builder.Services.AddScoped<ITrainerCreationService, TrainerCreationService>();
 
 // ========== CORS CONFIGURATION ==========
@@ -85,7 +100,6 @@ var app = builder.Build();
 
 // ========== CONFIGURE THE HTTP REQUEST PIPELINE ==========
 
-// Swagger for .NET 10
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -97,8 +111,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
-app.UseAuthentication();
+
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

@@ -26,6 +26,28 @@ public class ClientRepository : IClientRepository
             .FirstOrDefaultAsync(c => c.user.Id == userId);
     }
 
+    public async Task<List<Client>> GetAllAsync()
+    {
+        return await _context.Clients
+            .Include(c => c.user)
+            .OrderByDescending(c => c.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<List<Client>> GetActiveClientsAsync()
+    {
+        return await _context.Clients
+            .Include(c => c.user)
+            .Where(c => c.user.IsActive)
+            .OrderByDescending( c => c.CreatedAt)
+            .ToListAsync();
+    }
+
+    public async Task<bool> ExistsByUserIdAsync(int userId)
+    {
+        return await _context.Clients
+            .AnyAsync(c => c.UserId == userId);
+    }
     public async Task<Client> AddAsync(Client client)
     {
         await _context.Clients.AddAsync(client);
@@ -35,6 +57,12 @@ public class ClientRepository : IClientRepository
     public async Task UpdateAsync(Client client)
     {
         _context.Clients.Update(client);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Client client)
+    {
+        _context.Clients.Remove(client);
         await _context.SaveChangesAsync();
     }
 }

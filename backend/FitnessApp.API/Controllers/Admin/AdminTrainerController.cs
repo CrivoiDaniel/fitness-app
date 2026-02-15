@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using FitnessApp.Application.DTOs.Admin.Trainers;
 using FitnessApp.Application.DTOs.Admin;
-using FitnessApp.Application.Interfaces.Admin;
+using FitnessApp.Application.Interfaces.Admin.Trainers;
 
 namespace FitnessApp.API.Controllers.Admin;
 
