@@ -1,5 +1,6 @@
 using System;
 using FitnessApp.Domain.Entities.Base;
+using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Enums;
 namespace FitnessApp.Domain.Entities.Users;
 
@@ -8,9 +9,10 @@ public class Client : BaseEntity
     public int UserId { get; private set; }
     public DateTime DateOfBirth { get; private set; }
 
-
     //{/* property for user relation*/}
-    public User user { get; set; } = null!;
+    public User User { get; set; } = null!;
+    public virtual ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
+    
     protected Client() : base() { }
     public Client(int userId, DateTime dateOfBirth) : base()
     {

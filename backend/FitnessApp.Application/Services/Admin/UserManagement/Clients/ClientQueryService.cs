@@ -72,13 +72,13 @@ public class ClientQueryService : IClientQueryService
         return new ClientDetailsDto
         {
             // User info
-            UserId = client.user.Id,
-            Email = client.user.Email,
-            FirstName = client.user.FirstName,
-            LastName = client.user.LastName,
-            PhoneNumber = client.user.PhoneNumber,
-            Role = client.user.Role.ToString(),
-            IsActive = client.user.IsActive,
+            UserId = client.User.Id,
+            Email = client.User.Email,
+            FirstName = client.User.FirstName,
+            LastName = client.User.LastName,
+            PhoneNumber = client.User.PhoneNumber,
+            Role = client.User.Role.ToString(),
+            IsActive = client.User.IsActive,
             
             // Client info
             ClientId = client.Id,

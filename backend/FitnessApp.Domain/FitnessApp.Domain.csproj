@@ -9,8 +9,12 @@
   <ItemGroup>
     <Folder Include="Entities/" />
     <Folder Include="Entities/Base/" />
+    <Folder Include="Entities/Subscriptions/" />
     <Folder Include="Entities/Users/" />
     <Folder Include="Enums/" />
+    <Folder Include="Factories/" />
+    <Folder Include="Factories/Subscriptions/" />
+    <Folder Include="Factories/Subscriptions/Products/" />
     <Folder Include="Interfaces/" />
     <Folder Include="Services/" />
   </ItemGroup>

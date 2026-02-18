@@ -4,7 +4,7 @@ using FitnessApp.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FitnessApp.Infrastructure.Data.Configurations;
+namespace FitnessApp.Infrastructure.Data.Configurations.Users;
 
 public class UserConfiguration : IEntityTypeConfiguration<User>
 {
@@ -66,7 +66,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .IsRequired();
             
         builder.HasOne(u => u.ClientProfile) 
-            .WithOne(c => c.user)
+            .WithOne(c => c.User)
             .HasForeignKey<Client>(c => c.UserId) 
             .OnDelete(DeleteBehavior.Cascade); 
             

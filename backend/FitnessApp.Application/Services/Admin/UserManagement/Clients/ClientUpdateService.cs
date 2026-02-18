@@ -34,7 +34,7 @@ public class ClientUpdateService : IClientUpdateService
 
         // Email change (check uniqueness first)
         if (!string.IsNullOrWhiteSpace(dto.Email) && 
-            dto.Email.ToLower().Trim() != client.user.Email.ToLower())
+            dto.Email.ToLower().Trim() != client.User.Email.ToLower())
         {
             var normalizedEmail = dto.Email.ToLower().Trim();
             
@@ -43,40 +43,40 @@ public class ClientUpdateService : IClientUpdateService
             if (existingUser != null && existingUser.Id != userId)
                 throw new InvalidOperationException($"Email '{dto.Email}' is already in use");
             
-            client.user.ChangeEmail(normalizedEmail);
+            client.User.ChangeEmail(normalizedEmail);
             userUpdated = true;
         }
         
         // First Name
         if (!string.IsNullOrWhiteSpace(dto.FirstName) && 
-            dto.FirstName.Trim() != client.user.FirstName)
+            dto.FirstName.Trim() != client.User.FirstName)
         {
-            client.user.UpdateFirstName(dto.FirstName);
+            client.User.UpdateFirstName(dto.FirstName);
             userUpdated = true;
         }
         
         // Last Name
         if (!string.IsNullOrWhiteSpace(dto.LastName) && 
-            dto.LastName.Trim() != client.user.LastName)
+            dto.LastName.Trim() != client.User.LastName)
         {
-            client.user.UpdateLastName(dto.LastName);
+            client.User.UpdateLastName(dto.LastName);
             userUpdated = true;
         }
         
         // Phone Number (can be set to null to clear)
-        if (dto.PhoneNumber != client.user.PhoneNumber)
+        if (dto.PhoneNumber != client.User.PhoneNumber)
         {
-            client.user.SetPhoneNumber(dto.PhoneNumber);
+            client.User.SetPhoneNumber(dto.PhoneNumber);
             userUpdated = true;
         }
         
         // Account Status (Admin privilege)
-        if (dto.IsActive.HasValue && dto.IsActive.Value != client.user.IsActive)
+        if (dto.IsActive.HasValue && dto.IsActive.Value != client.User.IsActive)
         {
             if (dto.IsActive.Value)
-                client.user.Activate();
+                client.User.Activate();
             else
-                client.user.Deactivate();
+                client.User.Deactivate();
             
             userUpdated = true;
         }
@@ -95,7 +95,7 @@ public class ClientUpdateService : IClientUpdateService
         // save
         
         if (userUpdated)
-            await _userRepository.UpdateAsync(client.user);
+            await _userRepository.UpdateAsync(client.User);
         
         if (clientUpdated)
             await _clientRepository.UpdateAsync(client);

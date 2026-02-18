@@ -3,7 +3,7 @@ using FitnessApp.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FitnessApp.Infrastructure.Data.Configurations;
+namespace FitnessApp.Infrastructure.Data.Configurations.Users;
 
 public class ClientConfiguration: IEntityTypeConfiguration<Client>
 {
@@ -24,9 +24,20 @@ public class ClientConfiguration: IEntityTypeConfiguration<Client>
             .HasColumnName("date_of_birth") 
             .HasColumnType("date") 
             .IsRequired(); 
+            
+        builder.Property(u => u.CreatedAt)
+            .HasColumnName("created_at")
+            .HasColumnType("datetime")
+            .IsRequired();
+            
+
+        builder.Property(u => u.UpdatedAt)
+            .HasColumnName("updated_at")
+            .HasColumnType("datetime")
+            .IsRequired();
         
         // {/* Configure relationship with User */} 
-        builder.HasOne(c => c.user) 
+        builder.HasOne(c => c.User) 
             .WithOne(u => u.ClientProfile) 
             .HasForeignKey<Client>(c => c.UserId) 
             .OnDelete(DeleteBehavior.Cascade); 

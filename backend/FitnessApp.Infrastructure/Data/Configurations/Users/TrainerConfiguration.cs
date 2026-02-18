@@ -4,7 +4,7 @@ using FitnessApp.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FitnessApp.Infrastructure.Data.Configurations;
+namespace FitnessApp.Infrastructure.Data.Configurations.Users;
 
 public class TrainerConfiguration : IEntityTypeConfiguration<Trainer>
 {
@@ -35,6 +35,17 @@ public class TrainerConfiguration : IEntityTypeConfiguration<Trainer>
             .HasColumnType("decimal(3,2)") 
             .IsRequired() 
             .HasDefaultValue(5.0m); 
+
+        builder.Property(u => u.CreatedAt)
+            .HasColumnName("created_at")
+            .HasColumnType("datetime")
+            .IsRequired();
+            
+
+        builder.Property(u => u.UpdatedAt)
+            .HasColumnName("updated_at")
+            .HasColumnType("datetime")
+            .IsRequired();
 
         // {/* Configure relationship with User */}
 

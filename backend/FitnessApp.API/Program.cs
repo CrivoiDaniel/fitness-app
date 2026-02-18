@@ -21,6 +21,7 @@ using FitnessApp.Application.Services.Users;
 // ========== USING STATEMENTS - FACTORIES ==========
 using FitnessApp.Application.Factories;
 using FitnessApp.Application.Services.Authentication;
+using FitnessApp.Infrastructure.Data.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 

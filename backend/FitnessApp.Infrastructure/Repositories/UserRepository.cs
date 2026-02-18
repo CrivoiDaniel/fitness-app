@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Infrastructure.Data;
+using FitnessApp.Infrastructure.Data.Configurations;
 
 namespace FitnessApp.Infrastructure.Repositories;
 

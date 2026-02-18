@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Infrastructure.Data;
+using FitnessApp.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitnessApp.Infrastructure.Repositories;
@@ -16,20 +17,20 @@ public class ClientRepository : IClientRepository
     public async Task<Client?> GetByIdAsync(int id)
     {
         return  await _context.Clients
-            .Include(c => c.user)
+            .Include(c => c.User)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
     public async Task<Client?> GetByUserIdAsync(int userId)
     {
         return await _context.Clients
-            .Include(c => c.user)
-            .FirstOrDefaultAsync(c => c.user.Id == userId);
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.User.Id == userId);
     }
 
     public async Task<List<Client>> GetAllAsync()
     {
         return await _context.Clients
-            .Include(c => c.user)
+            .Include(c => c.User)
             .OrderByDescending(c => c.CreatedAt)
             .ToListAsync();
     }
@@ -37,8 +38,8 @@ public class ClientRepository : IClientRepository
     public async Task<List<Client>> GetActiveClientsAsync()
     {
         return await _context.Clients
-            .Include(c => c.user)
-            .Where(c => c.user.IsActive)
+            .Include(c => c.User)
+            .Where(c => c.User.IsActive)
             .OrderByDescending( c => c.CreatedAt)
             .ToListAsync();
     }
