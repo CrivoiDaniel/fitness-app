@@ -38,10 +38,13 @@ public class BenefitPackageConfiguration : IEntityTypeConfiguration<BenefitPacka
 
         builder.Property(bp => bp.CreatedAt)
             .HasColumnName("created_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
             .IsRequired();
 
         builder.Property(bp => bp.UpdatedAt)
             .HasColumnName("updated_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
 
         // Indexes

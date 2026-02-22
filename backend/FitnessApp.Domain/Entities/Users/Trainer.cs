@@ -12,7 +12,7 @@ public class Trainer : BaseEntity
 
 
     // {/* property for user relation*/}
-    public User user { get; set; } = null!;
+    public User User { get; set; } = null!;
     public Trainer() : base()
     {
         Rating = 5.0m; // Default rating for new trainers
@@ -21,7 +21,7 @@ public class Trainer : BaseEntity
     {
         UserId = userId;
         SetSpecialization(specialization);
-        SetExperience(yearsOfExperience);
+        SetYearsOfExperience(yearsOfExperience);
         Rating = 5.0m; // Default rating for new trainers
     }
     //{/* Validation Input  */}
@@ -32,19 +32,9 @@ public class Trainer : BaseEntity
             throw new ArgumentException("Specialization cannot be empty.");
         }
         Specialization = specialization.Trim();
-        UpdateTimestamp();
-    }
-    public void SetExperience(int years)
-    {
-        if(years < 0)
-        {
-            throw new ArgumentException("Years of experience cannot be negative.");
-        }
-        YearsOfExperience = years;
-        UpdateTimestamp();
     }
     public void SetYearsOfExperience(int yearsOfExperience)
-{
+    {
     if (yearsOfExperience < 0)
         throw new ArgumentException("Years of experience cannot be negative");
     
@@ -53,7 +43,7 @@ public class Trainer : BaseEntity
     
     YearsOfExperience = yearsOfExperience;
     UpdatedAt = DateTime.UtcNow;
-}
+    }
     public void UpdateRating(decimal rating)
     {
         if(rating < 0 || rating > 5)
@@ -61,7 +51,6 @@ public class Trainer : BaseEntity
             throw new ArgumentException("Rating must be between 0 and 5.");
         }
         Rating = rating;
-        UpdateTimestamp();
     }
 }
 

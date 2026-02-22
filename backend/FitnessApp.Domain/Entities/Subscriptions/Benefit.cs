@@ -41,25 +41,21 @@ public class Benefit : BaseEntity
             throw new ArgumentException("Display name cannot be empty");
 
         DisplayName = displayName;
-        UpdateTimestamp();
     }
 
     public void UpdateDescription(string? description)
     {
         Description = description;
-        UpdateTimestamp();
     }
 
     public void Activate()
     {
         IsActive = true;
-        UpdateTimestamp();
     }
 
     public void Deactivate()
     {
         IsActive = false;
-        UpdateTimestamp();
     }
 
 }

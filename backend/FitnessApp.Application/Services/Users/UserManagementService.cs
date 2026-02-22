@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Application.Interfaces.Users;
 
 namespace FitnessApp.Application.Services.Users;

@@ -31,6 +31,5 @@ public class Client : BaseEntity
         if (age > 120)
             throw new ArgumentException("Invalid date of birth");
         DateOfBirth = dateOfBirth;
-        UpdateTimestamp();
     }
 }

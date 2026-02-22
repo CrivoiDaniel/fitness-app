@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using FitnessApp.Application.DTOs.Authentication;
 using FitnessApp.Application.Interfaces.Authentication;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 
 namespace FitnessApp.Application.Services.Authentication;
 

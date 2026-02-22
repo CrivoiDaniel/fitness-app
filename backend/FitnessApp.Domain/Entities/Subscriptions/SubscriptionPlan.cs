@@ -60,7 +60,7 @@ public class SubscriptionPlan : BaseEntity
             throw new ArgumentException("Price cannot be negative");
 
         Price = price;
-        UpdateTimestamp();
+        
     }
 
     public void UpdateDuration(int durationInMonths)
@@ -69,7 +69,7 @@ public class SubscriptionPlan : BaseEntity
             throw new ArgumentException("Duration cannot be negative");
 
         DurationInMonths = durationInMonths;
-        UpdateTimestamp();
+        
     }
 
     public void UpdateInstallmentSettings(bool allowInstallments, int maxInstallments)
@@ -79,7 +79,7 @@ public class SubscriptionPlan : BaseEntity
 
         AllowInstallments = allowInstallments;
         MaxInstallments = maxInstallments;
-        UpdateTimestamp();
+        
     }
 
     public void ChangeBenefitPackage(int benefitPackageId)
@@ -88,19 +88,19 @@ public class SubscriptionPlan : BaseEntity
             throw new ArgumentException("Benefit package ID must be positive");
 
         BenefitPackageId = benefitPackageId;
-        UpdateTimestamp();
+        
     }
 
     public void Activate()
     {
         IsActive = true;
-        UpdateTimestamp();
+        
     }
 
     public void Deactivate()
     {
         IsActive = false;
-        UpdateTimestamp();
+        
     }
 
     // COMPUTED PROPERTIES
@@ -123,6 +123,11 @@ public class SubscriptionPlan : BaseEntity
     public bool HasFixedDuration()
     {
         return DurationInMonths > 0;
+    }
+    public void SetRecurring(bool isRecurring)
+    {
+        IsRecurring = isRecurring;
+        
     }
 
 

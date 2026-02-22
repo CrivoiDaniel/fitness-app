@@ -53,7 +53,6 @@ public class Payment : BaseEntity
         if (!string.IsNullOrWhiteSpace(transactionId))
             TransactionId = transactionId;
 
-        UpdateTimestamp();
     }
 
     public void MarkAsFailed()
@@ -62,7 +61,6 @@ public class Payment : BaseEntity
             throw new InvalidOperationException("Cannot mark successful payment as failed");
 
         Status = PaymentStatus.Failed;
-        UpdateTimestamp();
     }
 
     public void UpdateTransactionId(string transactionId)
@@ -71,7 +69,6 @@ public class Payment : BaseEntity
             throw new ArgumentException("Transaction ID cannot be empty");
 
         TransactionId = transactionId;
-        UpdateTimestamp();
     }
 
     public bool IsSuccessful()

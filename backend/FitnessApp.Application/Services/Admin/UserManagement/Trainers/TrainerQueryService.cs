@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Application.DTOs.Admin.Trainers;
 using FitnessApp.Application.Interfaces.Admin.Trainers;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Domain.Entities.Users;
 
 namespace FitnessApp.Application.Services.Admin.UserManagement.Trainers;
@@ -49,13 +50,13 @@ public class TrainerQueryService : ITrainerQueryService
     {
         return new TrainerDetailsDto
         {
-            UserId = Trainer.user.Id,
-            Email = Trainer.user.Email,
-            FirstName = Trainer.user.FirstName,
-            LastName = Trainer.user.LastName,
-            PhoneNumber = Trainer.user.PhoneNumber,
-            Role = Trainer.user.Role.ToString(),
-            IsActive = Trainer.user.IsActive,
+            UserId = Trainer.User.Id,
+            Email = Trainer.User.Email,
+            FirstName = Trainer.User.FirstName,
+            LastName = Trainer.User.LastName,
+            PhoneNumber = Trainer.User.PhoneNumber,
+            Role = Trainer.User.Role.ToString(),
+            IsActive = Trainer.User.IsActive,
 
             TrainerId = Trainer.Id,
             Specialization = Trainer.Specialization,

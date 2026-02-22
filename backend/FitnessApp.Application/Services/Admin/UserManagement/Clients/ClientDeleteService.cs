@@ -1,6 +1,7 @@
 using System;
 using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Domain.Enums;
 
 namespace FitnessApp.Application.Services.Admin.UserManagement.Clients;

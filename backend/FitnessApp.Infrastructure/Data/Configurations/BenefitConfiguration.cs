@@ -37,11 +37,15 @@ public class BenefitConfiguration : IEntityTypeConfiguration<Benefit>
 
         builder.Property(b => b.CreatedAt)
             .HasColumnName("created_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
             .IsRequired();
 
         builder.Property(b => b.UpdatedAt)
             .HasColumnName("updated_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
+
 
         // Indexes
         builder.HasIndex(b => b.Name)

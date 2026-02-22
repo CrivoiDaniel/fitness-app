@@ -56,13 +56,14 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.CreatedAt)
             .HasColumnName("created_at")
-            .HasColumnType("datetime")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
             .IsRequired();
             
 
         builder.Property(u => u.UpdatedAt)
             .HasColumnName("updated_at")
-            .HasColumnType("datetime")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
             
         builder.HasOne(u => u.ClientProfile) 
@@ -71,7 +72,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .OnDelete(DeleteBehavior.Cascade); 
             
         builder.HasOne(u => u.TrainerProfile) 
-            .WithOne(t => t.user)
+            .WithOne(t => t.User)
             .HasForeignKey<Trainer>(t => t.UserId) 
             .OnDelete(DeleteBehavior.Cascade);
     }

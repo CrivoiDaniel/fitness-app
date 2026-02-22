@@ -32,10 +32,13 @@ public class BenefitPackageItemConfiguration : IEntityTypeConfiguration<BenefitP
 
         builder.Property(bpi => bpi.CreatedAt)
             .HasColumnName("created_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
             .IsRequired();
 
         builder.Property(bpi => bpi.UpdatedAt)
             .HasColumnName("updated_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)") 
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
 
         // Indexes

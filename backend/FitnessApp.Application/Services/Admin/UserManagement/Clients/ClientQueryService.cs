@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using FitnessApp.Application.DTOs.Admin.Clients;
 using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Domain.Entities.Users;
 
 namespace FitnessApp.Application.Services.Admin.UserManagement.Clients;

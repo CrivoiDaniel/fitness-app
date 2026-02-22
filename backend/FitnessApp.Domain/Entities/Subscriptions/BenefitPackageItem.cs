@@ -42,7 +42,6 @@ public class BenefitPackageItem : BaseEntity
             throw new ArgumentException("Value cannot be empty");
 
         Value = value;
-        UpdateTimestamp();
     }
 
     // HELPER METHODS

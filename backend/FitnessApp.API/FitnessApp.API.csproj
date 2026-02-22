@@ -20,4 +20,8 @@
     <ProjectReference Include="..\FitnessApp.Infrastructure\FitnessApp.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers/Subscriptions/" />
+  </ItemGroup>
+
 </Project>

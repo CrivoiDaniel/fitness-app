@@ -7,6 +7,7 @@ using FitnessApp.Application.Factories;
 using FitnessApp.Application.Interfaces.Admin.Trainers;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Domain.Enums;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 
 namespace FitnessApp.Application.Services.Admin.UserManagement.Trainers;
 

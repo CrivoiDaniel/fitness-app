@@ -41,7 +41,6 @@ public class User : BaseEntity
         }
         FirstName = firstName.Trim();
         LastName = lastName.Trim();
-        UpdateTimestamp();
     }
 
     public void SetEmail(string email)
@@ -51,7 +50,6 @@ public class User : BaseEntity
             throw new ArgumentException("Email cannot be null or empty.");
         }
         Email = email.Trim().ToLower();
-        UpdateTimestamp();
     }
     public void SetPasswordHash(string passwordHash)
     {
@@ -60,7 +58,6 @@ public class User : BaseEntity
             throw new ArgumentException("Password cannot be null or empty.");
         }
         PasswordHash = passwordHash;
-        UpdateTimestamp();
     }
     public void SetPhoneNumber(string? phoneNumber)
     {
@@ -71,7 +68,6 @@ public class User : BaseEntity
         }
 
         PhoneNumber = phoneNumber.Trim();
-        UpdateTimestamp();
     }
     public void ChangeEmail(string newEmail)
     {
@@ -103,12 +99,10 @@ public class User : BaseEntity
     public void Activate()
     {
         IsActive = true;
-        UpdateTimestamp();
     }
     public void Deactivate()
     {
         IsActive = false;
-        UpdateTimestamp();
     }
     public string GetFullName()
     {

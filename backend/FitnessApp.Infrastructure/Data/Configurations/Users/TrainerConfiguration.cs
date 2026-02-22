@@ -38,18 +38,19 @@ public class TrainerConfiguration : IEntityTypeConfiguration<Trainer>
 
         builder.Property(u => u.CreatedAt)
             .HasColumnName("created_at")
-            .HasColumnType("datetime")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
             .IsRequired();
             
 
         builder.Property(u => u.UpdatedAt)
             .HasColumnName("updated_at")
-            .HasColumnType("datetime")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
 
         // {/* Configure relationship with User */}
 
-        builder.HasOne(t => t.user)
+        builder.HasOne(t => t.User)
             .WithOne(u => u.TrainerProfile) 
             .HasForeignKey<Trainer>(t => t.UserId) 
             .OnDelete(DeleteBehavior.Cascade); 

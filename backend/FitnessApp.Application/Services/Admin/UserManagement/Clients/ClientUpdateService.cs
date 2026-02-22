@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Application.DTOs.Admin.Clients;
 using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Repositories;
+using FitnessApp.Application.Interfaces.Repositories.Users;
 
 namespace FitnessApp.Application.Services.Admin.UserManagement.Clients;
 

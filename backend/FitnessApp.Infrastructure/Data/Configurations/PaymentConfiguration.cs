@@ -46,7 +46,14 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
 
         builder.Property(p => p.CreatedAt)
             .HasColumnName("created_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
             .IsRequired();
+
+        builder.Property(p => p.UpdatedAt)
+           .HasColumnName("updated_at")
+           .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
+           .ValueGeneratedOnAddOrUpdate()
+           .IsRequired();
 
         // Indexes
         builder.HasIndex(p => p.SubscriptionId)
@@ -60,7 +67,7 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
 
         builder.HasIndex(p => p.TransactionId)
             .IsUnique()
-            .HasFilter("transaction_id IS NOT NULL")  
+            .HasFilter("transaction_id IS NOT NULL")
             .HasDatabaseName("idx_payment_transaction_unique");
 
         //(SubscriptionId + InstallmentNumber) UNIQUE

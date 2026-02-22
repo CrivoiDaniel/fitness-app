@@ -44,7 +44,7 @@ public class BenefitPackage : BaseEntity
             throw new ArgumentException("Name cannot be empty");
 
         Name = name;
-        UpdateTimestamp();
+
     }
 
     public void UpdateSchedule(string scheduleWeekday, string scheduleWeekend)
@@ -57,19 +57,19 @@ public class BenefitPackage : BaseEntity
 
         ScheduleWeekday = scheduleWeekday;
         ScheduleWeekend = scheduleWeekend;
-        UpdateTimestamp();
+
     }
 
     public void Activate()
     {
         IsActive = true;
-        UpdateTimestamp();
+
     }
 
     public void Deactivate()
     {
         IsActive = false;
-        UpdateTimestamp();
+
     }
 
     public string GetFullSchedule()

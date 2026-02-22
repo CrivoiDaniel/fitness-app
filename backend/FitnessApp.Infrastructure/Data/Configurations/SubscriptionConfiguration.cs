@@ -46,10 +46,13 @@ public class SubscriptionConfiguration : IEntityTypeConfiguration<Subscription>
 
         builder.Property(s => s.CreatedAt)
             .HasColumnName("created_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
             .IsRequired();
 
         builder.Property(s => s.UpdatedAt)
             .HasColumnName("updated_at")
+            .HasDefaultValueSql("CURRENT_TIMESTAMP(6)")
+            .ValueGeneratedOnAddOrUpdate()
             .IsRequired();
 
         // Indexes

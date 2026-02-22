@@ -10,11 +10,5 @@ public abstract class BaseEntity
 
     protected BaseEntity()
     {
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = DateTime.UtcNow;
-    }
-    public void UpdateTimestamp()
-    {
-        UpdatedAt = DateTime.UtcNow;
     }
 }

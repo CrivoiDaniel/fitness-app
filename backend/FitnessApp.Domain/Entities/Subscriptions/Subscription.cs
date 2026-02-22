@@ -52,7 +52,6 @@ public class Subscription : BaseEntity
             throw new InvalidOperationException("Cannot activate cancelled subscription");
 
         Status = SubscriptionStatus.Active;
-        UpdateTimestamp();
     }
 
     public void Cancel()
@@ -62,7 +61,6 @@ public class Subscription : BaseEntity
 
         Status = SubscriptionStatus.Cancelled;
         AutoRenew = false;
-        UpdateTimestamp();
     }
 
     public void MarkAsExpired()
@@ -71,7 +69,6 @@ public class Subscription : BaseEntity
             throw new InvalidOperationException("Only active subscriptions can expire");
 
         Status = SubscriptionStatus.Expired;
-        UpdateTimestamp();
     }
 
     public void Renew(DateTime newEndDate)
@@ -81,7 +78,6 @@ public class Subscription : BaseEntity
 
         EndDate = newEndDate;
         Status = SubscriptionStatus.Active;
-        UpdateTimestamp();
     }
 
     public void Extend(int days)
@@ -93,13 +89,11 @@ public class Subscription : BaseEntity
             throw new InvalidOperationException("Cannot extend subscription without end date");
 
         EndDate = EndDate.Value.AddDays(days);
-        UpdateTimestamp();
     }
 
     public void SetAutoRenew(bool autoRenew)
     {
         AutoRenew = autoRenew;
-        UpdateTimestamp();
     }
 
     // COMPUTED PROPERTIES
