@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Data/DesignTime/" />
     <Folder Include="Repositories/Subscriptions/" />
+    <Folder Include="Repositories/Workouts/" />
   </ItemGroup>
 
   <PropertyGroup>

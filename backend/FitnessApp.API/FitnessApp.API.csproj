@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers/Subscriptions/" />
+    <Folder Include="Controllers/Workout/" />
   </ItemGroup>
 
 </Project>

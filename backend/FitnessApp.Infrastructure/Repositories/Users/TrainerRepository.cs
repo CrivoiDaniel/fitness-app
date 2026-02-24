@@ -10,61 +10,69 @@ namespace FitnessApp.Infrastructure.Repositories.Users;
 public class TrainerRepository : ITrainerRepository
 {
     private readonly ApplicationDbContext _context;
+    
     public TrainerRepository(ApplicationDbContext context)
     {
         _context = context;
     }
-    public async Task<Trainer?> GetByIdAsync(int id)
+    
+    public async Task<Trainer?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
     {
         return await _context.Trainers
             .Include(t => t.User)
-            .FirstOrDefaultAsync(t => t.Id == id);
+            .FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
     }
-    public async Task<Trainer?> GetByUserIdAsync(int userId)
+    
+    public async Task<List<Trainer>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await _context.Trainers
             .Include(t => t.User)
-            .FirstOrDefaultAsync(t => t.User.Id == userId);
+            .ToListAsync(cancellationToken);
     }
-
-    public async Task<List<Trainer>> GetAllAsync()
+    
+    public async Task<Trainer> AddAsync(Trainer trainer, CancellationToken cancellationToken = default)
     {
-        return await _context.Trainers
-            .Include(c => c.User)
-            .OrderByDescending(c => c.CreatedAt)
-            .ToListAsync();
-    }
-
-    public async Task<List<Trainer>> GetActiveTrainersAsync()
-    {
-        return await _context.Trainers
-            .Include(c => c.User)
-            .Where(c => c.User.IsActive)
-            .OrderByDescending( c => c.CreatedAt)
-            .ToListAsync();
-    }
-
-    public async Task<bool> ExistsByUserIdAsync(int userId)
-    {
-        return await _context.Trainers
-            .AnyAsync(c => c.UserId == userId);
-    }
-
-    public async Task<Trainer> AddAsync(Trainer trainer)
-    {
-        await _context.Trainers.AddAsync(trainer);
-        await _context.SaveChangesAsync();
+        await _context.Trainers.AddAsync(trainer, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
         return trainer;
     }
-    public async Task UpdateAsync(Trainer trainer)
+    
+    public async Task UpdateAsync(Trainer trainer, CancellationToken cancellationToken = default)
     {
         _context.Trainers.Update(trainer);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
     }
-
-    public async Task DeleteAsync(Trainer trainer)
+    
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken = default)
     {
-        _context.Trainers.Remove(trainer);
-        await _context.SaveChangesAsync();
+        var trainer = await GetByIdAsync(id, cancellationToken);
+        if (trainer != null)
+        {
+            _context.Trainers.Remove(trainer);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+    }
+    
+    // ✅ Implementează metodele lipsă
+    
+    public async Task<Trainer?> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        return await _context.Trainers
+            .Include(t => t.User)
+            .FirstOrDefaultAsync(t => t.UserId == userId, cancellationToken);
+    }
+    
+    public async Task<List<Trainer>> GetActiveTrainersAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.Trainers
+            .Include(t => t.User)
+            .Where(t => t.User != null && t.User.IsActive)
+            .ToListAsync(cancellationToken);
+    }
+    
+    public async Task<bool> ExistsByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        return await _context.Trainers
+            .AnyAsync(t => t.UserId == userId, cancellationToken);
     }
 }

@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FitnessApp.Infrastructure.Data.Configurations;
+using FitnessApp.Infrastructure.Repositories.Workouts;
+using FitnessApp.Application.Interfaces.Workout;
 
 namespace FitnessApp.Infrastructure;
 
@@ -55,6 +57,9 @@ public static class DependencyInjection
         services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
+
+        //Workout Repositories
+        services.AddScoped<IWorkoutPlanRepository, WorkoutPlanRepository>();
 
         return services;
     }

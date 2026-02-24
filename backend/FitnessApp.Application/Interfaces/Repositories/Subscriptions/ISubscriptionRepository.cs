@@ -13,4 +13,5 @@ public interface ISubscriptionRepository : IRepository<Subscription>
     Task<IEnumerable<Subscription>> GetExpiringAsync(int withinDays, CancellationToken cancellationToken = default);
     Task<IEnumerable<Subscription>> GetExpiredAsync(CancellationToken cancellationToken = default);
     Task<bool> HasActiveSubscriptionAsync(int clientId, int planId, CancellationToken cancellationToken = default);
+    Task<List<Subscription>> GetAllWithDetailsAsync(CancellationToken cancellationToken = default);
 }

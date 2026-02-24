@@ -10,6 +10,8 @@ public interface IClientRepository
 {
     Task<Client?> GetByIdAsync(int id);
     Task<Client?> GetByUserIdAsync(int userId);
+    Task<Client?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken = default);
+    
     Task<List<Client>> GetAllAsync();
     Task<List<Client>> GetActiveClientsAsync();
     Task<bool> ExistsByUserIdAsync(int userId);

@@ -20,6 +20,12 @@ public class ClientRepository : IClientRepository
             .Include(c => c.User)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
+    public async Task<Client?> GetByIdWithDetailsAsync(int id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Clients
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+    }
     public async Task<Client?> GetByUserIdAsync(int userId)
     {
         return await _context.Clients

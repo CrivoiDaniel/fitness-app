@@ -3,6 +3,7 @@ using FitnessApp.Infrastructure.Data;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
+using FitnessApp.Domain.Entities.Workouts;
 
 namespace FitnessApp.Infrastructure.Data.Configurations;
 
@@ -22,6 +23,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; } = null!;
     public DbSet<Subscription> Subscriptions { get; set; } = null!;
     public DbSet<Payment> Payments { get; set; } = null!;
+
+    // Workout DbSets
+    public DbSet<WorkoutPlan> WorkoutPlans { get; set; }
+    public DbSet<WorkoutExercise> WorkoutExercises { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

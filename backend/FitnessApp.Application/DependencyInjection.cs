@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using FitnessApp.Application.Interfaces.Subscriptions;
 using FitnessApp.Application.Services.Subscriptions;
 using FitnessApp.Application.Features.Subscriptions;
+using FitnessApp.Application.Features.Statistics;
+using FitnessApp.Application.Features.Workouts;
 
 namespace FitnessApp.Application;
 
@@ -47,6 +49,12 @@ public static class DependencyInjection
         services.AddScoped<ISubscriptionPlanService, SubscriptionPlanService>();
         services.AddScoped<ISubscriptionService, SubscriptionService>();
         services.AddScoped<IPaymentService, PaymentService>();
+
+        // Statistics Service
+        services.AddScoped<IStatisticsService, StatisticsService>();
+
+        // ========== WORKOUT PLAN SERVICE ==========
+        services.AddScoped<IWorkoutPlanService, WorkoutPlanService>();
 
         return services;
     }

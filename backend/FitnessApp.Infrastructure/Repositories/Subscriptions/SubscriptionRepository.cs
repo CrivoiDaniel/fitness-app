@@ -114,4 +114,14 @@ public class SubscriptionRepository : Repository<Subscription>, ISubscriptionRep
                 s.Status == SubscriptionStatus.Active,
                 cancellationToken);
     }
+    public async Task<List<Subscription>> GetAllWithDetailsAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.Subscriptions
+            .Include(s => s.Client)
+                .ThenInclude(c => c.User)
+            .Include(s => s.SubscriptionPlan)
+                .ThenInclude(sp => sp.BenefitPackage)
+            .Include(s => s.Payments)
+            .ToListAsync(cancellationToken);
+    }
 }

@@ -5,16 +5,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs/Statistics/" />
     <Folder Include="DTOs/Subscriptions/BenefitPackage/" />
     <Folder Include="DTOs/Subscriptions/Payment/" />
     <Folder Include="DTOs/Subscriptions/Subscription/" />
     <Folder Include="DTOs/Subscriptions/SubscriptionPlan/" />
+    <Folder Include="DTOs/Workouts/" />
     <Folder Include="Factories/" />
     <Folder Include="Interfaces/Authentication/" />
     <Folder Include="Interfaces/Repositories/Subscriptions/" />
     <Folder Include="Interfaces/Subscriptions/" />
     <Folder Include="Interfaces/Users/" />
     <Folder Include="Services/Authentication/" />
+    <Folder Include="Services/Statistics/" />
     <Folder Include="Services/Subscriptions/" />
     <Folder Include="Services/Users/" />
   </ItemGroup>
