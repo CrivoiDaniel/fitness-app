@@ -19,7 +19,10 @@ public class WorkoutExercise : BaseEntity
     // Navigation
     public virtual WorkoutPlan WorkoutPlan { get; set; } = null!;
     
-    private WorkoutExercise() : base() { }
+    private WorkoutExercise() : base()
+    {
+         ExerciseName = string.Empty;
+    }
     
     public WorkoutExercise(
         int workoutPlanId,
@@ -58,5 +61,30 @@ public class WorkoutExercise : BaseEntity
     public void AddNotes(string notes)
     {
         Notes = notes;
+    }
+
+    // ========== PROTOTYPE PATTERN ==========
+    
+    /// <summary>
+    /// Creates a deep copy of the exercise
+    /// Prototype Pattern implementation
+    /// </summary>
+    public WorkoutExercise Clone()
+    {
+        var cloned = new WorkoutExercise(
+            workoutPlanId: this.WorkoutPlanId,
+            exerciseName: this.ExerciseName,
+            sets: this.Sets,
+            reps: this.Reps,
+            orderInWorkout: this.OrderInWorkout
+        );
+        
+        if (this.DurationSeconds.HasValue)
+            cloned.SetDuration(this.DurationSeconds.Value);
+        
+        if (!string.IsNullOrWhiteSpace(this.Notes))
+            cloned.AddNotes(this.Notes);
+        
+        return cloned;
     }
 }

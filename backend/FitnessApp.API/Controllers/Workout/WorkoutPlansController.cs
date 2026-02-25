@@ -1,9 +1,7 @@
-using System;
+using FitnessApp.Application.DTOs.Common;
 using FitnessApp.Application.DTOs.Workouts;
 using FitnessApp.Application.Features.Workouts;
 using Microsoft.AspNetCore.Mvc;
-
-namespace FitnessApp.API.Controllers.Workout;
 
 /// <summary>
 /// Workout Plans API Controller
@@ -21,7 +19,9 @@ public class WorkoutPlansController : ControllerBase
         _workoutPlanService = workoutPlanService;
     }
 
-
+    /// <summary>
+    /// Creates a new workout plan using Builder Pattern
+    /// </summary>
     [HttpPost]
     [ProducesResponseType(typeof(WorkoutPlanResponse), 201)]
     [ProducesResponseType(typeof(ErrorResponse), 400)]
@@ -71,10 +71,6 @@ public class WorkoutPlansController : ControllerBase
     /// <summary>
     /// Gets a specific workout plan by ID
     /// </summary>
-    /// <param name="id">Workout plan ID</param>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <response code="200">Workout plan found and returned</response>
-    /// <response code="404">Workout plan not found</response>
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(WorkoutPlanResponse), 200)]
     [ProducesResponseType(typeof(ErrorResponse), 404)]
@@ -97,8 +93,6 @@ public class WorkoutPlansController : ControllerBase
     /// <summary>
     /// Gets all workout plans in the system
     /// </summary>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <response code="200">List of all workout plans (can be empty)</response>
     [HttpGet]
     [ProducesResponseType(typeof(List<WorkoutPlanResponse>), 200)]
     public async Task<ActionResult<List<WorkoutPlanResponse>>> GetAllWorkoutPlans(
@@ -111,9 +105,6 @@ public class WorkoutPlansController : ControllerBase
     /// <summary>
     /// Gets all workout plans for a specific client
     /// </summary>
-    /// <param name="clientId">Client ID to filter by</param>
-    /// <param name="cancellationToken">Cancellation token</param>
-    /// <response code="200">List of workout plans for the client (can be empty)</response>
     [HttpGet("client/{clientId}")]
     [ProducesResponseType(typeof(List<WorkoutPlanResponse>), 200)]
     public async Task<ActionResult<List<WorkoutPlanResponse>>> GetWorkoutPlansByClient(
@@ -123,14 +114,104 @@ public class WorkoutPlansController : ControllerBase
         var workoutPlans = await _workoutPlanService.GetByClientIdAsync(clientId, cancellationToken);
         return Ok(workoutPlans);
     }
-}
 
-/// <summary>
-/// Standard error response model
-/// </summary>
-public class ErrorResponse
-{
-    public string Message { get; set; } = string.Empty;
-    public string? Details { get; set; }
-    public DateTime Timestamp { get; set; }
+    /// <summary>
+    /// Clones an existing workout plan for a different client
+    /// Demonstrates Prototype Pattern
+    /// </summary>
+    [HttpPost("clone")]
+    [ProducesResponseType(typeof(WorkoutPlanResponse), 201)]
+    [ProducesResponseType(typeof(ErrorResponse), 400)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    public async Task<ActionResult<WorkoutPlanResponse>> CloneWorkoutPlan(
+        [FromBody] CloneWorkoutPlanRequest request,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            var response = await _workoutPlanService.CloneWorkoutPlanAsync(request, cancellationToken);
+
+            return CreatedAtAction(
+                nameof(GetWorkoutPlan),
+                new { id = response.Id },
+                response
+            );
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ErrorResponse
+            {
+                Message = "An error occurred while cloning workout plan",
+                Details = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+    }
+
+    /// <summary>
+    /// Clones a workout plan as a new template
+    /// </summary>
+    [HttpPost("{sourceId}/clone-as-template")]
+    [ProducesResponseType(typeof(WorkoutPlanResponse), 201)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    public async Task<ActionResult<WorkoutPlanResponse>> CloneAsTemplate(
+        int sourceId,
+        [FromQuery] string newName,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(newName))
+                return BadRequest(new ErrorResponse
+                {
+                    Message = "New name is required",
+                    Timestamp = DateTime.UtcNow
+                });
+
+            var response = await _workoutPlanService.CloneAsTemplateAsync(
+                sourceId,
+                newName,
+                cancellationToken
+            );
+
+            return CreatedAtAction(
+                nameof(GetWorkoutPlan),
+                new { id = response.Id },
+                response
+            );
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ErrorResponse
+            {
+                Message = "An error occurred while cloning template",
+                Details = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+    }
 }
