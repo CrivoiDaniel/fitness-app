@@ -3,6 +3,7 @@ using FitnessApp.Application.DTOs.Workouts;
 using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Application.Interfaces.Workout;
 using FitnessApp.Domain.Builders;
+using FitnessApp.Domain.Directors;
 using FitnessApp.Domain.Entities.Workouts;
 using FitnessApp.Domain.Enums;
 
@@ -19,16 +20,20 @@ public class WorkoutPlanService : IWorkoutPlanService
     private readonly IClientRepository _clientRepository;
     private readonly ITrainerRepository _trainerRepository;
     private readonly WorkoutPlanBuilder _builder;
+    private readonly WorkoutPlanDirector _director;
 
     public WorkoutPlanService(
-        IWorkoutPlanRepository workoutPlanRepository,
-        IClientRepository clientRepository,
-        ITrainerRepository trainerRepository)
+    IWorkoutPlanRepository workoutPlanRepository,
+    IClientRepository clientRepository,
+    ITrainerRepository trainerRepository)
     {
         _workoutPlanRepository = workoutPlanRepository;
         _clientRepository = clientRepository;
         _trainerRepository = trainerRepository;
+
+        // Initialize Builder and Director
         _builder = new WorkoutPlanBuilder();
+        _director = new WorkoutPlanDirector(_builder);
     }
 
     /// <summary>
@@ -301,6 +306,131 @@ public class WorkoutPlanService : IWorkoutPlanService
         );
 
         // STEP 5: Return response
+        return MapToResponse(fullWorkoutPlan!);
+    }
+
+    // ========== DIRECTOR PATTERN METHODS ==========
+
+    /// <summary>
+    /// Creates a Beginner Full Body workout plan using Director
+    /// Director orchestrates the construction steps
+    /// </summary>
+    public async Task<WorkoutPlanResponse> CreateBeginnerFullBodyAsync(
+        int clientId,
+        CancellationToken cancellationToken = default)
+    {
+        // Validate client exists
+        var client = await _clientRepository.GetByIdWithDetailsAsync(clientId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException($"Client with ID {clientId} not found");
+
+        // Director constructs the workout plan
+        _director.ConstructBeginnerFullBody(clientId);
+
+        // Get product from builder
+        var workoutPlan = _builder.Build();
+
+        // Save to database
+        var savedWorkoutPlan = await _workoutPlanRepository.AddAsync(workoutPlan, cancellationToken);
+
+        // Reload with relationships
+        var fullWorkoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(
+            savedWorkoutPlan.Id,
+            cancellationToken
+        );
+
+        return MapToResponse(fullWorkoutPlan!);
+    }
+
+    /// <summary>
+    /// Creates an Intermediate Strength program using Director
+    /// </summary>
+    public async Task<WorkoutPlanResponse> CreateIntermediateStrengthAsync(
+        int clientId,
+        CancellationToken cancellationToken = default)
+    {
+        var client = await _clientRepository.GetByIdWithDetailsAsync(clientId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException($"Client with ID {clientId} not found");
+
+        _director.ConstructIntermediateStrength(clientId);
+        var workoutPlan = _builder.Build();
+
+        var savedWorkoutPlan = await _workoutPlanRepository.AddAsync(workoutPlan, cancellationToken);
+        var fullWorkoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(
+            savedWorkoutPlan.Id,
+            cancellationToken
+        );
+
+        return MapToResponse(fullWorkoutPlan!);
+    }
+
+    /// <summary>
+    /// Creates an Advanced Muscle Gain program using Director
+    /// </summary>
+    public async Task<WorkoutPlanResponse> CreateAdvancedMuscleGainAsync(
+        int clientId,
+        CancellationToken cancellationToken = default)
+    {
+        var client = await _clientRepository.GetByIdWithDetailsAsync(clientId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException($"Client with ID {clientId} not found");
+
+        _director.ConstructAdvancedMuscleGain(clientId);
+        var workoutPlan = _builder.Build();
+
+        var savedWorkoutPlan = await _workoutPlanRepository.AddAsync(workoutPlan, cancellationToken);
+        var fullWorkoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(
+            savedWorkoutPlan.Id,
+            cancellationToken
+        );
+
+        return MapToResponse(fullWorkoutPlan!);
+    }
+
+    /// <summary>
+    /// Creates a Weight Loss program using Director
+    /// </summary>
+    public async Task<WorkoutPlanResponse> CreateWeightLossProgramAsync(
+        int clientId,
+        CancellationToken cancellationToken = default)
+    {
+        var client = await _clientRepository.GetByIdWithDetailsAsync(clientId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException($"Client with ID {clientId} not found");
+
+        _director.ConstructWeightLossProgram(clientId);
+        var workoutPlan = _builder.Build();
+
+        var savedWorkoutPlan = await _workoutPlanRepository.AddAsync(workoutPlan, cancellationToken);
+        var fullWorkoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(
+            savedWorkoutPlan.Id,
+            cancellationToken
+        );
+
+        return MapToResponse(fullWorkoutPlan!);
+    }
+
+    /// <summary>
+    /// Creates an Endurance program using Director
+    /// </summary>
+    public async Task<WorkoutPlanResponse> CreateEnduranceProgramAsync(
+        int clientId,
+        CancellationToken cancellationToken = default)
+    {
+        var client = await _clientRepository.GetByIdWithDetailsAsync(clientId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException($"Client with ID {clientId} not found");
+
+        _director.ConstructEnduranceProgram(clientId);
+        var workoutPlan = _builder.Build();
+
+        var savedWorkoutPlan = await _workoutPlanRepository.AddAsync(workoutPlan, cancellationToken);
+        var fullWorkoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(
+            savedWorkoutPlan.Id,
+            cancellationToken
+        );
+
         return MapToResponse(fullWorkoutPlan!);
     }
 }

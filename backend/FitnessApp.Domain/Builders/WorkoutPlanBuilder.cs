@@ -1,16 +1,17 @@
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Domain.Entities.Workouts;
 using FitnessApp.Domain.Enums;
+using FitnessApp.Domain.Interfaces;
 
 
 namespace FitnessApp.Domain.Builders;
 
 /// <summary>
-/// Builder Pattern for WorkoutPlan
+/// Concrete Builder for WorkoutPlan
+/// Implements IWorkoutPlanBuilder interface
 /// Constructs complex workout plans step by step with validation
-/// NO PRESETS - All data comes from API requests
 /// </summary>
-public class WorkoutPlanBuilder
+public class WorkoutPlanBuilder : IWorkoutPlanBuilder
 {
     // Required parameters
     private string? _name;
@@ -40,7 +41,7 @@ public class WorkoutPlanBuilder
         Reset();
     }
     
-    public WorkoutPlanBuilder Reset()
+    public IWorkoutPlanBuilder Reset()
     {
         _name = null;
         _clientId = 0;
@@ -62,7 +63,7 @@ public class WorkoutPlanBuilder
     
     // ========== REQUIRED CONFIGURATION ==========
     
-    public WorkoutPlanBuilder WithName(string name)
+    public IWorkoutPlanBuilder WithName(string name)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Name cannot be empty", nameof(name));
@@ -71,7 +72,7 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder ForClient(int clientId)
+    public IWorkoutPlanBuilder ForClient(int clientId)
     {
         if (clientId <= 0)
             throw new ArgumentException("ClientId must be positive", nameof(clientId));
@@ -80,7 +81,7 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder ForClient(Client client)
+    public IWorkoutPlanBuilder ForClient(Client client)
     {
         if (client == null)
             throw new ArgumentNullException(nameof(client));
@@ -90,19 +91,19 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder WithGoal(WorkoutGoal goal)
+    public IWorkoutPlanBuilder WithGoal(WorkoutGoal goal)
     {
         _goal = goal;
         return this;
     }
     
-    public WorkoutPlanBuilder WithDifficulty(DifficultyLevel difficulty)
+    public IWorkoutPlanBuilder WithDifficulty(DifficultyLevel difficulty)
     {
         _difficulty = difficulty;
         return this;
     }
     
-    public WorkoutPlanBuilder WithDuration(int weeks)
+    public IWorkoutPlanBuilder WithDuration(int weeks)
     {
         if (weeks <= 0)
             throw new ArgumentException("Duration must be at least 1 week", nameof(weeks));
@@ -111,14 +112,14 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder OnDays(DayOfWeekFlag days)
+    public IWorkoutPlanBuilder OnDays(DayOfWeekFlag days)
     {
         _workoutDays = days;
         _sessionsPerWeek = CountSetBits((int)days);
         return this;
     }
     
-    public WorkoutPlanBuilder OnDays(params DayOfWeek[] days)
+    public IWorkoutPlanBuilder OnDays(params DayOfWeek[] days)
     {
         if (days == null || days.Length == 0)
             throw new ArgumentException("At least one day must be specified", nameof(days));
@@ -133,7 +134,7 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder WithSessionDuration(int minutes)
+    public IWorkoutPlanBuilder WithSessionDuration(int minutes)
     {
         if (minutes <= 0)
             throw new ArgumentException("Session duration must be positive", nameof(minutes));
@@ -144,7 +145,7 @@ public class WorkoutPlanBuilder
     
     // ========== OPTIONAL CONFIGURATION ==========
     
-    public WorkoutPlanBuilder WithTrainer(int trainerId)
+    public IWorkoutPlanBuilder WithTrainer(int trainerId)
     {
         if (trainerId <= 0)
             throw new ArgumentException("TrainerId must be positive", nameof(trainerId));
@@ -153,7 +154,7 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder WithTrainer(Trainer trainer)
+    public IWorkoutPlanBuilder WithTrainer(Trainer trainer)
     {
         if (trainer == null)
             throw new ArgumentNullException(nameof(trainer));
@@ -163,13 +164,13 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder WithDescription(string description)
+    public IWorkoutPlanBuilder WithDescription(string description)
     {
         _description = description;
         return this;
     }
     
-    public WorkoutPlanBuilder WithRestDays(int days)
+    public IWorkoutPlanBuilder WithRestDays(int days)
     {
         if (days < 0 || days > 7)
             throw new ArgumentException("Rest days must be between 0 and 7", nameof(days));
@@ -178,7 +179,7 @@ public class WorkoutPlanBuilder
         return this;
     }
     
-    public WorkoutPlanBuilder WithNotes(string notes)
+    public IWorkoutPlanBuilder WithNotes(string notes)
     {
         _specialNotes = notes;
         return this;
@@ -186,7 +187,7 @@ public class WorkoutPlanBuilder
     
     // ========== EXERCISES ==========
     
-    public WorkoutPlanBuilder AddExercise(string name, int sets, int reps, int? durationSeconds = null, string? notes = null)
+    public IWorkoutPlanBuilder AddExercise(string name, int sets, int reps, int? durationSeconds = null, string? notes = null)
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Exercise name cannot be empty", nameof(name));

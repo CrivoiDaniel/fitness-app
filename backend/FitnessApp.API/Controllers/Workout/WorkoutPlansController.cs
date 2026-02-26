@@ -114,7 +114,7 @@ public class WorkoutPlansController : ControllerBase
         var workoutPlans = await _workoutPlanService.GetByClientIdAsync(clientId, cancellationToken);
         return Ok(workoutPlans);
     }
-
+    
     /// <summary>
     /// Clones an existing workout plan for a different client
     /// Demonstrates Prototype Pattern

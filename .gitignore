@@ -1,0 +1,24 @@
+# Backend
+backend/*/bin/
+backend/*/obj/
+backend/.vs/
+backend/*.user
+backend/*.suo
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# Docker
+docker/mysql/data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

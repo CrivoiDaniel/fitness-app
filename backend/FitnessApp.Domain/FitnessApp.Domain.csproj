@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Builders/" />
+    <Folder Include="Directors/" />
     <Folder Include="Entities/" />
     <Folder Include="Entities/Base/" />
     <Folder Include="Entities/Subscriptions/" />
