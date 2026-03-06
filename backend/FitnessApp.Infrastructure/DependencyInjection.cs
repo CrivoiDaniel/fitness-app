@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using FitnessApp.Infrastructure.Data.Configurations;
 using FitnessApp.Infrastructure.Repositories.Workouts;
 using FitnessApp.Application.Interfaces.Workout;
+using FitnessApp.Application.Settings;
+using FitnessApp.Application.Interfaces.Auth;
+using FitnessApp.Infrastructure.Services.Auth;
+using FitnessApp.Infrastructure.Repositories.Auth;
 
 namespace FitnessApp.Infrastructure;
 
@@ -22,11 +26,11 @@ public static class DependencyInjection
     {
         // ========== DATABASE CONFIGURATION ==========
         var connectionString = configuration.GetConnectionString("DefaultConnection");
-        
+
         services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseMySql(
-                connectionString, 
+                connectionString,
                 ServerVersion.AutoDetect(connectionString),
                 mySqlOptions =>
                 {
@@ -37,7 +41,7 @@ public static class DependencyInjection
                     );
                 }
             );
-            
+
             if (isDevelopment)
             {
                 options.EnableSensitiveDataLogging();
@@ -60,6 +64,20 @@ public static class DependencyInjection
 
         //Workout Repositories
         services.AddScoped<IWorkoutPlanRepository, WorkoutPlanRepository>();
+
+        //JWT SETTINGS
+        services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+
+        //AUTH SERVICES
+        services.AddScoped<IPasswordHasher, PasswordHasher>();
+        services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+
+        // ADD HttpContextAccessor
+        services.AddHttpContextAccessor();
+
+        //ADD RefreshToken Repository
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
         return services;
     }

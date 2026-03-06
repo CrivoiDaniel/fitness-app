@@ -1,4 +1,5 @@
 using System;
+using FitnessApp.Domain.Entities.Auth;
 using FitnessApp.Domain.Entities.Base;
 using FitnessApp.Domain.Enums;
 
@@ -71,29 +72,29 @@ public class User : BaseEntity
     }
     public void ChangeEmail(string newEmail)
     {
-    if (string.IsNullOrWhiteSpace(newEmail))
-        throw new ArgumentException("Email cannot be empty");
-    
-    Email = newEmail.ToLower().Trim();
-    UpdatedAt = DateTime.UtcNow;
+        if (string.IsNullOrWhiteSpace(newEmail))
+            throw new ArgumentException("Email cannot be empty");
+
+        Email = newEmail.ToLower().Trim();
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public void UpdateFirstName(string firstName)
     {
-    if (string.IsNullOrWhiteSpace(firstName))
-        throw new ArgumentException("First name cannot be empty");
-    
-    FirstName = firstName.Trim();
-    UpdatedAt = DateTime.UtcNow;
+        if (string.IsNullOrWhiteSpace(firstName))
+            throw new ArgumentException("First name cannot be empty");
+
+        FirstName = firstName.Trim();
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public void UpdateLastName(string lastName)
     {
-    if (string.IsNullOrWhiteSpace(lastName))
-        throw new ArgumentException("Last name cannot be empty");
-    
-    LastName = lastName.Trim();
-    UpdatedAt = DateTime.UtcNow;
+        if (string.IsNullOrWhiteSpace(lastName))
+            throw new ArgumentException("Last name cannot be empty");
+
+        LastName = lastName.Trim();
+        UpdatedAt = DateTime.UtcNow;
     }
 
     public void Activate()
@@ -108,4 +109,7 @@ public class User : BaseEntity
     {
         return $"{FirstName} {LastName}";
     }
+
+    // Navigation property pentru Refresh Tokens
+    public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

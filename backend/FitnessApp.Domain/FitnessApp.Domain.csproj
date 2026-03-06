@@ -10,6 +10,7 @@
     <Folder Include="Builders/" />
     <Folder Include="Directors/" />
     <Folder Include="Entities/" />
+    <Folder Include="Entities/Auth/" />
     <Folder Include="Entities/Base/" />
     <Folder Include="Entities/Subscriptions/" />
     <Folder Include="Entities/Users/" />

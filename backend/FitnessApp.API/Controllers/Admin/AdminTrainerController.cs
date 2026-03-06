@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using FitnessApp.Application.DTOs.Admin.Trainers;
 using FitnessApp.Application.DTOs.Admin;
 using FitnessApp.Application.Interfaces.Admin.Trainers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FitnessApp.API.Controllers.Admin;
 
@@ -12,7 +13,7 @@ namespace FitnessApp.API.Controllers.Admin;
 /// </summary>
 [ApiController]
 [Route("api/admin/trainers")]
-// TODO: Add [Authorize(Roles = "Admin")] when implementing JWT
+[Authorize(Roles = "Admin")]
 public class AdminTrainerController : ControllerBase
 {
     // ========== FIELDS ==========

@@ -1,9 +1,9 @@
 using System;
-using FitnessApp.Infrastructure.Data;
+using FitnessApp.Domain.Entities.Auth;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Entities.Users;
-using Microsoft.EntityFrameworkCore;
 using FitnessApp.Domain.Entities.Workouts;
+using Microsoft.EntityFrameworkCore;
 
 namespace FitnessApp.Infrastructure.Data.Configurations;
 
@@ -11,7 +11,7 @@ public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-   // ========== USER MODULE ==========
+    // ========== USER MODULE ==========
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Client> Clients { get; set; } = null!;
     public DbSet<Trainer> Trainers { get; set; } = null!;
@@ -24,13 +24,16 @@ public class ApplicationDbContext : DbContext
     public DbSet<Subscription> Subscriptions { get; set; } = null!;
     public DbSet<Payment> Payments { get; set; } = null!;
 
-    // Workout DbSets
-    public DbSet<WorkoutPlan> WorkoutPlans { get; set; }
-    public DbSet<WorkoutExercise> WorkoutExercises { get; set; }
+    // ========== WORKOUT MODULE ==========
+    public DbSet<WorkoutPlan> WorkoutPlans { get; set; } = null!;
+    public DbSet<WorkoutExercise> WorkoutExercises { get; set; } = null!;
+    
+    // ========== AUTH MODULE ========== ← ADD THIS SECTION
+    public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
-
 }
