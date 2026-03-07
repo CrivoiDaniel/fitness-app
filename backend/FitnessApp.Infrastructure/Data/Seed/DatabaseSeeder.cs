@@ -17,7 +17,7 @@ public static class DatabaseSeeder
             firstName: "admin",
             lastName: "admin",
             email: "admin@fitness.com",
-            passwordHash: BCrypt.Net.BCrypt.HashPassword("123", 12),
+            passwordHash: BCrypt.Net.BCrypt.HashPassword("Admin@123", 12),
             role: Role.Admin
         );
 

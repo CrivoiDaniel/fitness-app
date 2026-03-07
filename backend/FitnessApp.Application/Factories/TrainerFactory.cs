@@ -1,4 +1,5 @@
 using System;
+using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Domain.Enums;
 
@@ -6,27 +7,22 @@ namespace FitnessApp.Application.Factories;
 
 public class TrainerFactory : IUserFactory
 {
-    // {/* create user for trenner*/}
+    private readonly IPasswordHasher _passwordHasher;
+
+    public TrainerFactory(IPasswordHasher passwordHasher)
+    {
+        _passwordHasher = passwordHasher;
+    }
 
     public User CreateUser(string email, string password, string firstName, string lastName, Role role)
     {
         if (role != Role.Trainer)
-        {
             throw new ArgumentException("Role must be Trainer");
-        }
-        var passwordHash = HashPassword(password);
 
-        var user = new User(firstName, lastName, email, passwordHash, Role.Trainer);
-        return user;
+        var passwordHash = _passwordHasher.HashPassword(password);
+        return new User(firstName, lastName, email, passwordHash, Role.Trainer);
     }
-    // {/* create trainer profile for existing user*/}
+
     public Trainer CreateTrainerProfile(int userId, string specialization, int yearsOfExperience)
-    {
-        var trainerProfile = new Trainer(userId, specialization, yearsOfExperience);
-        return trainerProfile;
-    }
-    private string HashPassword(string password)
-    {
-        return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password));
-    }
+        => new Trainer(userId, specialization, yearsOfExperience);
 }

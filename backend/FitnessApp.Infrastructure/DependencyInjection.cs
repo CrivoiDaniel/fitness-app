@@ -14,6 +14,7 @@ using FitnessApp.Application.Settings;
 using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Infrastructure.Services.Auth;
 using FitnessApp.Infrastructure.Repositories.Auth;
+using FitnessApp.Application.Factories;
 
 namespace FitnessApp.Infrastructure;
 
@@ -71,6 +72,11 @@ public static class DependencyInjection
         //AUTH SERVICES
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IJwtTokenService, JwtTokenService>();
+
+        // Factories
+        services.AddScoped<ClientFactory>();
+        services.AddScoped<TrainerFactory>();
+
 
 
         // ADD HttpContextAccessor

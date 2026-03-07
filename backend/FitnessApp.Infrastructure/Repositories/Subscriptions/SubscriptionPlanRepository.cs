@@ -18,11 +18,12 @@ public class SubscriptionPlanRepository : Repository<SubscriptionPlan>, ISubscri
         return await _dbSet
             .Where(sp => sp.IsActive)
             .Include(sp => sp.BenefitPackage)
+                .ThenInclude(bp => bp.BenefitPackageItems)
+                    .ThenInclude(bpi => bpi.Benefit)
             .OrderBy(sp => sp.Type)
             .ThenBy(sp => sp.Price)
             .ToListAsync(cancellationToken);
     }
-
     public async Task<IEnumerable<SubscriptionPlan>> GetByTypeAsync(
         SubscriptionType type,
         CancellationToken cancellationToken = default)

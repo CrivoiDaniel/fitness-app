@@ -75,7 +75,7 @@ public class BenefitsController : ControllerBase
     /// Create new benefit (Admin only)
     /// </summary>
     [HttpPost]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<BenefitDto>> Create([FromBody] CreateBenefitDto dto, CancellationToken cancellationToken)
@@ -95,7 +95,7 @@ public class BenefitsController : ControllerBase
     /// Update benefit (Admin only)
     /// </summary>
     [HttpPut("{id}")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -116,7 +116,7 @@ public class BenefitsController : ControllerBase
     /// Delete benefit (Admin only)
     /// </summary>
     [HttpDelete("{id}")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> Delete(int id, CancellationToken cancellationToken)

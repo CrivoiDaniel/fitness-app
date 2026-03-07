@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers/Auth/" />
+    <Folder Include="Controllers/Public/" />
     <Folder Include="Controllers/Subscriptions/" />
     <Folder Include="Controllers/Workout/" />
   </ItemGroup>

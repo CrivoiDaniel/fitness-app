@@ -62,18 +62,25 @@ public class BenefitPackageService : IBenefitPackageService
             }
         }
 
-        // Creează package (folosește constructor)
+        // 1) Creează package
         var package = new BenefitPackage(dto.Name, dto.ScheduleWeekday, dto.ScheduleWeekend);
 
-        // Adaugă items
+        // 2) Salvează package ca să primească Id (IMPORTANT)
+        var created = await _packageRepository.AddAsync(package, cancellationToken);
+
+        // 3) Adaugă items folosind created.Id (acum e > 0)
         foreach (var itemDto in dto.Items)
         {
-            var item = new BenefitPackageItem(package.Id, itemDto.BenefitId, itemDto.Value);
-            package.BenefitPackageItems.Add(item);
+            var item = new BenefitPackageItem(created.Id, itemDto.BenefitId, itemDto.Value);
+            created.BenefitPackageItems.Add(item);
         }
 
-        var created = await _packageRepository.AddAsync(package, cancellationToken);
-        return MapToDto(created);
+        // 4) Persistă items
+        await _packageRepository.UpdateAsync(created, cancellationToken);
+
+        // 5) Îl reîncarci cu items (ca să întorci DTO complet)
+        var createdWithItems = await _packageRepository.GetWithItemsAsync(created.Id, cancellationToken);
+        return MapToDto(createdWithItems ?? created);
     }
 
     public async Task<BenefitPackageDto> UpdateAsync(int id, UpdateBenefitPackageDto dto, CancellationToken cancellationToken = default)
@@ -112,7 +119,7 @@ public class BenefitPackageService : IBenefitPackageService
 
         // Update items - clear și re-add
         package.BenefitPackageItems.Clear();
-        
+
         foreach (var itemDto in dto.Items)
         {
             var item = new BenefitPackageItem(package.Id, itemDto.BenefitId, itemDto.Value);

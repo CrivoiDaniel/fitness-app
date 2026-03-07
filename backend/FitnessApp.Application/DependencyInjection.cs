@@ -2,8 +2,6 @@ using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Services.Admin.UserManagement.Clients;
 using FitnessApp.Application.Interfaces.Admin.Trainers;
 using FitnessApp.Application.Services.Admin.UserManagement.Trainers;
-using FitnessApp.Application.Interfaces.Authentication;
-using FitnessApp.Application.Services.Authentication;
 using FitnessApp.Application.Interfaces.Users;
 using FitnessApp.Application.Services.Users;
 using FitnessApp.Application.Factories;
@@ -25,9 +23,6 @@ public static class DependencyInjection
         // ========== FACTORIES ==========
         services.AddScoped<ClientFactory>();
         services.AddScoped<TrainerFactory>();
-
-        // ========== AUTHENTICATION SERVICES ==========
-        services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         // ========== USER SERVICES ==========
         services.AddScoped<IUserQueryService, UserQueryService>();
