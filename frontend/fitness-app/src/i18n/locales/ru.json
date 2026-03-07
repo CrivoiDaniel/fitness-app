@@ -1,0 +1,226 @@
+{
+    "nav": {
+        "subscriptions": "Абонементы",
+        "trainers": "Тренеры",
+        "contacts": "Контакты",
+        "services": "Услуги",
+        "login": "Войти",
+        "language": "Язык"
+    },
+    "auth": {
+        "loginTitle": "Вход",
+        "email": "Email",
+        "password": "Пароль",
+        "connect": "Войти",
+        "connecting": "Вход...",
+        "emailRequired": "Email обязателен.",
+        "emailInvalid": "Неверный email.",
+        "passwordRequired": "Пароль обязателен.",
+        "passwordMin": "Пароль должен быть не менее 6 символов.",
+        "missingToken": "Не удалось войти. Попробуйте еще раз.",
+        "loginFailed": "Ошибка входа."
+    },
+    "home": {
+        "heroTitle": "АБОНЕМЕНТ В ЗАЛ НА 6 МЕСЯЦЕВ",
+        "oldPrice": "2999 MDL",
+        "newPrice": "2600 MDL / МЕСЯЦ",
+        "buyNow": "КУПИТЬ СЕЙЧАС",
+        "subsTitleSmall": "АБОНЕМЕНТЫ GRIFFIT FITNESS",
+        "subsTitle1": "АБОНЕМЕНТ",
+        "subsTitle2": "ИДЕАЛЬНЫЙ ДЛЯ ТЕБЯ!",
+        "subsSubtitle": "Большой результат за небольшие вложения!",
+        "loadingSubscriptions": "Загрузка абонементов...",
+        "benefitsTitle1": "ПОЧЕМУ СТОИТ ПРИЙТИ",
+        "benefitsTitle2": "В GRIFFIT?",
+        "benefitsHeading1": "УЗНАЙ ПРЕИМУЩЕСТВА",
+        "benefitsHeading2": "ДЛЯ ТВОЕГО САМОЧУВСТВИЯ",
+        "signUp": "Записаться",
+        "location": "Локация",
+        "servicesTitle": "Наши услуги",
+        "purchase": "Купить",
+        "noBenefits": "В этом пакете нет преимуществ."
+    },
+    "benefits": {
+        "b1": "Современное разнообразное оборудование",
+        "b2": "Чистота на высоком уровне",
+        "b3": "Ты станешь частью лучшего фитнес-сообщества",
+        "b4": "Будет больше энергии",
+        "b5": "Самочувствие улучшится",
+        "b6": "Похудеешь или наберешь мышечную массу",
+        "b7": "Выносливость станет выше",
+        "b8": "Будешь чувствовать себя отлично"
+    },
+    "subscription": {
+        "type": {
+            "Monthly": "Месяц",
+            "Quarterly": "3 месяца",
+            "Yearly": "Год"
+        }
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Отмена",
+        "logout": "Выйти",
+        "back": "Назад",
+        "next": "Вперед",
+        "page": "Страница",
+        "of": "из",
+        "total": "Всего",
+        "loading": "Загрузка..."
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Страница не найдена.",
+        "backHome": "На главную"
+    },
+    "unauthorized": {
+        "title": "Доступ запрещен",
+        "message": "У вас нет прав для доступа к этой странице.",
+        "backHome": "На главную",
+        "dashboard": "Панель"
+    },
+    "changePassword": {
+        "title": "Сменить пароль",
+        "subtitle": "В целях безопасности необходимо установить новый пароль.",
+        "current": "Текущий пароль",
+        "new": "Новый пароль",
+        "confirmNew": "Подтвердите новый пароль",
+        "saving": "Сохранение...",
+        "save": "Сменить пароль",
+        "success": "Пароль успешно изменен. Вы можете войти снова.",
+        "newRequired": "Новый пароль обязателен.",
+        "newMin": "Новый пароль должен быть не менее 6 символов.",
+        "confirmRequired": "Подтверждение обязательно.",
+        "confirmMismatch": "Пароли не совпадают."
+    },
+    "dashboard": {
+        "adminTitle": "Админ панель",
+        "trainerTitle": "Панель тренера",
+        "clientTitle": "Панель клиента"
+    },
+    "sidebar": {
+        "admin": {
+            "overview": "Обзор",
+            "clients": "Клиенты",
+            "trainers": "Тренеры"
+        },
+        "trainer": {
+            "overview": "Обзор",
+            "plans": "Планы"
+        },
+        "client": {
+            "overview": "Обзор",
+            "profile": "Профиль"
+        }
+    },
+    "admin": {
+        "createdUser": {
+            "title": "Пользователь создан",
+            "hint": "Скопируйте данные и отправьте пользователю (email/SMS).",
+            "email": "Email",
+            "tempPassword": "Временный пароль",
+            "fullMessage": "Полное сообщение (copy/paste)",
+            "copyEmail": "Copy email",
+            "copyPassword": "Copy password",
+            "copyMessage": "Copy message",
+            "template": "Аккаунт успешно создан.\n\nEmail: {{email}}\nВременный пароль: {{password}}\n\nПожалуйста, войдите и смените пароль после первого входа."
+        },
+        "clients": {
+            "title": "Клиенты",
+            "total": "Всего клиентов",
+            "add": "Добавить клиента",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Клиентов нет.",
+            "statusActive": "Активен",
+            "statusInactive": "Неактивен",
+            "columns": {
+                "id": "ID",
+                "name": "Имя",
+                "email": "Email",
+                "phone": "Телефон",
+                "status": "Статус",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Подтвердите удаление",
+                "message": "Удалить клиента {{name}}? Это действие необратимо.",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Не удалось загрузить клиентов.",
+                "create": "Не удалось создать клиента.",
+                "edit": "Не удалось обновить клиента.",
+                "delete": "Не удалось удалить клиента."
+            },
+            "form": {
+                "createTitle": "Добавить клиента",
+                "editTitle": "Редактировать клиента",
+                "email": "Email",
+                "firstName": "Имя",
+                "lastName": "Фамилия",
+                "phone": "Телефон",
+                "dob": "Дата рождения",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "emailRequired": "Email обязателен.",
+                "emailInvalid": "Неверный email.",
+                "firstNameRequired": "Имя обязательно.",
+                "lastNameRequired": "Фамилия обязательна.",
+                "dobRequired": "Дата рождения обязательна."
+            }
+        },
+        "trainers": {
+            "title": "Тренеры",
+            "total": "Всего тренеров",
+            "add": "Добавить тренера",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Тренеров нет.",
+            "columns": {
+                "id": "ID",
+                "name": "Имя",
+                "email": "Email",
+                "phone": "Телефон",
+                "specialization": "Специализация",
+                "years": "Стаж (лет)",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Подтвердите удаление",
+                "message": "Удалить тренера {{name}}? Это действие необратимо.",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Не удалось загрузить тренеров.",
+                "create": "Не удалось создать тренера.",
+                "edit": "Не удалось обновить тренера.",
+                "delete": "Не удалось удалить тренера."
+            },
+            "form": {
+                "createTitle": "Добавить тренера",
+                "editTitle": "Редактировать тренера",
+                "email": "Email",
+                "firstName": "Имя",
+                "lastName": "Фамилия",
+                "phone": "Телефон",
+                "specialization": "Специализация",
+                "years": "Стаж",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "emailRequired": "Email обязателен.",
+                "emailInvalid": "Неверный email.",
+                "firstNameRequired": "Имя обязательно.",
+                "lastNameRequired": "Фамилия обязательна.",
+                "specializationRequired": "Специализация обязательна.",
+                "yearsRequired": "Стаж обязателен.",
+                "yearsInvalid": "Стаж указан неверно.",
+                "yearsRange": "Стаж должен быть от 0 до 50."
+            }
+        }
+    }
+}

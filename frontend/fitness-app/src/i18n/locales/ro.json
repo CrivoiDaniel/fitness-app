@@ -1,0 +1,226 @@
+{
+    "nav": {
+        "subscriptions": "Abonamente",
+        "trainers": "Antrenori",
+        "contacts": "Contacte",
+        "services": "Servicii",
+        "login": "LogIn",
+        "language": "Limbă"
+    },
+    "auth": {
+        "loginTitle": "Logare",
+        "email": "Email",
+        "password": "Parola",
+        "connect": "Conectează-te",
+        "connecting": "Se conectează...",
+        "emailRequired": "Email este obligatoriu.",
+        "emailInvalid": "Email invalid.",
+        "passwordRequired": "Parola este obligatorie.",
+        "passwordMin": "Parola trebuie să aibă minim 6 caractere.",
+        "missingToken": "Nu am putut finaliza logarea. Încearcă din nou.",
+        "loginFailed": "Eroare la login."
+    },
+    "home": {
+        "heroTitle": "ABONAMENT FITNESS 6 LUNI",
+        "oldPrice": "2999 MDL",
+        "newPrice": "2600 MDL / LUNĂ",
+        "buyNow": "ACHIZIȚIONEAZĂ ACUM",
+        "subsTitleSmall": "ABONAMENTE FITNESS GRIFFIT",
+        "subsTitle1": "ABONAMENTUL",
+        "subsTitle2": "PERFECT PENTRU TINE!",
+        "subsSubtitle": "Rezultate mari cu investiție mică!",
+        "loadingSubscriptions": "Se încarcă abonamentele...",
+        "benefitsTitle1": "DE CE SĂ VII",
+        "benefitsTitle2": "LA GRIFFIT?",
+        "benefitsHeading1": "DESCOPERĂ BENEFICIILE",
+        "benefitsHeading2": "PENTRU STAREA TA DE BINE",
+        "signUp": "Înscriete",
+        "location": "Locație",
+        "servicesTitle": "Serviciile Noastre",
+        "purchase": "Achiziționează",
+        "noBenefits": "Nu sunt beneficii în pachet."
+    },
+    "benefits": {
+        "b1": "Aparate diverse de ultimă generație",
+        "b2": "Curățenie la standarde occidentale",
+        "b3": "Vei face parte din cea mai cool comunitate de fitness",
+        "b4": "Vei avea mai multă energie",
+        "b5": "Vei avea un tonus mai bun",
+        "b6": "Vei slăbi sau vei pune mai multă masă musculară",
+        "b7": "Îți vei crește anduranța la efort",
+        "b8": "Te vei simți mai bine"
+    },
+    "subscription": {
+        "type": {
+            "Monthly": "Lunar",
+            "Quarterly": "3 luni",
+            "Yearly": "Anual"
+        }
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Anulează",
+        "logout": "Logout",
+        "back": "Înapoi",
+        "next": "Înainte",
+        "page": "Pagina",
+        "of": "din",
+        "total": "Total",
+        "loading": "Se încarcă..."
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Pagina nu a fost găsită.",
+        "backHome": "Înapoi la Home"
+    },
+    "unauthorized": {
+        "title": "Acces interzis",
+        "message": "Nu ai permisiunea să accesezi această pagină.",
+        "backHome": "Înapoi la Home",
+        "dashboard": "Dashboard"
+    },
+    "changePassword": {
+        "title": "Schimbă parola",
+        "subtitle": "Pentru securitate, trebuie să îți setezi o parolă nouă.",
+        "current": "Parola curentă",
+        "new": "Parola nouă",
+        "confirmNew": "Confirmă parola nouă",
+        "saving": "Se salvează...",
+        "save": "Schimbă parola",
+        "success": "Parola a fost schimbată cu succes. Te poți conecta din nou.",
+        "newRequired": "Parola nouă este obligatorie.",
+        "newMin": "Parola nouă trebuie să aibă minim 6 caractere.",
+        "confirmRequired": "Confirmarea este obligatorie.",
+        "confirmMismatch": "Parolele nu coincid."
+    },
+    "dashboard": {
+        "adminTitle": "Admin Dashboard",
+        "trainerTitle": "Trainer Dashboard",
+        "clientTitle": "Client Dashboard"
+    },
+    "sidebar": {
+        "admin": {
+            "overview": "Overview",
+            "clients": "Clienți",
+            "trainers": "Traineri"
+        },
+        "trainer": {
+            "overview": "Overview",
+            "plans": "Planuri"
+        },
+        "client": {
+            "overview": "Overview",
+            "profile": "Profil"
+        }
+    },
+    "admin": {
+        "createdUser": {
+            "title": "Utilizator creat",
+            "hint": "Copiază datele și trimite-le clientului (email/SMS).",
+            "email": "Email",
+            "tempPassword": "Parolă temporară",
+            "fullMessage": "Mesaj complet (copy/paste)",
+            "copyEmail": "Copy email",
+            "copyPassword": "Copy parolă",
+            "copyMessage": "Copy mesaj",
+            "template": "Cont creat cu succes.\n\nEmail: {{email}}\nParolă temporară: {{password}}\n\nTe rugăm să te conectezi și să schimbi parola după prima autentificare."
+        },
+        "clients": {
+            "title": "Clienți",
+            "total": "Total clienți",
+            "add": "Adaugă Client",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Se încarcă...",
+            "empty": "Nu există clienți.",
+            "statusActive": "Activ",
+            "statusInactive": "Inactiv",
+            "columns": {
+                "id": "ID",
+                "name": "Nume",
+                "email": "Email",
+                "phone": "Telefon",
+                "status": "Status",
+                "actions": "Acțiuni"
+            },
+            "confirmDelete": {
+                "title": "Confirmă ștergerea",
+                "message": "Sigur vrei să ștergi clientul {{name}}? Această acțiune este permanentă.",
+                "confirmText": "Șterge"
+            },
+            "errors": {
+                "load": "Eroare la încărcarea clienților.",
+                "create": "Eroare la creare client.",
+                "edit": "Eroare la editare client.",
+                "delete": "Eroare la ștergere client."
+            },
+            "form": {
+                "createTitle": "Adaugă Client",
+                "editTitle": "Editează Client",
+                "email": "Email",
+                "firstName": "Prenume",
+                "lastName": "Nume",
+                "phone": "Telefon",
+                "dob": "Data nașterii",
+                "active": "Activ",
+                "create": "Creează",
+                "save": "Salvează",
+                "emailRequired": "Email este obligatoriu.",
+                "emailInvalid": "Email invalid.",
+                "firstNameRequired": "Prenumele este obligatoriu.",
+                "lastNameRequired": "Numele este obligatoriu.",
+                "dobRequired": "Data nașterii este obligatorie."
+            }
+        },
+        "trainers": {
+            "title": "Traineri",
+            "total": "Total traineri",
+            "add": "Adaugă Trainer",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Se încarcă...",
+            "empty": "Nu există traineri.",
+            "columns": {
+                "id": "ID",
+                "name": "Nume",
+                "email": "Email",
+                "phone": "Telefon",
+                "specialization": "Specializare",
+                "years": "Ani exp.",
+                "actions": "Acțiuni"
+            },
+            "confirmDelete": {
+                "title": "Confirmă ștergerea",
+                "message": "Sigur vrei să ștergi trainerul {{name}}? Această acțiune este permanentă.",
+                "confirmText": "Șterge"
+            },
+            "errors": {
+                "load": "Eroare la încărcarea trainerilor.",
+                "create": "Eroare la creare trainer.",
+                "edit": "Eroare la editare trainer.",
+                "delete": "Eroare la ștergere trainer."
+            },
+            "form": {
+                "createTitle": "Adaugă Trainer",
+                "editTitle": "Editează Trainer",
+                "email": "Email",
+                "firstName": "Prenume",
+                "lastName": "Nume",
+                "phone": "Telefon",
+                "specialization": "Specializare",
+                "years": "Ani experiență",
+                "active": "Activ",
+                "create": "Creează",
+                "save": "Salvează",
+                "emailRequired": "Email este obligatoriu.",
+                "emailInvalid": "Email invalid.",
+                "firstNameRequired": "Prenumele este obligatoriu.",
+                "lastNameRequired": "Numele este obligatoriu.",
+                "specializationRequired": "Specializarea este obligatorie.",
+                "yearsRequired": "Anii de experiență sunt obligatorii.",
+                "yearsInvalid": "Anii de experiență sunt invalizi.",
+                "yearsRange": "Anii de experiență trebuie să fie între 0 și 50."
+            }
+        }
+    }
+}

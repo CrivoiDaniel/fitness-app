@@ -1,0 +1,226 @@
+{
+    "nav": {
+        "subscriptions": "Subscriptions",
+        "trainers": "Trainers",
+        "contacts": "Contacts",
+        "services": "Services",
+        "login": "Log In",
+        "language": "Language"
+    },
+    "auth": {
+        "loginTitle": "Sign in",
+        "email": "Email",
+        "password": "Password",
+        "connect": "Sign in",
+        "connecting": "Signing in...",
+        "emailRequired": "Email is required.",
+        "emailInvalid": "Invalid email.",
+        "passwordRequired": "Password is required.",
+        "passwordMin": "Password must be at least 6 characters.",
+        "missingToken": "Could not complete login. Please try again.",
+        "loginFailed": "Login error."
+    },
+    "home": {
+        "heroTitle": "6-MONTH FITNESS SUBSCRIPTION",
+        "oldPrice": "2999 MDL",
+        "newPrice": "2600 MDL / MONTH",
+        "buyNow": "BUY NOW",
+        "subsTitleSmall": "GRIFFIT FITNESS SUBSCRIPTIONS",
+        "subsTitle1": "THE SUBSCRIPTION",
+        "subsTitle2": "PERFECT FOR YOU!",
+        "subsSubtitle": "Big results with a small investment!",
+        "loadingSubscriptions": "Loading subscriptions...",
+        "benefitsTitle1": "WHY YOU SHOULD COME",
+        "benefitsTitle2": "TO GRIFFIT?",
+        "benefitsHeading1": "DISCOVER THE BENEFITS",
+        "benefitsHeading2": "FOR YOUR WELLBEING",
+        "signUp": "Sign up",
+        "location": "Location",
+        "servicesTitle": "Our Services",
+        "purchase": "Purchase",
+        "noBenefits": "No benefits in this package."
+    },
+    "benefits": {
+        "b1": "Modern, diverse equipment",
+        "b2": "Cleanliness to high standards",
+        "b3": "You will join the coolest fitness community",
+        "b4": "You will have more energy",
+        "b5": "You will feel better",
+        "b6": "You will lose weight or gain muscle",
+        "b7": "You will improve endurance",
+        "b8": "You will feel great"
+    },
+    "subscription": {
+        "type": {
+            "Monthly": "Monthly",
+            "Quarterly": "3 months",
+            "Yearly": "Yearly"
+        }
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "logout": "Log out",
+        "back": "Back",
+        "next": "Next",
+        "page": "Page",
+        "of": "of",
+        "total": "Total",
+        "loading": "Loading..."
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Page not found.",
+        "backHome": "Back to Home"
+    },
+    "unauthorized": {
+        "title": "Access denied",
+        "message": "You do not have permission to access this page.",
+        "backHome": "Back to Home",
+        "dashboard": "Dashboard"
+    },
+    "changePassword": {
+        "title": "Change password",
+        "subtitle": "For security, you must set a new password.",
+        "current": "Current password",
+        "new": "New password",
+        "confirmNew": "Confirm new password",
+        "saving": "Saving...",
+        "save": "Change password",
+        "success": "Password changed successfully. You can sign in again.",
+        "newRequired": "New password is required.",
+        "newMin": "New password must be at least 6 characters.",
+        "confirmRequired": "Confirmation is required.",
+        "confirmMismatch": "Passwords do not match."
+    },
+    "dashboard": {
+        "adminTitle": "Admin Dashboard",
+        "trainerTitle": "Trainer Dashboard",
+        "clientTitle": "Client Dashboard"
+    },
+    "sidebar": {
+        "admin": {
+            "overview": "Overview",
+            "clients": "Clients",
+            "trainers": "Trainers"
+        },
+        "trainer": {
+            "overview": "Overview",
+            "plans": "Plans"
+        },
+        "client": {
+            "overview": "Overview",
+            "profile": "Profile"
+        }
+    },
+    "admin": {
+        "createdUser": {
+            "title": "User created",
+            "hint": "Copy the details and send them to the user (email/SMS).",
+            "email": "Email",
+            "tempPassword": "Temporary password",
+            "fullMessage": "Full message (copy/paste)",
+            "copyEmail": "Copy email",
+            "copyPassword": "Copy password",
+            "copyMessage": "Copy message",
+            "template": "Account created successfully.\n\nEmail: {{email}}\nTemporary password: {{password}}\n\nPlease sign in and change your password after the first login."
+        },
+        "clients": {
+            "title": "Clients",
+            "total": "Total clients",
+            "add": "Add client",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No clients found.",
+            "statusActive": "Active",
+            "statusInactive": "Inactive",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "email": "Email",
+                "phone": "Phone",
+                "status": "Status",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm deletion",
+                "message": "Are you sure you want to delete client {{name}}? This action is permanent.",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load clients.",
+                "create": "Failed to create client.",
+                "edit": "Failed to update client.",
+                "delete": "Failed to delete client."
+            },
+            "form": {
+                "createTitle": "Add client",
+                "editTitle": "Edit client",
+                "email": "Email",
+                "firstName": "First name",
+                "lastName": "Last name",
+                "phone": "Phone",
+                "dob": "Date of birth",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "emailRequired": "Email is required.",
+                "emailInvalid": "Invalid email.",
+                "firstNameRequired": "First name is required.",
+                "lastNameRequired": "Last name is required.",
+                "dobRequired": "Date of birth is required."
+            }
+        },
+        "trainers": {
+            "title": "Trainers",
+            "total": "Total trainers",
+            "add": "Add trainer",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No trainers found.",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "email": "Email",
+                "phone": "Phone",
+                "specialization": "Specialization",
+                "years": "Years exp.",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm deletion",
+                "message": "Are you sure you want to delete trainer {{name}}? This action is permanent.",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load trainers.",
+                "create": "Failed to create trainer.",
+                "edit": "Failed to update trainer.",
+                "delete": "Failed to delete trainer."
+            },
+            "form": {
+                "createTitle": "Add trainer",
+                "editTitle": "Edit trainer",
+                "email": "Email",
+                "firstName": "First name",
+                "lastName": "Last name",
+                "phone": "Phone",
+                "specialization": "Specialization",
+                "years": "Years of experience",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "emailRequired": "Email is required.",
+                "emailInvalid": "Invalid email.",
+                "firstNameRequired": "First name is required.",
+                "lastNameRequired": "Last name is required.",
+                "specializationRequired": "Specialization is required.",
+                "yearsRequired": "Years of experience is required.",
+                "yearsInvalid": "Years of experience is invalid.",
+                "yearsRange": "Years of experience must be between 0 and 50."
+            }
+        }
+    }
+}
