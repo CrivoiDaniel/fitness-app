@@ -58,6 +58,8 @@ public class ClientCreationService : IClientCreationService
             Role.Client
         );
 
+        user.RequirePasswordChange();
+        
         // 4. Set phone number (optional)
         if (!string.IsNullOrWhiteSpace(dto.PhoneNumber))
             user.SetPhoneNumber(dto.PhoneNumber);

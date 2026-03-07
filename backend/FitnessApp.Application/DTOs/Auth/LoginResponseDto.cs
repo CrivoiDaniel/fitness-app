@@ -19,4 +19,6 @@ public class LoginResponseDto
     // Profile IDs
     public int? ClientId { get; set; }
     public int? TrainerId { get; set; }
+
+    public bool MustChangePassword { get; set; }
 }

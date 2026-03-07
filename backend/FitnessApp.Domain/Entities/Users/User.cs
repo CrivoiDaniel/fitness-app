@@ -14,6 +14,7 @@ public class User : BaseEntity
     public string? PhoneNumber { get; private set; }
     public Role Role { get; private set; }
     public bool IsActive { get; private set; }
+    public bool MustChangePassword { get; private set; } = false;
 
     public Client? ClientProfile { get; set; }
     public Trainer? TrainerProfile { get; set; }
@@ -52,12 +53,18 @@ public class User : BaseEntity
         }
         Email = email.Trim().ToLower();
     }
+    public void RequirePasswordChange()
+    {
+        MustChangePassword = true;
+    }
+
+    public void ClearPasswordChangeRequirement()
+    {
+        MustChangePassword = false;
+    }
+
     public void SetPasswordHash(string passwordHash)
     {
-        if (string.IsNullOrWhiteSpace(passwordHash))
-        {
-            throw new ArgumentException("Password cannot be null or empty.");
-        }
         PasswordHash = passwordHash;
     }
     public void SetPhoneNumber(string? phoneNumber)
@@ -96,6 +103,7 @@ public class User : BaseEntity
         LastName = lastName.Trim();
         UpdatedAt = DateTime.UtcNow;
     }
+
 
     public void Activate()
     {
