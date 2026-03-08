@@ -80,6 +80,9 @@
     "of": "из",
     "total": "Всего",
     "loading": "Загрузка...",
+    "refresh": "Обновить",
+    "yes": "Да",
+    "no": "Нет",
     "days": {
       "monday": "Понедельник",
       "tuesday": "Вторник",
@@ -157,6 +160,72 @@
     }
   },
   "admin": {
+    "dashboard": {
+      "title": "Панель администратора",
+      "subtitle": "Статистика подписок и доходов (кэш Singleton).",
+      "errors": {
+        "load": "Ошибка при загрузке статистики.",
+        "loadExpiring": "Ошибка при загрузке истекающих абонементов.",
+        "refresh": "Ошибка обновления кэша."
+      },
+      "cards": {
+        "totalSubscriptions": "Всего абонементов",
+        "active": "Активные",
+        "totalRevenue": "Общий доход",
+        "monthlyRevenue": "Доход за месяц",
+        "growth": "Темп роста",
+        "churn": "Уровень оттока"
+      },
+      "status": {
+        "active": "Активен",
+        "pending": "В ожидании",
+        "expired": "Истек",
+        "cancelled": "Отменен"
+      },
+      "revenue": {
+        "today": "Сегодня",
+        "week": "Неделя",
+        "month": "Месяц",
+        "year": "Год",
+        "allTime": "За все время"
+      },
+      "charts": {
+        "subscriptionsStatus": "Распределение статусов подписок",
+        "subscriptionsStatusHint": "Активные / В ожидании / Истекшие / Отмененные.",
+        "revenueBreakdown": "Детализация доходов",
+        "revenueBreakdownHint": "Быстрое сравнение доходов за периоды.",
+        "trends": "Тренды (12 месяцев)",
+        "trendsHint": "Новые vs Отмененные vs Чистый рост."
+      },
+      "trends": {
+        "new": "Новые",
+        "cancelled": "Отмененные",
+        "net": "Чистый итог"
+      },
+      "cache": {
+        "title": "Кэш (Singleton)",
+        "hint": "Данные рассчитываются и кэшируются для производительности.",
+        "refresh": "Обновить",
+        "lastUpdate": "Последнее обновление",
+        "expiresAt": "Истекает в",
+        "isExpired": "Истек",
+        "cachedSubscriptions": "Абонементов в кэше",
+        "cachedPayments": "Платежей в кэше"
+      },
+      "expiring": {
+        "title": "Истекающие абонементы",
+        "hint": "Список подписок, истекающих в ближайшие дни.",
+        "daysAhead": "Дней",
+        "empty": "Нет данных для отображения.",
+        "columns": {
+          "client": "Клиент",
+          "plan": "План",
+          "endDate": "Дата окончания",
+          "daysRemaining": "Осталось дней",
+          "subscriptionId": "ID подписки"
+        }
+      }
+    },
     "createdUser": {
       "title": "Пользователь создан",
       "hint": "Скопируйте данные и отправьте пользователю (email/SMS).",

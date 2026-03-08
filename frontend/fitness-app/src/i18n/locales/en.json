@@ -80,6 +80,9 @@
     "of": "of",
     "total": "Total",
     "loading": "Loading...",
+    "refresh": "Refresh",
+    "yes": "Yes",
+    "no": "No",
     "days": {
       "monday": "Monday",
       "tuesday": "Tuesday",
@@ -157,6 +160,72 @@
     }
   },
   "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "subtitle": "Subscription and revenue statistics (Singleton cache).",
+      "errors": {
+        "load": "Error loading statistics.",
+        "loadExpiring": "Error loading expiring subscriptions.",
+        "refresh": "Error refreshing cache."
+      },
+      "cards": {
+        "totalSubscriptions": "Total Subscriptions",
+        "active": "Active",
+        "totalRevenue": "Total Revenue",
+        "monthlyRevenue": "Monthly Revenue",
+        "growth": "Growth rate",
+        "churn": "Churn rate"
+      },
+      "status": {
+        "active": "Active",
+        "pending": "Pending",
+        "expired": "Expired",
+        "cancelled": "Cancelled"
+      },
+      "revenue": {
+        "today": "Today",
+        "week": "This Week",
+        "month": "This Month",
+        "year": "This Year",
+        "allTime": "All Time"
+      },
+      "charts": {
+        "subscriptionsStatus": "Subscription Status Distribution",
+        "subscriptionsStatusHint": "Active / Pending / Expired / Cancelled.",
+        "revenueBreakdown": "Revenue Breakdown",
+        "revenueBreakdownHint": "Quick revenue comparison.",
+        "trends": "Trends (12 months)",
+        "trendsHint": "New vs Cancelled vs Net Growth."
+      },
+      "trends": {
+        "new": "New",
+        "cancelled": "Cancelled",
+        "net": "Net"
+      },
+      "cache": {
+        "title": "Cache (Singleton)",
+        "hint": "Data is calculated and cached for performance.",
+        "refresh": "Refresh",
+        "lastUpdate": "Last update",
+        "expiresAt": "Expires at",
+        "isExpired": "Expired",
+        "cachedSubscriptions": "Subs cached",
+        "cachedPayments": "Payments cached"
+      },
+      "expiring": {
+        "title": "Expiring Subscriptions",
+        "hint": "List of subscriptions expiring in the following days.",
+        "daysAhead": "Days",
+        "empty": "Nothing to display.",
+        "columns": {
+          "client": "Client",
+          "plan": "Plan",
+          "endDate": "End date",
+          "daysRemaining": "Days remaining",
+          "subscriptionId": "Sub ID"
+        }
+      }
+    },
     "createdUser": {
       "title": "User Created",
       "hint": "Copy the data and send it to the user (email/SMS).",

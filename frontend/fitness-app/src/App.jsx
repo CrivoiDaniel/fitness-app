@@ -29,6 +29,8 @@ import SubscriptionsPage from "./pages/admin/subscriptions/SubscriptionsPage";
 import PaymentsPage from "./pages/admin/payments/PaymentsPage";
 import WorkoutPlansPage from "./pages/admin/workoutPlans/WorkoutPlansPage";
 
+import AdminDashboardPage from "./pages/admin/dashboard/AdminDashboardPage";
+
 // Dashboards (temporar)
 const AdminDashboard = () => <div className="text-2xl font-bold">Admin Dashboard</div>;
 const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
@@ -82,7 +84,7 @@ const App = () => {
                 path="admin"
                 element={
                   <RoleRoute allowedRoles={["Admin"]}>
-                    <AdminDashboard />
+                    <AdminDashboardPage />
                   </RoleRoute>
                 }
               />

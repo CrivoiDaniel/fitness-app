@@ -80,6 +80,9 @@
     "of": "din",
     "total": "Total",
     "loading": "Se încarcă...",
+    "refresh": "Reîncarcă",
+    "yes": "Da",
+    "no": "Nu",
     "days": {
       "monday": "Luni",
       "tuesday": "Marți",
@@ -157,6 +160,72 @@
     }
   },
   "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "subtitle": "Statistici abonamente și venituri (cache Singleton).",
+      "errors": {
+        "load": "Eroare la încărcarea statisticilor.",
+        "loadExpiring": "Eroare la încărcarea abonamentelor care expiră.",
+        "refresh": "Eroare la refresh cache."
+      },
+      "cards": {
+        "totalSubscriptions": "Total abonamente",
+        "active": "Active",
+        "totalRevenue": "Venit total",
+        "monthlyRevenue": "Venit lunar",
+        "growth": "Growth rate",
+        "churn": "Churn rate"
+      },
+      "status": {
+        "active": "Active",
+        "pending": "Pending",
+        "expired": "Expired",
+        "cancelled": "Cancelled"
+      },
+      "revenue": {
+        "today": "Astăzi",
+        "week": "Săptămâna",
+        "month": "Luna",
+        "year": "Anul",
+        "allTime": "All time"
+      },
+      "charts": {
+        "subscriptionsStatus": "Distribuție status abonamente",
+        "subscriptionsStatusHint": "Active / Pending / Expired / Cancelled.",
+        "revenueBreakdown": "Venituri pe perioade",
+        "revenueBreakdownHint": "Comparație rapidă a veniturilor.",
+        "trends": "Trends (12 luni)",
+        "trendsHint": "New vs Cancelled vs Net Growth."
+      },
+      "trends": {
+        "new": "Noi",
+        "cancelled": "Anulate",
+        "net": "Net"
+      },
+      "cache": {
+        "title": "Cache (Singleton)",
+        "hint": "Datele sunt calculate și memorate în cache pentru performanță.",
+        "refresh": "Refresh",
+        "lastUpdate": "Ultimul update",
+        "expiresAt": "Expiră la",
+        "isExpired": "Expirat",
+        "cachedSubscriptions": "Subs cached",
+        "cachedPayments": "Payments cached"
+      },
+      "expiring": {
+        "title": "Abonamente care expiră",
+        "hint": "Lista celor care expiră în următoarele zile.",
+        "daysAhead": "Zile",
+        "empty": "Nimic de afișat.",
+        "columns": {
+          "client": "Client",
+          "plan": "Plan",
+          "endDate": "End date",
+          "daysRemaining": "Zile rămase",
+          "subscriptionId": "Sub ID"
+        }
+      }
+    },
     "createdUser": {
       "title": "Utilizator creat",
       "hint": "Copiază detaliile și trimite-le utilizatorului (email/SMS).",
