@@ -243,7 +243,6 @@ public class WorkoutPlanBuilder : IWorkoutPlanBuilder
         foreach (var exercise in _exercises)
         {
             var workoutExercise = new WorkoutExercise(
-                workoutPlanId: 0,
                 exerciseName: exercise.Name,
                 sets: exercise.Sets,
                 reps: exercise.Reps,

@@ -4,51 +4,51 @@
     "trainers": "Antrenori",
     "contacts": "Contacte",
     "services": "Servicii",
-    "login": "LogIn",
+    "login": "Autentificare",
     "language": "Limbă"
   },
   "auth": {
-    "loginTitle": "Logare",
+    "loginTitle": "Autentificare",
     "email": "Email",
-    "password": "Parola",
-    "connect": "Conectează-te",
+    "password": "Parolă",
+    "connect": "Conectare",
     "connecting": "Se conectează...",
-    "emailRequired": "Email este obligatoriu.",
+    "emailRequired": "Email-ul este obligatoriu.",
     "emailInvalid": "Email invalid.",
     "passwordRequired": "Parola este obligatorie.",
-    "passwordMin": "Parola trebuie să aibă minim 6 caractere.",
-    "missingToken": "Nu am putut finaliza logarea. Încearcă din nou.",
-    "loginFailed": "Eroare la login."
+    "passwordMin": "Parola trebuie să aibă cel puțin 6 caractere.",
+    "missingToken": "Nu s-a putut finaliza autentificarea. Reîncercați.",
+    "loginFailed": "Eroare la autentificare."
   },
   "home": {
     "heroTitle": "ABONAMENT FITNESS 6 LUNI",
     "oldPrice": "2999 MDL",
     "newPrice": "2600 MDL / LUNĂ",
-    "buyNow": "ACHIZIȚIONEAZĂ ACUM",
-    "subsTitleSmall": "ABONAMENTE FITNESS GRIFFIT",
+    "buyNow": "CUMPĂRĂ ACUM",
+    "subsTitleSmall": "ABONAMENTE GRIFFIT FITNESS",
     "subsTitle1": "ABONAMENTUL",
     "subsTitle2": "PERFECT PENTRU TINE!",
-    "subsSubtitle": "Rezultate mari cu investiție mică!",
+    "subsSubtitle": "Rezultate mari cu o investiție mică!",
     "loadingSubscriptions": "Se încarcă abonamentele...",
     "benefitsTitle1": "DE CE SĂ VII",
     "benefitsTitle2": "LA GRIFFIT?",
     "benefitsHeading1": "DESCOPERĂ BENEFICIILE",
-    "benefitsHeading2": "PENTRU STAREA TA DE BINE",
-    "signUp": "Înscriete",
+    "benefitsHeading2": "PENTRU BUNĂSTAREA TA",
+    "signUp": "Înscrie-te",
     "location": "Locație",
     "servicesTitle": "Serviciile Noastre",
-    "purchase": "Achiziționează",
-    "noBenefits": "Nu sunt beneficii în pachet."
+    "purchase": "Cumpără",
+    "noBenefits": "Nu există beneficii în acest pachet."
   },
   "benefits": {
-    "b1": "Aparate diverse de ultimă generație",
-    "b2": "Curățenie la standarde occidentale",
-    "b3": "Vei face parte din cea mai cool comunitate de fitness",
+    "b1": "Echipamente moderne și diverse",
+    "b2": "Curățenie la standarde înalte",
+    "b3": "Te vei alătura celei mai tari comunități de fitness",
     "b4": "Vei avea mai multă energie",
-    "b5": "Vei avea un tonus mai bun",
-    "b6": "Vei slăbi sau vei pune mai multă masă musculară",
-    "b7": "Îți vei crește anduranța la efort",
-    "b8": "Te vei simți mai bine"
+    "b5": "Te vei simți mai bine",
+    "b6": "Vei slăbi sau vei câștiga masă musculară",
+    "b7": "Vei îmbunătăți rezistența",
+    "b8": "Te vei simți excelent"
   },
   "subscription": {
     "type": {
@@ -73,84 +73,109 @@
   "common": {
     "ok": "OK",
     "cancel": "Anulează",
-    "logout": "Logout",
+    "logout": "Deconectare",
     "back": "Înapoi",
     "next": "Înainte",
     "page": "Pagina",
     "of": "din",
     "total": "Total",
-    "loading": "Se încarcă..."
+    "loading": "Se încarcă...",
+    "days": {
+      "monday": "Luni",
+      "tuesday": "Marți",
+      "wednesday": "Miercuri",
+      "thursday": "Joi",
+      "friday": "Vineri",
+      "saturday": "Sâmbătă",
+      "sunday": "Duminică"
+    }
+  },
+  "workouts": {
+    "goal": {
+      "WeightLoss": "Slăbire",
+      "MuscleGain": "Masă musculară",
+      "Endurance": "Anduranță",
+      "Strength": "Forță",
+      "Flexibility": "Flexibilitate",
+      "GeneralFitness": "Fitness general"
+    },
+    "difficulty": {
+      "Beginner": "Începător",
+      "Intermediate": "Intermediar",
+      "Advanced": "Avansat"
+    }
   },
   "notFound": {
     "title": "404",
     "message": "Pagina nu a fost găsită.",
-    "backHome": "Înapoi la Home"
+    "backHome": "Înapoi la prima pagină"
   },
   "unauthorized": {
     "title": "Acces interzis",
-    "message": "Nu ai permisiunea să accesezi această pagină.",
-    "backHome": "Înapoi la Home",
-    "dashboard": "Dashboard"
+    "message": "Nu ai permisiunea de a accesa această pagină.",
+    "backHome": "Înapoi la prima pagină",
+    "dashboard": "Panou de control"
   },
   "changePassword": {
     "title": "Schimbă parola",
-    "subtitle": "Pentru securitate, trebuie să îți setezi o parolă nouă.",
+    "subtitle": "Din motive de securitate, trebuie să setezi o parolă nouă.",
     "current": "Parola curentă",
     "new": "Parola nouă",
     "confirmNew": "Confirmă parola nouă",
     "saving": "Se salvează...",
     "save": "Schimbă parola",
-    "success": "Parola a fost schimbată cu succes. Te poți conecta din nou.",
+    "success": "Parola a fost schimbată cu succes. Te poți autentifica din nou.",
     "newRequired": "Parola nouă este obligatorie.",
-    "newMin": "Parola nouă trebuie să aibă minim 6 caractere.",
+    "newMin": "Parola nouă trebuie să aibă cel puțin 6 caractere.",
     "confirmRequired": "Confirmarea este obligatorie.",
-    "confirmMismatch": "Parolele nu coincid."
+    "confirmMismatch": "Parolele nu se potrivesc."
   },
   "dashboard": {
-    "adminTitle": "Admin Dashboard",
-    "trainerTitle": "Trainer Dashboard",
-    "clientTitle": "Client Dashboard"
+    "adminTitle": "Panou Admin",
+    "trainerTitle": "Panou Antrenor",
+    "clientTitle": "Panou Client"
   },
   "sidebar": {
     "admin": {
-      "overview": "Overview",
+      "overview": "Prezentare generală",
       "clients": "Clienți",
-      "trainers": "Traineri",
-      "benefitPackages": "Pachete beneficii",
+      "trainers": "Antrenori",
       "benefits": "Beneficii",
-      "subscriptionPlans": "Planuri de abonament",
+      "benefitPackages": "Pachete beneficii",
+      "subscriptionPlans": "Planuri abonament",
       "subscriptions": "Abonamente",
-      "payments": "Plăți"
+      "payments": "Plăți",
+      "workoutPlans": "Planuri antrenament"
     },
     "trainer": {
-      "overview": "Overview",
+      "overview": "Prezentare generală",
       "plans": "Planuri"
     },
     "client": {
-      "overview": "Overview",
+      "overview": "Prezentare generală",
       "profile": "Profil"
     }
   },
   "admin": {
     "createdUser": {
       "title": "Utilizator creat",
-      "hint": "Copiază datele și trimite-le clientului (email/SMS).",
+      "hint": "Copiază detaliile și trimite-le utilizatorului (email/SMS).",
       "email": "Email",
       "tempPassword": "Parolă temporară",
       "fullMessage": "Mesaj complet (copy/paste)",
-      "copyEmail": "Copy email",
-      "copyPassword": "Copy parolă",
-      "copyMessage": "Copy mesaj",
-      "template": "Cont creat cu succes.\n\nEmail: {{email}}\nParolă temporară: {{password}}\n\nTe rugăm să te conectezi și să schimbi parola după prima autentificare."
+      "copyEmail": "Copiază email",
+      "copyPassword": "Copiază parola",
+      "copyMessage": "Copiază mesajul",
+      "template": "Contul a fost creat cu succes.\n\nEmail: {{email}}\nParolă temporară: {{password}}\n\nVă rugăm să vă autentificați și să schimbați parola după prima conectare."
     },
     "clients": {
       "title": "Clienți",
       "total": "Total clienți",
-      "add": "Adaugă Client",
-      "edit": "Edit",
-      "delete": "Delete",
+      "add": "Adaugă client",
+      "edit": "Editează",
+      "delete": "Șterge",
       "loading": "Se încarcă...",
-      "empty": "Nu există clienți.",
+      "empty": "Nu au fost găsiți clienți.",
       "statusActive": "Activ",
       "statusInactive": "Inactiv",
       "columns": {
@@ -168,13 +193,13 @@
       },
       "errors": {
         "load": "Eroare la încărcarea clienților.",
-        "create": "Eroare la creare client.",
-        "edit": "Eroare la editare client.",
-        "delete": "Eroare la ștergere client."
+        "create": "Eroare la crearea clientului.",
+        "edit": "Eroare la actualizarea clientului.",
+        "delete": "Eroare la ștergerea clientului."
       },
       "form": {
-        "createTitle": "Adaugă Client",
-        "editTitle": "Editează Client",
+        "createTitle": "Adaugă client",
+        "editTitle": "Editează client",
         "email": "Email",
         "firstName": "Prenume",
         "lastName": "Nume",
@@ -183,7 +208,7 @@
         "active": "Activ",
         "create": "Creează",
         "save": "Salvează",
-        "emailRequired": "Email este obligatoriu.",
+        "emailRequired": "Email-ul este obligatoriu.",
         "emailInvalid": "Email invalid.",
         "firstNameRequired": "Prenumele este obligatoriu.",
         "lastNameRequired": "Numele este obligatoriu.",
@@ -191,13 +216,13 @@
       }
     },
     "trainers": {
-      "title": "Traineri",
-      "total": "Total traineri",
-      "add": "Adaugă Trainer",
-      "edit": "Edit",
-      "delete": "Delete",
+      "title": "Antrenori",
+      "total": "Total antrenori",
+      "add": "Adaugă antrenor",
+      "edit": "Editează",
+      "delete": "Șterge",
       "loading": "Se încarcă...",
-      "empty": "Nu există traineri.",
+      "empty": "Nu au fost găsiți antrenori.",
       "columns": {
         "id": "ID",
         "name": "Nume",
@@ -209,28 +234,28 @@
       },
       "confirmDelete": {
         "title": "Confirmă ștergerea",
-        "message": "Sigur vrei să ștergi trainerul {{name}}? Această acțiune este permanentă.",
+        "message": "Sigur vrei să ștergi antrenorul {{name}}? Această acțiune este permanentă.",
         "confirmText": "Șterge"
       },
       "errors": {
-        "load": "Eroare la încărcarea trainerilor.",
-        "create": "Eroare la creare trainer.",
-        "edit": "Eroare la editare trainer.",
-        "delete": "Eroare la ștergere trainer."
+        "load": "Eroare la încărcarea antrenorilor.",
+        "create": "Eroare la crearea antrenorului.",
+        "edit": "Eroare la actualizarea antrenorului.",
+        "delete": "Eroare la ștergerea antrenorului."
       },
       "form": {
-        "createTitle": "Adaugă Trainer",
-        "editTitle": "Editează Trainer",
+        "createTitle": "Adaugă antrenor",
+        "editTitle": "Editează antrenor",
         "email": "Email",
         "firstName": "Prenume",
         "lastName": "Nume",
         "phone": "Telefon",
         "specialization": "Specializare",
-        "years": "Ani experiență",
+        "years": "Ani de experiență",
         "active": "Activ",
         "create": "Creează",
         "save": "Salvează",
-        "emailRequired": "Email este obligatoriu.",
+        "emailRequired": "Email-ul este obligatoriu.",
         "emailInvalid": "Email invalid.",
         "firstNameRequired": "Prenumele este obligatoriu.",
         "lastNameRequired": "Numele este obligatoriu.",
@@ -243,17 +268,17 @@
     "benefits": {
       "title": "Beneficii",
       "total": "Total beneficii",
-      "add": "Adaugă Beneficiu",
-      "edit": "Edit",
-      "delete": "Delete",
+      "add": "Adaugă beneficiu",
+      "edit": "Editează",
+      "delete": "Șterge",
       "loading": "Se încarcă...",
-      "empty": "Nu există beneficii.",
+      "empty": "Nu au fost găsite beneficii.",
       "statusActive": "Activ",
       "statusInactive": "Inactiv",
       "columns": {
         "id": "ID",
-        "key": "Key",
-        "displayName": "Denumire",
+        "key": "Cheie",
+        "displayName": "Nume afișat",
         "active": "Activ",
         "actions": "Acțiuni"
       },
@@ -264,31 +289,31 @@
       },
       "errors": {
         "load": "Eroare la încărcarea beneficiilor.",
-        "create": "Eroare la creare beneficiu.",
-        "edit": "Eroare la editare beneficiu.",
-        "delete": "Eroare la ștergere beneficiu."
+        "create": "Eroare la crearea beneficiului.",
+        "edit": "Eroare la actualizarea beneficiului.",
+        "delete": "Eroare la ștergerea beneficiului."
       },
       "form": {
-        "createTitle": "Adaugă Beneficiu",
-        "editTitle": "Editează Beneficiu",
-        "name": "Key (slug)",
-        "nameHint": "Folosește doar litere mici și underscore (ex: pool_access). Nu se mai schimbă după creare.",
-        "displayName": "Denumire (RO / fallback)",
+        "createTitle": "Adaugă beneficiu",
+        "editTitle": "Editează beneficiu",
+        "name": "Cheie (slug)",
+        "nameHint": "Folosiți doar litere mici și underscore (ex: pool_access). Nu poate fi schimbată ulterior.",
+        "displayName": "Nume afișat (RO / fallback)",
         "description": "Descriere",
         "active": "Activ",
         "create": "Creează",
         "save": "Salvează",
-        "nameRequired": "Key este obligatoriu.",
-        "nameInvalid": "Key trebuie să conțină doar litere mici și underscore (a-z, _).",
-        "displayNameRequired": "Denumirea este obligatorie."
+        "nameRequired": "Cheia este obligatorie.",
+        "nameInvalid": "Cheia trebuie să conțină doar litere mici și underscore (a-z, _).",
+        "displayNameRequired": "Numele afișat este obligatoriu."
       }
     },
     "benefitPackages": {
       "title": "Pachete beneficii",
       "total": "Total pachete",
       "add": "Adaugă pachet",
-      "edit": "Edit",
-      "delete": "Delete",
+      "edit": "Editează",
+      "delete": "Șterge",
       "loading": "Se încarcă...",
       "empty": "Nu există pachete.",
       "statusActive": "Activ",
@@ -296,8 +321,8 @@
       "columns": {
         "id": "ID",
         "name": "Nume",
-        "weekday": "Program (luni-vineri)",
-        "weekend": "Program (weekend)",
+        "weekday": "Program (Luni-Vineri)",
+        "weekend": "Program (Weekend)",
         "items": "Beneficii",
         "active": "Activ",
         "actions": "Acțiuni"
@@ -318,8 +343,8 @@
         "createTitle": "Adaugă pachet",
         "editTitle": "Editează pachet",
         "name": "Nume",
-        "scheduleWeekday": "Program (luni-vineri)",
-        "scheduleWeekend": "Program (weekend)",
+        "scheduleWeekday": "Program (Luni-Vineri)",
+        "scheduleWeekend": "Program (Weekend)",
         "active": "Activ",
         "items": "Beneficii",
         "addItem": "Adaugă beneficiu",
@@ -329,8 +354,8 @@
         "create": "Creează",
         "save": "Salvează",
         "nameRequired": "Numele este obligatoriu.",
-        "weekdayRequired": "Programul (luni-vineri) este obligatoriu.",
-        "weekendRequired": "Programul (weekend) este obligatoriu.",
+        "weekdayRequired": "Programul (Luni-Vineri) este obligatoriu.",
+        "weekendRequired": "Programul (Weekend) este obligatoriu.",
         "itemsMin1": "Trebuie să existe cel puțin un beneficiu în pachet.",
         "itemBenefitRequired": "Fiecare rând trebuie să aibă un beneficiu selectat.",
         "itemValueRequired": "Fiecare rând trebuie să aibă o valoare.",
@@ -338,7 +363,7 @@
       }
     },
     "subscriptionPlans": {
-      "title": "Planuri de abonament",
+      "title": "Planuri abonament",
       "total": "Total planuri",
       "add": "Adaugă plan",
       "edit": "Editează",
@@ -373,19 +398,19 @@
         "type": "Tip",
         "duration": "Durată (luni)",
         "price": "Preț",
-        "package": "Pachet de beneficii",
-        "selectPackage": "Selectează pachetul",
+        "package": "Pachet beneficii",
+        "selectPackage": "Selectează pachet",
         "recurring": "Recurent",
-        "installments": "Permite plata în rate",
-        "maxInstallments": "Nr. maxim de rate",
+        "installments": "Permite rate",
+        "maxInstallments": "Nr. maxim rate",
         "active": "Activ",
         "create": "Creează",
         "save": "Salvează",
         "priceRequired": "Prețul este obligatoriu.",
         "priceInvalid": "Preț invalid.",
-        "durationInvalid": "Durata trebuie să fie între 0 și 120 de luni.",
+        "durationInvalid": "Durata trebuie să fie între 0 și 120 luni.",
         "packageRequired": "Pachetul de beneficii este obligatoriu.",
-        "maxInstallmentsInvalid": "Numărul de rate trebuie să fie între 1 și 24."
+        "maxInstallmentsInvalid": "Nr. de rate trebuie să fie între 1 și 24."
       }
     },
     "subscriptions": {
@@ -402,9 +427,9 @@
         "client": "Client",
         "plan": "Plan",
         "status": "Status",
-        "start": "Start",
+        "start": "Început",
         "end": "Sfârșit",
-        "autoRenew": "Auto-renew",
+        "autoRenew": "Reînnoire automată",
         "payments": "Plăți",
         "actions": "Acțiuni"
       },
@@ -416,7 +441,7 @@
       "errors": {
         "load": "Eroare la încărcarea abonamentelor.",
         "create": "Eroare la crearea abonamentului.",
-        "edit": "Eroare la editarea abonamentului.",
+        "edit": "Eroare la actualizarea abonamentului.",
         "delete": "Eroare la ștergerea abonamentului.",
         "cancel": "Eroare la anularea abonamentului.",
         "renew": "Eroare la reînnoirea abonamentului."
@@ -426,12 +451,12 @@
         "editTitle": "Editează abonament",
         "client": "Client",
         "selectClient": "Selectează client",
-        "plan": "Plan de abonament",
+        "plan": "Plan abonament",
         "selectPlan": "Selectează plan",
-        "startDate": "Data start",
-        "endDate": "Data sfârșit",
+        "startDate": "Data de început",
+        "endDate": "Data de sfârșit",
         "status": "Status",
-        "autoRenew": "Auto-renew",
+        "autoRenew": "Reînnoire automată",
         "create": "Creează",
         "save": "Salvează"
       }
@@ -452,7 +477,7 @@
         "amount": "Sumă",
         "date": "Data",
         "status": "Status",
-        "installment": "Rata",
+        "installment": "Rată",
         "transactionId": "Tranzacție",
         "actions": "Acțiuni"
       },
@@ -464,9 +489,9 @@
       "errors": {
         "load": "Eroare la încărcarea plăților.",
         "create": "Eroare la crearea plății.",
-        "edit": "Eroare la editarea plății.",
+        "edit": "Eroare la actualizarea plății.",
         "delete": "Eroare la ștergerea plății.",
-        "markSuccess": "Eroare la marcarea plății ca succes.",
+        "markSuccess": "Eroare la marcarea plății ca reușită.",
         "markFailed": "Eroare la marcarea plății ca eșuată."
       },
       "form": {
@@ -477,10 +502,87 @@
         "amount": "Sumă",
         "paymentDate": "Data plății",
         "installmentNumber": "Nr. rată",
-        "transactionId": "ID tranzacție",
+        "transactionId": "ID Tranzacție",
         "status": "Status",
         "create": "Creează",
         "save": "Salvează"
+      }
+    },
+    "workoutPlans": {
+      "title": "Planuri de antrenament",
+      "total": "Total planuri",
+      "add": "Adaugă plan",
+      "edit": "Editează",
+      "cloneBtn": "Clonează",
+      "empty": "Nu există planuri.",
+      "columns": {
+        "id": "ID",
+        "name": "Nume",
+        "client": "Client",
+        "trainer": "Antrenor",
+        "goal": "Obiectiv",
+        "difficulty": "Dificultate",
+        "duration": "Durată",
+        "exercises": "Exerciții",
+        "actions": "Acțiuni"
+      },
+      "errors": {
+        "load": "Eroare la încărcarea planurilor.",
+        "create": "Eroare la crearea planului.",
+        "edit": "Eroare la salvare.",
+        "clone": "Eroare la clonare."
+      },
+      "form": {
+        "createTitle": "Creează plan",
+        "editTitle": "Editează plan",
+        "editHint": "Atenție: dacă backend nu are PUT, salvarea va crea un plan nou (copie).",
+        "name": "Nume",
+        "nameRequired": "Numele este obligatoriu (minim 3 caractere).",
+        "client": "Client",
+        "selectClient": "Selectează client",
+        "clientRequired": "Clientul este obligatoriu.",
+        "trainer": "Trainer (opțional)",
+        "noTrainer": "Fără trainer",
+        "goal": "Obiectiv",
+        "difficulty": "Dificultate",
+        "durationWeeks": "Durată (săptămâni)",
+        "durationInvalid": "Durata trebuie să fie între 1 și 52.",
+        "sessionMinutes": "Durată sesiune (min)",
+        "sessionInvalid": "Durata sesiunii trebuie să fie între 15 și 240.",
+        "restDays": "Zile pauză (0-7)",
+        "days": "Zile antrenament",
+        "daysRequired": "Selectează cel puțin o zi.",
+        "description": "Descriere (opțional)",
+        "specialNotes": "Note speciale (opțional)",
+        "exercises": "Exerciții",
+        "addExercise": "Adaugă exercițiu",
+        "removeExercise": "Șterge",
+        "exercise": "Exercițiu",
+        "exercisesMin1": "Adaugă cel puțin un exercițiu.",
+        "exerciseNameRequired": "Numele exercițiului este obligatoriu.",
+        "exerciseSetsInvalid": "Seturi invalide.",
+        "exerciseRepsInvalid": "Repetări invalide.",
+        "exerciseDurationInvalid": "Durata (sec) invalidă.",
+        "exerciseName": "Nume",
+        "exerciseSets": "Sets",
+        "exerciseReps": "Reps",
+        "exerciseDurationSeconds": "Durată (sec)",
+        "exerciseNotes": "Note",
+        "optional": "opțional",
+        "create": "Creează",
+        "save": "Salvează"
+      },
+      "clone": {
+        "title": "Clonează plan",
+        "source": "Sursă",
+        "targetClient": "Client țintă",
+        "selectClient": "Selectează client",
+        "clientRequired": "Clientul țintă este obligatoriu.",
+        "newName": "Nume nou (opțional)",
+        "nameTooLong": "Numele este prea lung.",
+        "newTrainer": "Trainer nou (opțional)",
+        "keepTrainer": "Păstrează trainerul",
+        "clone": "Clonează"
       }
     }
   }

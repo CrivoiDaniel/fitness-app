@@ -27,11 +27,13 @@ import BenefitPackagesPage from "./pages/admin/benefitPackages/BenefitPackagesPa
 import SubscriptionPlansPage from "./pages/admin/subscriptionPlans/SubscriptionPlansPage";
 import SubscriptionsPage from "./pages/admin/subscriptions/SubscriptionsPage";
 import PaymentsPage from "./pages/admin/payments/PaymentsPage";
+import WorkoutPlansPage from "./pages/admin/workoutPlans/WorkoutPlansPage";
 
 // Dashboards (temporar)
 const AdminDashboard = () => <div className="text-2xl font-bold">Admin Dashboard</div>;
 const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
 const ClientDashboard = () => <div className="text-2xl font-bold">Client Dashboard</div>;
+
 
 function PublicLayout() {
   return (
@@ -143,6 +145,14 @@ const App = () => {
                 element={
                   <RoleRoute allowedRoles={["Admin"]}>
                     <PaymentsPage />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="admin/workout-plans"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <WorkoutPlansPage />
                   </RoleRoute>
                 }
               />

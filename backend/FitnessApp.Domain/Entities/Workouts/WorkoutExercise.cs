@@ -25,15 +25,11 @@ public class WorkoutExercise : BaseEntity
     }
     
     public WorkoutExercise(
-        int workoutPlanId,
         string exerciseName,
         int sets,
         int reps,
         int orderInWorkout) : base()
     {
-        if (workoutPlanId <= 0)
-            throw new ArgumentException("WorkoutPlanId must be positive", nameof(workoutPlanId));
-        
         if (string.IsNullOrWhiteSpace(exerciseName))
             throw new ArgumentException("ExerciseName cannot be empty", nameof(exerciseName));
         
@@ -43,7 +39,6 @@ public class WorkoutExercise : BaseEntity
         if (reps <= 0)
             throw new ArgumentException("Reps must be positive", nameof(reps));
         
-        WorkoutPlanId = workoutPlanId;
         ExerciseName = exerciseName;
         Sets = sets;
         Reps = reps;
@@ -72,7 +67,6 @@ public class WorkoutExercise : BaseEntity
     public WorkoutExercise Clone()
     {
         var cloned = new WorkoutExercise(
-            workoutPlanId: this.WorkoutPlanId,
             exerciseName: this.ExerciseName,
             sets: this.Sets,
             reps: this.Reps,
