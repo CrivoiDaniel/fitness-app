@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FitnessApp.API.Controllers.Subscriptions;
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize] // Doar utilizatori autentificați
+[Authorize] 
 public class BenefitsController : ControllerBase
 {
     private readonly IBenefitService _benefitService;

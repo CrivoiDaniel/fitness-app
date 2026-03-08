@@ -12,10 +12,10 @@ const AppDashboardLayout = () => {
   const { user } = useAuth();
 
   const { brand, items } = useMemo(() => {
-    if (user?.role === 0) return { brand: "Admin", items: adminSidebarItems };
-    if (user?.role === 2) return { brand: "Trainer", items: trainerSidebarItems };
+    if (user?.role === "Admin") return { brand: "Admin", items: adminSidebarItems };
+    if (user?.role === "Trainer") return { brand: "Trainer", items: trainerSidebarItems };
     return { brand: "Client", items: clientSidebarItems };
-  }, [user]);
+  }, [user?.role]);
 
   return (
     <div className="min-h-screen flex bg-gray-100">

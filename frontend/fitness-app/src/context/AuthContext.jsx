@@ -23,14 +23,13 @@ export const AuthProvider = ({ children }) => {
       email: auth.email,
       firstName: auth.firstName,
       lastName: auth.lastName,
-      role: auth.role, // numeric (0/1/2 etc)
+      role: auth.role, // "Admin" | "Client" | "Trainer"
       clientId: auth.clientId ?? null,
       trainerId: auth.trainerId ?? null,
     };
   }, [auth]);
 
   const login = (loginResponse) => {
-    // loginResponse este exact ce primești de la backend (camelCase)
     localStorage.setItem("auth", JSON.stringify(loginResponse));
     setAuth(loginResponse);
   };

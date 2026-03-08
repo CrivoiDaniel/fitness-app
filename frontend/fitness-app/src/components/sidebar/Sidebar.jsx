@@ -54,7 +54,7 @@ const Sidebar = ({ items, brand = "Dashboard" }) => {
 
   const onLogout = () => {
     logout();
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   };
 
   const userLabel = useMemo(() => {

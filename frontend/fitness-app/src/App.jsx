@@ -22,7 +22,11 @@ import Subscription from "./components/public/Subscription";
 
 import AppDashboardLayout from "./layouts/AppDashboardLayout";
 
-
+import BenefitsPage from "./pages/admin/benefits/BenefitsPage";
+import BenefitPackagesPage from "./pages/admin/benefitPackages/BenefitPackagesPage";
+import SubscriptionPlansPage from "./pages/admin/subscriptionPlans/SubscriptionPlansPage";
+import SubscriptionsPage from "./pages/admin/subscriptions/SubscriptionsPage";
+import PaymentsPage from "./pages/admin/payments/PaymentsPage";
 
 // Dashboards (temporar)
 const AdminDashboard = () => <div className="text-2xl font-bold">Admin Dashboard</div>;
@@ -62,7 +66,7 @@ const App = () => {
               />
             </Route>
 
-            {/* DASHBOARD (fără navbar) - sidebar modern */}
+            {/* DASHBOARD */}
             <Route
               path="/dashboard"
               element={
@@ -75,7 +79,7 @@ const App = () => {
               <Route
                 path="admin"
                 element={
-                  <RoleRoute allowedRoles={[0]}>
+                  <RoleRoute allowedRoles={["Admin"]}>
                     <AdminDashboard />
                   </RoleRoute>
                 }
@@ -84,17 +88,61 @@ const App = () => {
               <Route
                 path="admin/clients"
                 element={
-                  <RoleRoute allowedRoles={[0]}>
+                  <RoleRoute allowedRoles={["Admin"]}>
                     <ClientsPage />
                   </RoleRoute>
                 }
               />
-              
+
               <Route
                 path="admin/trainers"
                 element={
-                  <RoleRoute allowedRoles={[0]}>
+                  <RoleRoute allowedRoles={["Admin"]}>
                     <TrainersPage />
+                  </RoleRoute>
+                }
+              />
+
+              <Route
+                path="admin/benefits"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <BenefitsPage />
+                  </RoleRoute>
+                }
+              />
+
+              <Route
+                path="admin/benefit-packages"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <BenefitPackagesPage />
+                  </RoleRoute>
+                }
+              />
+
+              <Route
+                path="admin/subscription-plans"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <SubscriptionPlansPage />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="admin/subscriptions"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <SubscriptionsPage />
+                  </RoleRoute>
+                }
+              />
+
+              <Route
+                path="admin/payments"
+                element={
+                  <RoleRoute allowedRoles={["Admin"]}>
+                    <PaymentsPage />
                   </RoleRoute>
                 }
               />
@@ -103,7 +151,7 @@ const App = () => {
               <Route
                 path="trainer"
                 element={
-                  <RoleRoute allowedRoles={[2]}>
+                  <RoleRoute allowedRoles={["Trainer"]}>
                     <TrainerDashboard />
                   </RoleRoute>
                 }
@@ -113,7 +161,7 @@ const App = () => {
               <Route
                 path="client"
                 element={
-                  <RoleRoute allowedRoles={[1]}>
+                  <RoleRoute allowedRoles={["Client"]}>
                     <ClientDashboard />
                   </RoleRoute>
                 }
@@ -123,7 +171,6 @@ const App = () => {
             </Route>
 
             <Route path="/unauthorized" element={<Unauthorized />} />
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

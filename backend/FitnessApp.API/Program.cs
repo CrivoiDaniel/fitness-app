@@ -6,6 +6,7 @@ using System.Text;
 using FitnessApp.Infrastructure.Data.Seed;
 using FitnessApp.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,10 @@ builder.Services.AddInfrastructure(
 builder.Services.AddApplication();
 
 // Controllers
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(o =>
+    {
+        o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });;
 
 // OpenAPI/Swagger
 builder.Services.AddOpenApi();

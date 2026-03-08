@@ -11,8 +11,8 @@ function isValidEmail(email) {
 }
 
 function roleToDashboard(role) {
-  if (role === 0) return "/dashboard/admin";
-  if (role === 2) return "/dashboard/trainer";
+  if (role === "Admin") return "/dashboard/admin/clients";
+  if (role === "Trainer") return "/dashboard/trainer";
   return "/dashboard/client";
 }
 
@@ -81,10 +81,17 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <form onSubmit={onSubmit} className="w-full max-w-md bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-8">
-        <h1 className="text-3xl font-extrabold italic text-white mb-6">{t("auth.loginTitle")}</h1>
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-md bg-white/10 backdrop-blur border border-white/10 rounded-2xl p-8"
+      >
+        <h1 className="text-3xl font-extrabold italic text-white mb-6">
+          {t("auth.loginTitle")}
+        </h1>
 
-        <label className="block text-white/80 text-sm mb-2">{t("auth.email")}</label>
+        <label className="block text-white/80 text-sm mb-2">
+          {t("auth.email")}
+        </label>
         <input
           className="w-full rounded-md p-3 mb-2 bg-black/40 text-white border border-white/10 outline-none focus:border-yellow-400/80"
           value={email}
@@ -95,7 +102,9 @@ const Login = () => {
         />
         {showEmailError && <p className="text-red-400 text-sm mb-3">{emailError}</p>}
 
-        <label className="block text-white/80 text-sm mb-2">{t("auth.password")}</label>
+        <label className="block text-white/80 text-sm mb-2">
+          {t("auth.password")}
+        </label>
         <input
           className="w-full rounded-md p-3 mb-2 bg-black/40 text-white border border-white/10 outline-none focus:border-yellow-400/80"
           value={password}
@@ -113,7 +122,9 @@ const Login = () => {
           disabled={!canSubmit}
           className={[
             "w-full py-3 rounded-md font-semibold transition-colors duration-300",
-            canSubmit ? "bg-yellow-400/80 text-black hover:bg-yellow-300" : "bg-gray-600 text-gray-300 cursor-not-allowed"
+            canSubmit
+              ? "bg-yellow-400/80 text-black hover:bg-yellow-300"
+              : "bg-gray-600 text-gray-300 cursor-not-allowed",
           ].join(" ")}
         >
           {loading ? t("auth.connecting") : t("auth.connect")}
