@@ -154,58 +154,57 @@ public class WorkoutPlanService : IWorkoutPlanService
         if ((workoutPlan.WorkoutDays & DayOfWeekFlag.Saturday) != 0) workoutDays.Add("Saturday");
         if ((workoutPlan.WorkoutDays & DayOfWeekFlag.Sunday) != 0) workoutDays.Add("Sunday");
 
-        return new WorkoutPlanResponse
+        var response = new WorkoutPlanResponse
         {
             Id = workoutPlan.Id,
             Name = workoutPlan.Name,
             Description = workoutPlan.Description,
 
-            // Client
             ClientId = workoutPlan.ClientId,
             ClientName = clientName,
 
-            // Trainer
             TrainerId = workoutPlan.TrainerId,
             TrainerName = trainerName,
 
-            // Configuration
             Goal = workoutPlan.Goal.ToString(),
             Difficulty = workoutPlan.Difficulty.ToString(),
             DurationWeeks = workoutPlan.DurationWeeks,
 
-            // Schedule
             WorkoutDays = workoutDays,
             SessionsPerWeek = workoutPlan.SessionsPerWeek,
             SessionDurationMinutes = workoutPlan.SessionDurationMinutes,
             RestDaysBetweenSessions = workoutPlan.RestDaysBetweenSessions,
 
-            // Computed
             TotalSessions = workoutPlan.TotalSessions(),
             TotalMinutes = workoutPlan.TotalMinutes(),
 
-            // Exercises
             Exercises = workoutPlan.Exercises?
-                .OrderBy(e => e.OrderInWorkout)
-                .Select(e => new ExerciseResponse
-                {
-                    Id = e.Id,
-                    Name = e.ExerciseName,
-                    Sets = e.Sets,
-                    Reps = e.Reps,
-                    DurationSeconds = e.DurationSeconds,
-                    OrderInWorkout = e.OrderInWorkout,
-                    Notes = e.Notes
-                })
-                .ToList() ?? new List<ExerciseResponse>(),
+            .OrderBy(e => e.OrderInWorkout)
+            .Select(e => new ExerciseResponse
+            {
+                Id = e.Id,
+                Name = e.ExerciseName,
+                Sets = e.Sets,
+                Reps = e.Reps,
+                DurationSeconds = e.DurationSeconds,
+                OrderInWorkout = e.OrderInWorkout,
+                Notes = e.Notes
+            })
+            .ToList() ?? new List<ExerciseResponse>(),
 
-            // Status
             IsActive = workoutPlan.IsActive,
             SpecialNotes = workoutPlan.SpecialNotes,
-
-            // Metadata
             CreatedAt = workoutPlan.CreatedAt
         };
+
+        // Composite computed (după ce ai implementat GetTotalSets/GetTotalReps/GetTotalDurationSeconds pe entity)
+        response.TotalSets = workoutPlan.GetTotalSets();
+        response.TotalReps = workoutPlan.GetTotalReps();
+        response.TotalExerciseDurationSeconds = workoutPlan.GetTotalDurationSeconds();
+
+        return response;
     }
+
 
     // ========== PROTOTYPE PATTERN METHODS ==========
 
@@ -432,5 +431,15 @@ public class WorkoutPlanService : IWorkoutPlanService
         );
 
         return MapToResponse(fullWorkoutPlan!);
+    }
+
+    public async Task<List<WorkoutPlanResponse>> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        var client = await _clientRepository.GetByUserIdAsync(userId, cancellationToken);
+        if (client == null)
+            throw new InvalidOperationException("Client profile not found for current user.");
+
+        var plans = await _workoutPlanRepository.GetByClientIdAsync(client.Id, cancellationToken);
+        return plans.Select(MapToResponse).ToList();
     }
 }

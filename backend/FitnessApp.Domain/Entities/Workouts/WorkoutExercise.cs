@@ -15,15 +15,15 @@ public class WorkoutExercise : BaseEntity
     public int? DurationSeconds { get; private set; }
     public int OrderInWorkout { get; private set; }
     public string? Notes { get; private set; }
-    
+
     // Navigation
     public virtual WorkoutPlan WorkoutPlan { get; set; } = null!;
-    
+
     private WorkoutExercise() : base()
     {
-         ExerciseName = string.Empty;
+        ExerciseName = string.Empty;
     }
-    
+
     public WorkoutExercise(
         string exerciseName,
         int sets,
@@ -32,34 +32,34 @@ public class WorkoutExercise : BaseEntity
     {
         if (string.IsNullOrWhiteSpace(exerciseName))
             throw new ArgumentException("ExerciseName cannot be empty", nameof(exerciseName));
-        
+
         if (sets <= 0)
             throw new ArgumentException("Sets must be positive", nameof(sets));
-        
+
         if (reps <= 0)
             throw new ArgumentException("Reps must be positive", nameof(reps));
-        
+
         ExerciseName = exerciseName;
         Sets = sets;
         Reps = reps;
         OrderInWorkout = orderInWorkout;
     }
-    
+
     public void SetDuration(int seconds)
     {
         if (seconds <= 0)
             throw new ArgumentException("Duration must be positive", nameof(seconds));
-        
+
         DurationSeconds = seconds;
     }
-    
+
     public void AddNotes(string notes)
     {
         Notes = notes;
     }
 
     // ========== PROTOTYPE PATTERN ==========
-    
+
     /// <summary>
     /// Creates a deep copy of the exercise
     /// Prototype Pattern implementation
@@ -72,13 +72,21 @@ public class WorkoutExercise : BaseEntity
             reps: this.Reps,
             orderInWorkout: this.OrderInWorkout
         );
-        
+
         if (this.DurationSeconds.HasValue)
             cloned.SetDuration(this.DurationSeconds.Value);
-        
+
         if (!string.IsNullOrWhiteSpace(this.Notes))
             cloned.AddNotes(this.Notes);
-        
+
         return cloned;
     }
+
+    public string DisplayName => ExerciseName;
+
+    public int GetTotalSets() => Sets;
+
+    public int GetTotalReps() => Sets * Reps;
+
+    public int GetTotalDurationSeconds() => DurationSeconds ?? 0;
 }

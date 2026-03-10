@@ -238,4 +238,15 @@ public class WorkoutPlan : BaseEntity
         cloned.UpdateName(newName);
         return cloned;
     }
+
+    public string DisplayName => Name;
+
+    public int GetTotalSets()
+        => Exercises?.Sum(e => e.GetTotalSets()) ?? 0;
+
+    public int GetTotalReps()
+        => Exercises?.Sum(e => e.GetTotalReps()) ?? 0;
+
+    public int GetTotalDurationSeconds()
+        => Exercises?.Sum(e => e.GetTotalDurationSeconds()) ?? 0;
 }

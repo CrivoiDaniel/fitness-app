@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using FitnessApp.Application.DTOs.Common;
 using FitnessApp.Application.DTOs.Workouts;
 using FitnessApp.Application.Features.Workouts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 /// <summary>
@@ -114,7 +116,7 @@ public class WorkoutPlansController : ControllerBase
         var workoutPlans = await _workoutPlanService.GetByClientIdAsync(clientId, cancellationToken);
         return Ok(workoutPlans);
     }
-    
+
     /// <summary>
     /// Clones an existing workout plan for a different client
     /// Demonstrates Prototype Pattern
@@ -213,5 +215,20 @@ public class WorkoutPlansController : ControllerBase
                 Timestamp = DateTime.UtcNow
             });
         }
+    }
+
+    [HttpGet("me")]
+    [Authorize(Roles = "Client")]
+    [ProducesResponseType(typeof(List<WorkoutPlanResponse>), 200)]
+    public async Task<ActionResult<List<WorkoutPlanResponse>>> GetMyWorkoutPlans(CancellationToken cancellationToken)
+    {
+        // IMPORTANT: aici ai nevoie de mapare UserId -> ClientId (ai deja IClientRepository în service)
+        // Cel mai simplu: adaugă metodă în service: GetByUserIdAsync(userId)
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!int.TryParse(userIdStr, out var userId) || userId <= 0)
+            return Unauthorized(new ErrorResponse { Message = "Invalid user id in token.", Timestamp = DateTime.UtcNow });
+
+        var workoutPlans = await _workoutPlanService.GetByUserIdAsync(userId, cancellationToken);
+        return Ok(workoutPlans);
     }
 }
