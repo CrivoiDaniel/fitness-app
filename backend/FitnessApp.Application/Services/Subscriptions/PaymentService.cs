@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Application.DTOs.Subscriptions.Payment;
 using FitnessApp.Application.Interfaces.Repositories.Subscriptions;
 using FitnessApp.Application.Interfaces.Subscriptions;
+using FitnessApp.Application.Payments.Gateways;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Enums;
 
@@ -11,13 +12,16 @@ public class PaymentService : IPaymentService
 {
     private readonly IPaymentRepository _paymentRepository;
     private readonly ISubscriptionRepository _subscriptionRepository;
+    private readonly IPaymentGatewayFactory _gatewayFactory;
 
     public PaymentService(
         IPaymentRepository paymentRepository,
-        ISubscriptionRepository subscriptionRepository)
+        ISubscriptionRepository subscriptionRepository,
+        IPaymentGatewayFactory gatewayFactory)
     {
         _paymentRepository = paymentRepository;
         _subscriptionRepository = subscriptionRepository;
+        _gatewayFactory = gatewayFactory;
     }
 
     public async Task<IEnumerable<PaymentDto>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -71,13 +75,27 @@ public class PaymentService : IPaymentService
             throw new InvalidOperationException($"Subscription with ID {dto.SubscriptionId} not found.");
         }
 
-        // Creează payment
+        // NEW: gateway charge
+        var gateway = _gatewayFactory.GetGateway();
+        var charge = await gateway.CreateChargeAsync(new GatewayChargeRequest
+        {
+            Amount = dto.Amount,
+            Currency = _gatewayFactory.DefaultCurrency,
+            Description = $"Payment for subscription #{dto.SubscriptionId}",
+            SubscriptionId = dto.SubscriptionId,
+            InstallmentNumber = dto.InstallmentNumber
+        }, cancellationToken);
+
+        // dacă user a trimis transactionId manual, îl ignorăm (sau îl folosim doar dacă gateway fail)
+        var tx = !string.IsNullOrWhiteSpace(charge.TransactionId) ? charge.TransactionId : dto.TransactionId;
+
         var payment = new Payment(
             dto.SubscriptionId,
             dto.Amount,
             dto.PaymentDate,
             dto.InstallmentNumber,
-            dto.TransactionId);
+            tx
+        );
 
         var created = await _paymentRepository.AddAsync(payment, cancellationToken);
         return MapToDto(created);
@@ -138,7 +156,7 @@ public class PaymentService : IPaymentService
 
         payment.MarkAsFailed();
         await _paymentRepository.UpdateAsync(payment, cancellationToken);
-        
+
         return MapToDto(payment);
     }
 
@@ -156,6 +174,35 @@ public class PaymentService : IPaymentService
     public async Task<decimal> GetTotalRevenueAsync(DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
         return await _paymentRepository.GetTotalRevenueAsync(startDate, endDate, cancellationToken);
+    }
+    public async Task<(PaymentDto Payment, GatewayChargeResult Charge)> CreateWithGatewayAsync(CreatePaymentDto dto, CancellationToken cancellationToken = default)
+    {
+        var subscription = await _subscriptionRepository.GetByIdAsync(dto.SubscriptionId, cancellationToken);
+        if (subscription == null)
+            throw new InvalidOperationException($"Subscription with ID {dto.SubscriptionId} not found.");
+
+        var gateway = _gatewayFactory.GetGateway();
+        var charge = await gateway.CreateChargeAsync(new GatewayChargeRequest
+        {
+            Amount = dto.Amount,
+            Currency = _gatewayFactory.DefaultCurrency,
+            Description = $"Payment for subscription #{dto.SubscriptionId}",
+            SubscriptionId = dto.SubscriptionId,
+            InstallmentNumber = dto.InstallmentNumber
+        }, cancellationToken);
+
+        var tx = !string.IsNullOrWhiteSpace(charge.TransactionId) ? charge.TransactionId : dto.TransactionId;
+
+        var payment = new Payment(
+            dto.SubscriptionId,
+            dto.Amount,
+            dto.PaymentDate,
+            dto.InstallmentNumber,
+            tx
+        );
+
+        var created = await _paymentRepository.AddAsync(payment, cancellationToken);
+        return (MapToDto(created), charge);
     }
 
     // Private mapping helper

@@ -26,13 +26,6 @@ public class ClientRepository : IClientRepository
             .Include(c => c.User)
             .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
-    public async Task<Client?> GetByUserIdAsync(int userId)
-    {
-        return await _context.Clients
-            .Include(c => c.User)
-            .FirstOrDefaultAsync(c => c.User.Id == userId);
-    }
-
     public async Task<List<Client>> GetAllAsync()
     {
         return await _context.Clients
@@ -71,5 +64,12 @@ public class ClientRepository : IClientRepository
     {
         _context.Clients.Remove(client);
         await _context.SaveChangesAsync();
+    }
+
+    public Task<Client?> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        return _context.Clients
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.UserId == userId, cancellationToken);
     }
 }

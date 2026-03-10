@@ -55,6 +55,8 @@ public static class DependencyInjection
 
         //AUTH SERVICES
         services.AddScoped<IAuthService, AuthService>();
+
+        services.AddScoped<IPurchaseSubscriptionService, PurchaseSubscriptionService>();
         return services;
     }
 }

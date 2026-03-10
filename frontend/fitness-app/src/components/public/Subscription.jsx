@@ -31,7 +31,7 @@ const Subscription = () => {
   }, [t]);
 
   return (
-    <section>
+    <section id="subscriptions">
       <div className="flex flex-col items-center justify-center">
         <p className="text-black text-xl">{t("home.subsTitleSmall")}</p>
         <div className="mt-2 flex flex-col items-center justify-center gap-y-0">

@@ -31,11 +31,12 @@ import WorkoutPlansPage from "./pages/admin/workoutPlans/WorkoutPlansPage";
 
 import AdminDashboardPage from "./pages/admin/dashboard/AdminDashboardPage";
 
+import SubscriptionCheckout from "./pages/public/SubscriptionCheckout";
+import SubscriptionSuccess from "./pages/public/SubscriptionSuccess";
+import ClientDashboardPage from "./pages/public/ClientDashboardPage";
 // Dashboards (temporar)
-const AdminDashboard = () => <div className="text-2xl font-bold">Admin Dashboard</div>;
 const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
 const ClientDashboard = () => <div className="text-2xl font-bold">Client Dashboard</div>;
-
 
 function PublicLayout() {
   return (
@@ -59,6 +60,10 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/subscription" element={<Subscription />} />
               <Route path="/login" element={<Login />} />
+
+              {/* NEW: checkout flow */}
+              <Route path="/subscription/checkout/:planId" element={<SubscriptionCheckout />} />
+              <Route path="/subscription/success" element={<SubscriptionSuccess />} />
 
               <Route
                 path="/change-password"
@@ -174,11 +179,10 @@ const App = () => {
                 path="client"
                 element={
                   <RoleRoute allowedRoles={["Client"]}>
-                    <ClientDashboard />
+                    <ClientDashboardPage />
                   </RoleRoute>
                 }
               />
-
               <Route path="*" element={<NotFound />} />
             </Route>
 

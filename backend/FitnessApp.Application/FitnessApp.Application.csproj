@@ -10,6 +10,7 @@
     <Folder Include="DTOs/Statistics/" />
     <Folder Include="DTOs/Subscriptions/BenefitPackage/" />
     <Folder Include="DTOs/Subscriptions/Payment/" />
+    <Folder Include="DTOs/Subscriptions/Purchase/" />
     <Folder Include="DTOs/Subscriptions/Subscription/" />
     <Folder Include="DTOs/Subscriptions/SubscriptionPlan/" />
     <Folder Include="Factories/" />

@@ -1,657 +1,684 @@
 {
-  "nav": {
-    "subscriptions": "Абонементы",
-    "trainers": "Тренеры",
-    "contacts": "Контакты",
-    "services": "Услуги",
-    "login": "Войти",
-    "language": "Язык"
-  },
-  "auth": {
-    "loginTitle": "Авторизация",
-    "email": "Email",
-    "password": "Пароль",
-    "connect": "Войти",
-    "connecting": "Вход...",
-    "emailRequired": "Email обязателен.",
-    "emailInvalid": "Некорректный email.",
-    "passwordRequired": "Пароль обязателен.",
-    "passwordMin": "Пароль должен быть не менее 6 символов.",
-    "missingToken": "Не удалось авторизоваться. Попробуйте снова.",
-    "loginFailed": "Ошибка входа."
-  },
-  "home": {
-    "heroTitle": "ФИТНЕС-АБОНЕМЕНТ НА 6 МЕСЯЦЕВ",
-    "oldPrice": "2999 MDL",
-    "newPrice": "2600 MDL / МЕСЯЦ",
-    "buyNow": "КУПИТЬ СЕЙЧАС",
-    "subsTitleSmall": "АБОНЕМЕНТЫ GRIFFIT FITNESS",
-    "subsTitle1": "ИДЕАЛЬНЫЙ",
-    "subsTitle2": "АБОНЕМЕНТ ДЛЯ ВАС!",
-    "subsSubtitle": "Большие результаты при малых вложениях!",
-    "loadingSubscriptions": "Загрузка абонементов...",
-    "benefitsTitle1": "ПОЧЕМУ СТОИТ ПРИЙТИ",
-    "benefitsTitle2": "В GRIFFIT?",
-    "benefitsHeading1": "ОТКРОЙТЕ ПРЕИМУЩЕСТВА",
-    "benefitsHeading2": "ДЛЯ ВАШЕГО БЛАГОПОЛУЧИЯ",
-    "signUp": "Записаться",
-    "location": "Локация",
-    "servicesTitle": "Наши услуги",
-    "purchase": "Купить",
-    "noBenefits": "В этом пакете нет преимуществ."
-  },
-  "benefits": {
-    "b1": "Современное и разнообразное оборудование",
-    "b2": "Чистота по высоким стандартам",
-    "b3": "Вы станете частью крутого фитнес-сообщества",
-    "b4": "У вас будет больше энергии",
-    "b5": "Вы будете чувствовать себя лучше",
-    "b6": "Вы похудеете или наберете мышечную массу",
-    "b7": "Вы повысите выносливость",
-    "b8": "Вы будете чувствовать себя отлично"
-  },
-  "subscription": {
-    "type": {
-      "Monthly": "Месячный",
-      "Quarterly": "3 месяца",
-      "Yearly": "Годовой"
+    "nav": {
+        "subscriptions": "Абонементы",
+        "trainers": "Тренеры",
+        "contacts": "Контакты",
+        "services": "Услуги",
+        "login": "Войти",
+        "language": "Язык"
     },
-    "status": {
-      "Pending": "В ожидании",
-      "Active": "Активен",
-      "Expired": "Истек",
-      "Cancelled": "Отменен"
-    }
-  },
-  "payment": {
-    "status": {
-      "Pending": "В ожидании",
-      "Success": "Успешно",
-      "Failed": "Ошибка"
-    }
-  },
-  "common": {
-    "ok": "ОК",
-    "cancel": "Отмена",
-    "logout": "Выйти",
-    "back": "Назад",
-    "next": "Далее",
-    "page": "Страница",
-    "of": "из",
-    "total": "Всего",
-    "loading": "Загрузка...",
-    "refresh": "Обновить",
-    "yes": "Да",
-    "no": "Нет",
-    "days": {
-      "monday": "Понедельник",
-      "tuesday": "Вторник",
-      "wednesday": "Среда",
-      "thursday": "Четверг",
-      "friday": "Пятница",
-      "saturday": "Суббота",
-      "sunday": "Воскресенье"
-    }
-  },
-  "workouts": {
-    "goal": {
-      "WeightLoss": "Похудение",
-      "MuscleGain": "Набор мышц",
-      "Endurance": "Выносливость",
-      "Strength": "Сила",
-      "Flexibility": "Гибкость",
-      "GeneralFitness": "Общая форма"
-    },
-    "difficulty": {
-      "Beginner": "Начинающий",
-      "Intermediate": "Средний",
-      "Advanced": "Продвинутый"
-    }
-  },
-  "notFound": {
-    "title": "404",
-    "message": "Страница не найдена.",
-    "backHome": "Вернуться на главную"
-  },
-  "unauthorized": {
-    "title": "Доступ запрещен",
-    "message": "У вас нет прав для доступа к этой странице.",
-    "backHome": "Вернуться на главную",
-    "dashboard": "Панель управления"
-  },
-  "changePassword": {
-    "title": "Смена пароля",
-    "subtitle": "В целях безопасности необходимо установить новый пароль.",
-    "current": "Текущий пароль",
-    "new": "Новый пароль",
-    "confirmNew": "Подтвердите новый пароль",
-    "saving": "Сохранение...",
-    "save": "Сменить пароль",
-    "success": "Пароль успешно изменен. Теперь вы можете войти снова.",
-    "newRequired": "Новый пароль обязателен.",
-    "newMin": "Пароль должен быть не менее 6 символов.",
-    "confirmRequired": "Подтверждение обязательно.",
-    "confirmMismatch": "Пароли не совпадают."
-  },
-  "dashboard": {
-    "adminTitle": "Панель админа",
-    "trainerTitle": "Панель тренера",
-    "clientTitle": "Панель клиента"
-  },
-  "sidebar": {
-    "admin": {
-      "overview": "Обзор",
-      "clients": "Клиенты",
-      "trainers": "Тренеры",
-      "benefits": "Преимущества",
-      "benefitPackages": "Пакеты преимуществ",
-      "subscriptionPlans": "Планы подписки",
-      "subscriptions": "Абонементы",
-      "payments": "Платежи",
-      "workoutPlans": "Планы тренировок"
-    },
-    "trainer": {
-      "overview": "Обзор",
-      "plans": "Планы"
-    },
-    "client": {
-      "overview": "Обзор",
-      "profile": "Профиль"
-    }
-  },
-  "admin": {
-    "dashboard": {
-      "title": "Панель администратора",
-      "subtitle": "Статистика подписок и доходов (кэш Singleton).",
-      "errors": {
-        "load": "Ошибка при загрузке статистики.",
-        "loadExpiring": "Ошибка при загрузке истекающих абонементов.",
-        "refresh": "Ошибка обновления кэша."
-      },
-      "cards": {
-        "totalSubscriptions": "Всего абонементов",
-        "active": "Активные",
-        "totalRevenue": "Общий доход",
-        "monthlyRevenue": "Доход за месяц",
-        "growth": "Темп роста",
-        "churn": "Уровень оттока"
-      },
-      "status": {
-        "active": "Активен",
-        "pending": "В ожидании",
-        "expired": "Истек",
-        "cancelled": "Отменен"
-      },
-      "revenue": {
-        "today": "Сегодня",
-        "week": "Неделя",
-        "month": "Месяц",
-        "year": "Год",
-        "allTime": "За все время"
-      },
-      "charts": {
-        "subscriptionsStatus": "Распределение статусов подписок",
-        "subscriptionsStatusHint": "Активные / В ожидании / Истекшие / Отмененные.",
-        "revenueBreakdown": "Детализация доходов",
-        "revenueBreakdownHint": "Быстрое сравнение доходов за периоды.",
-        "trends": "Тренды (12 месяцев)",
-        "trendsHint": "Новые vs Отмененные vs Чистый рост."
-      },
-      "trends": {
-        "new": "Новые",
-        "cancelled": "Отмененные",
-        "net": "Чистый итог"
-      },
-      "cache": {
-        "title": "Кэш (Singleton)",
-        "hint": "Данные рассчитываются и кэшируются для производительности.",
-        "refresh": "Обновить",
-        "lastUpdate": "Последнее обновление",
-        "expiresAt": "Истекает в",
-        "isExpired": "Истек",
-        "cachedSubscriptions": "Абонементов в кэше",
-        "cachedPayments": "Платежей в кэше"
-      },
-      "expiring": {
-        "title": "Истекающие абонементы",
-        "hint": "Список подписок, истекающих в ближайшие дни.",
-        "daysAhead": "Дней",
-        "empty": "Нет данных для отображения.",
-        "columns": {
-          "client": "Клиент",
-          "plan": "План",
-          "endDate": "Дата окончания",
-          "daysRemaining": "Осталось дней",
-          "subscriptionId": "ID подписки"
-        }
-      }
-    },
-    "createdUser": {
-      "title": "Пользователь создан",
-      "hint": "Скопируйте данные и отправьте пользователю (email/SMS).",
-      "email": "Email",
-      "tempPassword": "Временный пароль",
-      "fullMessage": "Полное сообщение (copy/paste)",
-      "copyEmail": "Копировать email",
-      "copyPassword": "Копировать пароль",
-      "copyMessage": "Копировать сообщение",
-      "template": "Аккаунт успешно создан.\n\nEmail: {{email}}\nВременный пароль: {{password}}\n\nПожалуйста, войдите в систему и смените пароль после первого входа."
-    },
-    "clients": {
-      "title": "Клиенты",
-      "total": "Всего клиентов",
-      "add": "Добавить клиента",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "loading": "Загрузка...",
-      "empty": "Клиенты не найдены.",
-      "statusActive": "Активен",
-      "statusInactive": "Неактивен",
-      "columns": {
-        "id": "ID",
-        "name": "Имя",
+    "auth": {
+        "loginTitle": "Авторизация",
         "email": "Email",
-        "phone": "Телефон",
-        "status": "Статус",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Подтверждение удаления",
-        "message": "Вы уверены, что хотите удалить клиента {{name}}? Это действие необратимо.",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка при загрузке клиентов.",
-        "create": "Ошибка при создании клиента.",
-        "edit": "Ошибка при обновлении клиента.",
-        "delete": "Ошибка при удалении клиента."
-      },
-      "form": {
-        "createTitle": "Добавить клиента",
-        "editTitle": "Редактировать клиента",
-        "email": "Email",
-        "firstName": "Имя",
-        "lastName": "Фамилия",
-        "phone": "Телефон",
-        "dob": "Дата рождения",
-        "active": "Активен",
-        "create": "Создать",
-        "save": "Сохранить",
+        "password": "Пароль",
+        "connect": "Войти",
+        "connecting": "Вход...",
         "emailRequired": "Email обязателен.",
         "emailInvalid": "Некорректный email.",
-        "firstNameRequired": "Имя обязательно.",
-        "lastNameRequired": "Фамилия обязательна.",
-        "dobRequired": "Дата рождения обязательна."
-      }
+        "passwordRequired": "Пароль обязателен.",
+        "passwordMin": "Пароль должен быть не менее 6 символов.",
+        "missingToken": "Не удалось авторизоваться. Попробуйте снова.",
+        "loginFailed": "Ошибка входа."
     },
-    "trainers": {
-      "title": "Тренеры",
-      "total": "Всего тренеров",
-      "add": "Добавить тренера",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "loading": "Загрузка...",
-      "empty": "Тренеры не найдены.",
-      "columns": {
-        "id": "ID",
-        "name": "Имя",
-        "email": "Email",
-        "phone": "Телефон",
-        "specialization": "Специализация",
-        "years": "Опыт (лет)",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Подтверждение удаления",
-        "message": "Удалить тренера {{name}}? Это действие необратимо.",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки тренеров.",
-        "create": "Ошибка создания тренера.",
-        "edit": "Ошибка обновления тренера.",
-        "delete": "Ошибка удаления тренера."
-      },
-      "form": {
-        "createTitle": "Добавить тренера",
-        "editTitle": "Редактировать тренера",
-        "email": "Email",
-        "firstName": "Имя",
-        "lastName": "Фамилия",
-        "phone": "Телефон",
-        "specialization": "Специализация",
-        "years": "Опыт (лет)",
-        "active": "Активен",
-        "create": "Создать",
-        "save": "Сохранить",
-        "emailRequired": "Email обязателен.",
-        "emailInvalid": "Некорректный email.",
-        "firstNameRequired": "Имя обязательно.",
-        "lastNameRequired": "Фамилия обязательна.",
-        "specializationRequired": "Специализация обязательна.",
-        "yearsRequired": "Опыт обязателен.",
-        "yearsInvalid": "Некорректный опыт.",
-        "yearsRange": "Опыт должен быть от 0 до 50 лет."
-      }
+    "home": {
+        "heroTitle": "ФИТНЕС-АБОНЕМЕНТ НА 6 МЕСЯЦЕВ",
+        "oldPrice": "2999 MDL",
+        "newPrice": "2600 MDL / МЕСЯЦ",
+        "buyNow": "КУПИТЬ СЕЙЧАС",
+        "subsTitleSmall": "АБОНЕМЕНТЫ GRIFFIT FITNESS",
+        "subsTitle1": "ИДЕАЛЬНЫЙ",
+        "subsTitle2": "АБОНЕМЕНТ ДЛЯ ВАС!",
+        "subsSubtitle": "Большие результаты при малых вложениях!",
+        "loadingSubscriptions": "Загрузка абонементов...",
+        "benefitsTitle1": "ПОЧЕМУ СТОИТ ПРИЙТИ",
+        "benefitsTitle2": "В GRIFFIT?",
+        "benefitsHeading1": "ОТКРОЙТЕ ПРЕИМУЩЕСТВА",
+        "benefitsHeading2": "ДЛЯ ВАШЕГО БЛАГОПОЛУЧИЯ",
+        "signUp": "Записаться",
+        "location": "Локация",
+        "servicesTitle": "Наши услуги",
+        "purchase": "Купить",
+        "noBenefits": "В этом пакете нет преимуществ."
     },
     "benefits": {
-      "title": "Преимущества",
-      "total": "Всего преимуществ",
-      "add": "Добавить преимущество",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "loading": "Загрузка...",
-      "empty": "Преимущества не найдены.",
-      "statusActive": "Активен",
-      "statusInactive": "Неактивен",
-      "columns": {
-        "id": "ID",
-        "key": "Ключ",
-        "displayName": "Отображаемое имя",
-        "active": "Активен",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Удалить преимущество",
-        "message": "Вы уверены, что хотите удалить {{name}}?",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки преимуществ.",
-        "create": "Ошибка создания преимущества.",
-        "edit": "Ошибка обновления преимущества.",
-        "delete": "Ошибка удаления преимущества."
-      },
-      "form": {
-        "createTitle": "Добавить преимущество",
-        "editTitle": "Редактировать преимущество",
-        "name": "Ключ (slug)",
-        "nameHint": "Только строчные буквы и подчеркивание (напр. pool_access). Нельзя изменить позже.",
-        "displayName": "Имя (RU / fallback)",
-        "description": "Описание",
-        "active": "Активен",
-        "create": "Создать",
-        "save": "Сохранить",
-        "nameRequired": "Ключ обязателен.",
-        "nameInvalid": "Ключ должен содержать только строчные буквы a-z и подчеркивание.",
-        "displayNameRequired": "Отображаемое имя обязательно."
-      }
+        "b1": "Современное и разнообразное оборудование",
+        "b2": "Чистота по высоким стандартам",
+        "b3": "Вы станете частью крутого фитнес-сообщества",
+        "b4": "У вас будет больше энергии",
+        "b5": "Вы будете чувствовать себя лучше",
+        "b6": "Вы похудеете или наберете мышечную массу",
+        "b7": "Вы повысите выносливость",
+        "b8": "Вы будете чувствовать себя отлично"
     },
-    "benefitPackages": {
-      "title": "Пакеты преимуществ",
-      "total": "Всего пакетов",
-      "add": "Добавить пакет",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "loading": "Загрузка...",
-      "empty": "Пакеты не найдены.",
-      "statusActive": "Активен",
-      "statusInactive": "Неактивен",
-      "columns": {
-        "id": "ID",
-        "name": "Название",
-        "weekday": "График (Пн-Пт)",
-        "weekend": "График (Сб-Вс)",
-        "active": "Активен",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Удалить пакет",
-        "message": "Вы уверены, что хотите удалить пакет {{name}}?",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки пакетов.",
-        "loadOne": "Ошибка загрузки данных пакета.",
-        "create": "Ошибка создания пакета.",
-        "edit": "Ошибка обновления пакета.",
-        "delete": "Ошибка удаления пакета."
-      },
-      "form": {
-        "createTitle": "Добавить пакет",
-        "editTitle": "Редактировать пакет",
-        "name": "Название",
-        "scheduleWeekday": "График (Пн-Пт)",
-        "scheduleWeekend": "График (Сб-Вс)",
-        "active": "Активен",
-        "items": "Состав пакета",
-        "addItem": "Добавить элемент",
-        "removeItem": "Удалить",
-        "selectBenefit": "Выберите преимущество",
-        "valuePlaceholder": "Значение (напр. Безлимитно / 10 визитов)",
-        "create": "Создать",
-        "save": "Сохранить",
-        "nameRequired": "Название обязательно.",
-        "weekdayRequired": "График Пн-Пт обязателен.",
-        "weekendRequired": "График Сб-Вс обязателен.",
-        "itemsMin1": "Нужно добавить хотя бы одно преимущество.",
-        "itemBenefitRequired": "Нужно выбрать преимущество для каждой строки.",
-        "itemValueRequired": "Нужно указать значение для каждой строки.",
-        "itemsNoDuplicates": "Одно и то же преимущество нельзя добавить дважды."
-      }
+    "subscription": {
+        "type": {
+            "Monthly": "Месячный",
+            "Quarterly": "3 месяца",
+            "Yearly": "Годовой"
+        },
+        "status": {
+            "Pending": "В ожидании",
+            "Active": "Активен",
+            "Expired": "Истек",
+            "Cancelled": "Отменен"
+        }
     },
-    "subscriptionPlans": {
-      "title": "Планы подписки",
-      "total": "Всего планов",
-      "add": "Добавить план",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "empty": "Планы не найдены.",
-      "statusActive": "Активен",
-      "statusInactive": "Неактивен",
-      "columns": {
-        "id": "ID",
-        "type": "Тип",
-        "duration": "Месяцы",
+    "payment": {
+        "status": {
+            "Pending": "В ожидании",
+            "Success": "Успешно",
+            "Failed": "Ошибка"
+        }
+    },
+    "common": {
+        "ok": "ОК",
+        "cancel": "Отмена",
+        "logout": "Выйти",
+        "back": "Назад",
+        "next": "Далее",
+        "page": "Страница",
+        "of": "из",
+        "total": "Всего",
+        "loading": "Загрузка...",
+        "refresh": "Обновить",
+        "yes": "Да",
+        "no": "Нет",
+        "days": {
+            "monday": "Понедельник",
+            "tuesday": "Вторник",
+            "wednesday": "Среда",
+            "thursday": "Четверг",
+            "friday": "Пятница",
+            "saturday": "Суббота",
+            "sunday": "Воскресенье"
+        }
+    },
+    "workouts": {
+        "goal": {
+            "WeightLoss": "Похудение",
+            "MuscleGain": "Набор мышц",
+            "Endurance": "Выносливость",
+            "Strength": "Сила",
+            "Flexibility": "Гибкость",
+            "GeneralFitness": "Общая форма"
+        },
+        "difficulty": {
+            "Beginner": "Начинающий",
+            "Intermediate": "Средний",
+            "Advanced": "Продвинутый"
+        }
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Страница не найдена.",
+        "backHome": "Вернуться на главную"
+    },
+    "unauthorized": {
+        "title": "Доступ запрещен",
+        "message": "У вас нет прав для доступа к этой странице.",
+        "backHome": "Вернуться на главную",
+        "dashboard": "Панель управления"
+    },
+    "changePassword": {
+        "title": "Смена пароля",
+        "subtitle": "В целях безопасности необходимо установить новый пароль.",
+        "current": "Текущий пароль",
+        "new": "Новый пароль",
+        "confirmNew": "Подтвердите новый пароль",
+        "saving": "Сохранение...",
+        "save": "Сменить пароль",
+        "success": "Пароль успешно изменен. Теперь вы можете войти снова.",
+        "newRequired": "Новый пароль обязателен.",
+        "newMin": "Пароль должен быть не менее 6 символов.",
+        "confirmRequired": "Подтверждение обязательно.",
+        "confirmMismatch": "Пароли не совпадают."
+    },
+    "dashboard": {
+        "adminTitle": "Панель админа",
+        "trainerTitle": "Панель тренера",
+        "clientTitle": "Панель клиента"
+    },
+    "sidebar": {
+        "admin": {
+            "overview": "Обзор",
+            "clients": "Клиенты",
+            "trainers": "Тренеры",
+            "benefits": "Преимущества",
+            "benefitPackages": "Пакеты преимуществ",
+            "subscriptionPlans": "Планы подписки",
+            "subscriptions": "Абонементы",
+            "payments": "Платежи",
+            "workoutPlans": "Планы тренировок"
+        },
+        "trainer": {
+            "overview": "Обзор",
+            "plans": "Планы"
+        },
+        "client": {
+            "overview": "Обзор",
+            "profile": "Профиль"
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Панель администратора",
+            "subtitle": "Статистика подписок и доходов (кэш Singleton).",
+            "errors": {
+                "load": "Ошибка при загрузке статистики.",
+                "loadExpiring": "Ошибка при загрузке истекающих абонементов.",
+                "refresh": "Ошибка обновления кэша."
+            },
+            "cards": {
+                "totalSubscriptions": "Всего абонементов",
+                "active": "Активные",
+                "totalRevenue": "Общий доход",
+                "monthlyRevenue": "Доход за месяц",
+                "growth": "Темп роста",
+                "churn": "Уровень оттока"
+            },
+            "status": {
+                "active": "Активен",
+                "pending": "В ожидании",
+                "expired": "Истек",
+                "cancelled": "Отменен"
+            },
+            "revenue": {
+                "today": "Сегодня",
+                "week": "Неделя",
+                "month": "Месяц",
+                "year": "Год",
+                "allTime": "За все время"
+            },
+            "charts": {
+                "subscriptionsStatus": "Распределение статусов подписок",
+                "subscriptionsStatusHint": "Активные / В ожидании / Истекшие / Отмененные.",
+                "revenueBreakdown": "Детализация доходов",
+                "revenueBreakdownHint": "Быстрое сравнение доходов за периоды.",
+                "trends": "Тренды (12 месяцев)",
+                "trendsHint": "Новые vs Отмененные vs Чистый рост."
+            },
+            "trends": {
+                "new": "Новые",
+                "cancelled": "Отмененные",
+                "net": "Чистый итог"
+            },
+            "cache": {
+                "title": "Кэш (Singleton)",
+                "hint": "Данные рассчитываются и кэшируются для производительности.",
+                "refresh": "Обновить",
+                "lastUpdate": "Последнее обновление",
+                "expiresAt": "Истекает в",
+                "isExpired": "Истек",
+                "cachedSubscriptions": "Абонементов в кэше",
+                "cachedPayments": "Платежей в кэше"
+            },
+            "expiring": {
+                "title": "Истекающие абонементы",
+                "hint": "Список подписок, истекающих в ближайшие дни.",
+                "daysAhead": "Дней",
+                "empty": "Нет данных для отображения.",
+                "columns": {
+                    "client": "Клиент",
+                    "plan": "План",
+                    "endDate": "Дата окончания",
+                    "daysRemaining": "Осталось дней",
+                    "subscriptionId": "ID подписки"
+                }
+            }
+        },
+        "createdUser": {
+            "title": "Пользователь создан",
+            "hint": "Скопируйте данные и отправьте пользователю (email/SMS).",
+            "email": "Email",
+            "tempPassword": "Временный пароль",
+            "fullMessage": "Полное сообщение (copy/paste)",
+            "copyEmail": "Копировать email",
+            "copyPassword": "Копировать пароль",
+            "copyMessage": "Копировать сообщение",
+            "template": "Аккаунт успешно создан.\n\nEmail: {{email}}\nВременный пароль: {{password}}\n\nПожалуйста, войдите в систему и смените пароль после первого входа."
+        },
+        "clients": {
+            "title": "Клиенты",
+            "total": "Всего клиентов",
+            "add": "Добавить клиента",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Клиенты не найдены.",
+            "statusActive": "Активен",
+            "statusInactive": "Неактивен",
+            "columns": {
+                "id": "ID",
+                "name": "Имя",
+                "email": "Email",
+                "phone": "Телефон",
+                "status": "Статус",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Подтверждение удаления",
+                "message": "Вы уверены, что хотите удалить клиента {{name}}? Это действие необратимо.",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка при загрузке клиентов.",
+                "create": "Ошибка при создании клиента.",
+                "edit": "Ошибка при обновлении клиента.",
+                "delete": "Ошибка при удалении клиента."
+            },
+            "form": {
+                "createTitle": "Добавить клиента",
+                "editTitle": "Редактировать клиента",
+                "email": "Email",
+                "firstName": "Имя",
+                "lastName": "Фамилия",
+                "phone": "Телефон",
+                "dob": "Дата рождения",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "emailRequired": "Email обязателен.",
+                "emailInvalid": "Некорректный email.",
+                "firstNameRequired": "Имя обязательно.",
+                "lastNameRequired": "Фамилия обязательна.",
+                "dobRequired": "Дата рождения обязательна."
+            }
+        },
+        "trainers": {
+            "title": "Тренеры",
+            "total": "Всего тренеров",
+            "add": "Добавить тренера",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Тренеры не найдены.",
+            "columns": {
+                "id": "ID",
+                "name": "Имя",
+                "email": "Email",
+                "phone": "Телефон",
+                "specialization": "Специализация",
+                "years": "Опыт (лет)",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Подтверждение удаления",
+                "message": "Удалить тренера {{name}}? Это действие необратимо.",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки тренеров.",
+                "create": "Ошибка создания тренера.",
+                "edit": "Ошибка обновления тренера.",
+                "delete": "Ошибка удаления тренера."
+            },
+            "form": {
+                "createTitle": "Добавить тренера",
+                "editTitle": "Редактировать тренера",
+                "email": "Email",
+                "firstName": "Имя",
+                "lastName": "Фамилия",
+                "phone": "Телефон",
+                "specialization": "Специализация",
+                "years": "Опыт (лет)",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "emailRequired": "Email обязателен.",
+                "emailInvalid": "Некорректный email.",
+                "firstNameRequired": "Имя обязательно.",
+                "lastNameRequired": "Фамилия обязательна.",
+                "specializationRequired": "Специализация обязательна.",
+                "yearsRequired": "Опыт обязателен.",
+                "yearsInvalid": "Некорректный опыт.",
+                "yearsRange": "Опыт должен быть от 0 до 50 лет."
+            }
+        },
+        "benefits": {
+            "title": "Преимущества",
+            "total": "Всего преимуществ",
+            "add": "Добавить преимущество",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Преимущества не найдены.",
+            "statusActive": "Активен",
+            "statusInactive": "Неактивен",
+            "columns": {
+                "id": "ID",
+                "key": "Ключ",
+                "displayName": "Отображаемое имя",
+                "active": "Активен",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Удалить преимущество",
+                "message": "Вы уверены, что хотите удалить {{name}}?",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки преимуществ.",
+                "create": "Ошибка создания преимущества.",
+                "edit": "Ошибка обновления преимущества.",
+                "delete": "Ошибка удаления преимущества."
+            },
+            "form": {
+                "createTitle": "Добавить преимущество",
+                "editTitle": "Редактировать преимущество",
+                "name": "Ключ (slug)",
+                "nameHint": "Только строчные буквы и подчеркивание (напр. pool_access). Нельзя изменить позже.",
+                "displayName": "Имя (RU / fallback)",
+                "description": "Описание",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "nameRequired": "Ключ обязателен.",
+                "nameInvalid": "Ключ должен содержать только строчные буквы a-z и подчеркивание.",
+                "displayNameRequired": "Отображаемое имя обязательно."
+            }
+        },
+        "benefitPackages": {
+            "title": "Пакеты преимуществ",
+            "total": "Всего пакетов",
+            "add": "Добавить пакет",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "loading": "Загрузка...",
+            "empty": "Пакеты не найдены.",
+            "statusActive": "Активен",
+            "statusInactive": "Неактивен",
+            "columns": {
+                "id": "ID",
+                "name": "Название",
+                "weekday": "График (Пн-Пт)",
+                "weekend": "График (Сб-Вс)",
+                "active": "Активен",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Удалить пакет",
+                "message": "Вы уверены, что хотите удалить пакет {{name}}?",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки пакетов.",
+                "loadOne": "Ошибка загрузки данных пакета.",
+                "create": "Ошибка создания пакета.",
+                "edit": "Ошибка обновления пакета.",
+                "delete": "Ошибка удаления пакета."
+            },
+            "form": {
+                "createTitle": "Добавить пакет",
+                "editTitle": "Редактировать пакет",
+                "name": "Название",
+                "scheduleWeekday": "График (Пн-Пт)",
+                "scheduleWeekend": "График (Сб-Вс)",
+                "active": "Активен",
+                "items": "Состав пакета",
+                "addItem": "Добавить элемент",
+                "removeItem": "Удалить",
+                "selectBenefit": "Выберите преимущество",
+                "valuePlaceholder": "Значение (напр. Безлимитно / 10 визитов)",
+                "create": "Создать",
+                "save": "Сохранить",
+                "nameRequired": "Название обязательно.",
+                "weekdayRequired": "График Пн-Пт обязателен.",
+                "weekendRequired": "График Сб-Вс обязателен.",
+                "itemsMin1": "Нужно добавить хотя бы одно преимущество.",
+                "itemBenefitRequired": "Нужно выбрать преимущество для каждой строки.",
+                "itemValueRequired": "Нужно указать значение для каждой строки.",
+                "itemsNoDuplicates": "Одно и то же преимущество нельзя добавить дважды."
+            }
+        },
+        "subscriptionPlans": {
+            "title": "Планы подписки",
+            "total": "Всего планов",
+            "add": "Добавить план",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "empty": "Планы не найдены.",
+            "statusActive": "Активен",
+            "statusInactive": "Неактивен",
+            "columns": {
+                "id": "ID",
+                "type": "Тип",
+                "duration": "Месяцы",
+                "price": "Цена",
+                "package": "Пакет",
+                "installments": "Рассрочка",
+                "active": "Активен",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Удалить план",
+                "message": "Удалить план {{name}}?",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки планов.",
+                "create": "Ошибка создания плана.",
+                "edit": "Ошибка обновления плана.",
+                "delete": "Ошибка удаления плана."
+            },
+            "form": {
+                "createTitle": "Добавить план",
+                "editTitle": "Редактировать план",
+                "type": "Тип",
+                "duration": "Длительность (мес)",
+                "price": "Цена",
+                "package": "Пакет преимуществ",
+                "selectPackage": "Выберите пакет",
+                "recurring": "Рекуррентный (автопродление)",
+                "installments": "Доступна рассрочка",
+                "maxInstallments": "Макс. платежей",
+                "active": "Активен",
+                "create": "Создать",
+                "save": "Сохранить",
+                "priceRequired": "Цена обязательна.",
+                "priceInvalid": "Некорректная цена.",
+                "durationInvalid": "Длительность должна быть от 0 до 120 месяцев.",
+                "packageRequired": "Пакет преимуществ обязателен.",
+                "maxInstallmentsInvalid": "Количество платежей должно быть от 1 до 24."
+            }
+        },
+        "subscriptions": {
+            "title": "Абонементы",
+            "total": "Всего абонементов",
+            "add": "Добавить абонемент",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "cancel": "Аннулировать",
+            "renew": "Продлить",
+            "empty": "Абонементы не найдены.",
+            "columns": {
+                "id": "ID",
+                "client": "Клиент",
+                "plan": "План",
+                "status": "Статус",
+                "start": "Начало",
+                "end": "Конец",
+                "autoRenew": "Автопродление",
+                "payments": "Платежи",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Удалить абонемент",
+                "message": "Удалить абонемент: {{name}}?",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки абонементов.",
+                "create": "Ошибка создания абонемента.",
+                "edit": "Ошибка обновления абонемента.",
+                "delete": "Ошибка удаления абонемента.",
+                "cancel": "Ошибка аннулирования.",
+                "renew": "Ошибка продления."
+            },
+            "form": {
+                "createTitle": "Добавить абонемент",
+                "editTitle": "Редактировать абонемент",
+                "client": "Клиент",
+                "selectClient": "Выберите клиента",
+                "plan": "План подписки",
+                "selectPlan": "Выберите план",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "status": "Статус",
+                "autoRenew": "Автопродление",
+                "create": "Создать",
+                "save": "Сохранить"
+            }
+        },
+        "payments": {
+            "title": "Платежи",
+            "total": "Всего платежей",
+            "add": "Добавить платеж",
+            "edit": "Редактировать",
+            "delete": "Удалить",
+            "markSuccess": "Успешно",
+            "markFailed": "Ошибка",
+            "empty": "Платежи не найдены.",
+            "columns": {
+                "id": "ID",
+                "subscriptionId": "Абонемент",
+                "client": "Клиент",
+                "amount": "Сумма",
+                "date": "Дата",
+                "status": "Статус",
+                "installment": "Взнос",
+                "transactionId": "Транзакция",
+                "actions": "Действия"
+            },
+            "confirmDelete": {
+                "title": "Удалить платеж",
+                "message": "Удалить платеж: {{name}}?",
+                "confirmText": "Удалить"
+            },
+            "errors": {
+                "load": "Ошибка загрузки платежей.",
+                "create": "Ошибка создания платежа.",
+                "edit": "Ошибка обновления платежа.",
+                "delete": "Ошибка удаления платежа.",
+                "markSuccess": "Ошибка при смене статуса на успех.",
+                "markFailed": "Ошибка при смене статуса на отказ."
+            },
+            "form": {
+                "createTitle": "Добавить платеж",
+                "editTitle": "Редактировать платеж",
+                "subscription": "Абонемент",
+                "selectSubscription": "Выберите абонемент",
+                "amount": "Сумма",
+                "paymentDate": "Дата платежа",
+                "installmentNumber": "Номер взноса",
+                "transactionId": "ID Транзакции",
+                "status": "Статус",
+                "create": "Создать",
+                "save": "Сохранить"
+            }
+        },
+        "workoutPlans": {
+            "title": "Планы тренировок",
+            "total": "Всего планов",
+            "add": "Добавить план",
+            "edit": "Редактировать",
+            "cloneBtn": "Клонировать",
+            "empty": "Планов нет.",
+            "columns": {
+                "id": "ID",
+                "name": "Название",
+                "client": "Клиент",
+                "trainer": "Тренер",
+                "goal": "Цель",
+                "difficulty": "Сложность",
+                "duration": "Длительность",
+                "exercises": "Упражнения",
+                "actions": "Действия"
+            },
+            "errors": {
+                "load": "Не удалось загрузить планы.",
+                "create": "Не удалось создать план.",
+                "edit": "Не удалось сохранить.",
+                "clone": "Не удалось клонировать."
+            },
+            "form": {
+                "createTitle": "Создать план",
+                "editTitle": "Редактировать план",
+                "editHint": "Если на backend нет PUT, сохранение создаст новый план (копию).",
+                "name": "Название",
+                "nameRequired": "Название обязательно (мин 3 символа).",
+                "client": "Клиент",
+                "selectClient": "Выберите клиента",
+                "clientRequired": "Клиент обязателен.",
+                "trainer": "Тренер (необязательно)",
+                "noTrainer": "Без тренера",
+                "goal": "Цель",
+                "difficulty": "Сложность",
+                "durationWeeks": "Длительность (недели)",
+                "durationInvalid": "Длительность должна быть 1–52.",
+                "sessionMinutes": "Длительность сессии (мин)",
+                "sessionInvalid": "Сессия должна быть 15–240 мин.",
+                "restDays": "Дни отдыха (0-7)",
+                "days": "Дни тренировок",
+                "daysRequired": "Выберите хотя бы один день.",
+                "description": "Описание (необязательно)",
+                "specialNotes": "Заметки (необязательно)",
+                "exercises": "Упражнения",
+                "addExercise": "Добавить упражнение",
+                "removeExercise": "Удалить",
+                "exercise": "Упражнение",
+                "exercisesMin1": "Добавьте хотя бы одно упражнение.",
+                "exerciseNameRequired": "Название упражнения обязательно.",
+                "exerciseSetsInvalid": "Неверные sets.",
+                "exerciseRepsInvalid": "Неверные reps.",
+                "exerciseDurationInvalid": "Неверная длительность (сек).",
+                "exerciseName": "Название",
+                "exerciseSets": "Sets",
+                "exerciseReps": "Reps",
+                "exerciseDurationSeconds": "Длительность (сек)",
+                "exerciseNotes": "Заметки",
+                "optional": "необязательно",
+                "create": "Создать",
+                "save": "Сохранить"
+            },
+            "clone": {
+                "title": "Клонировать план",
+                "source": "Источник",
+                "targetClient": "Клиент",
+                "selectClient": "Выберите клиента",
+                "clientRequired": "Клиент обязателен.",
+                "newName": "Новое имя (необязательно)",
+                "nameTooLong": "Имя слишком длинное.",
+                "newTrainer": "Новый тренер (необязательно)",
+                "keepTrainer": "Оставить тренера",
+                "clone": "Клонировать"
+            }
+        }
+    },
+    "checkout": {
+        "title": "Оформление заказа",
+        "plan": "Абонемент",
         "price": "Цена",
-        "package": "Пакет",
-        "installments": "Рассрочка",
-        "active": "Активен",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Удалить план",
-        "message": "Удалить план {{name}}?",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки планов.",
-        "create": "Ошибка создания плана.",
-        "edit": "Ошибка обновления плана.",
-        "delete": "Ошибка удаления плана."
-      },
-      "form": {
-        "createTitle": "Добавить план",
-        "editTitle": "Редактировать план",
-        "type": "Тип",
-        "duration": "Длительность (мес)",
-        "price": "Цена",
-        "package": "Пакет преимуществ",
-        "selectPackage": "Выберите пакет",
-        "recurring": "Рекуррентный (автопродление)",
-        "installments": "Доступна рассрочка",
-        "maxInstallments": "Макс. платежей",
-        "active": "Активен",
-        "create": "Создать",
-        "save": "Сохранить",
-        "priceRequired": "Цена обязательна.",
-        "priceInvalid": "Некорректная цена.",
-        "durationInvalid": "Длительность должна быть от 0 до 120 месяцев.",
-        "packageRequired": "Пакет преимуществ обязателен.",
-        "maxInstallmentsInvalid": "Количество платежей должно быть от 1 до 24."
-      }
-    },
-    "subscriptions": {
-      "title": "Абонементы",
-      "total": "Всего абонементов",
-      "add": "Добавить абонемент",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "cancel": "Аннулировать",
-      "renew": "Продлить",
-      "empty": "Абонементы не найдены.",
-      "columns": {
-        "id": "ID",
-        "client": "Клиент",
-        "plan": "План",
-        "status": "Статус",
-        "start": "Начало",
-        "end": "Конец",
-        "autoRenew": "Автопродление",
-        "payments": "Платежи",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Удалить абонемент",
-        "message": "Удалить абонемент: {{name}}?",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки абонементов.",
-        "create": "Ошибка создания абонемента.",
-        "edit": "Ошибка обновления абонемента.",
-        "delete": "Ошибка удаления абонемента.",
-        "cancel": "Ошибка аннулирования.",
-        "renew": "Ошибка продления."
-      },
-      "form": {
-        "createTitle": "Добавить абонемент",
-        "editTitle": "Редактировать абонемент",
-        "client": "Клиент",
-        "selectClient": "Выберите клиента",
-        "plan": "План подписки",
-        "selectPlan": "Выберите план",
-        "startDate": "Дата начала",
-        "endDate": "Дата окончания",
-        "status": "Статус",
-        "autoRenew": "Автопродление",
-        "create": "Создать",
-        "save": "Сохранить"
-      }
-    },
-    "payments": {
-      "title": "Платежи",
-      "total": "Всего платежей",
-      "add": "Добавить платеж",
-      "edit": "Редактировать",
-      "delete": "Удалить",
-      "markSuccess": "Успешно",
-      "markFailed": "Ошибка",
-      "empty": "Платежи не найдены.",
-      "columns": {
-        "id": "ID",
-        "subscriptionId": "Абонемент",
-        "client": "Клиент",
-        "amount": "Сумма",
-        "date": "Дата",
-        "status": "Статус",
-        "installment": "Взнос",
-        "transactionId": "Транзакция",
-        "actions": "Действия"
-      },
-      "confirmDelete": {
-        "title": "Удалить платеж",
-        "message": "Удалить платеж: {{name}}?",
-        "confirmText": "Удалить"
-      },
-      "errors": {
-        "load": "Ошибка загрузки платежей.",
-        "create": "Ошибка создания платежа.",
-        "edit": "Ошибка обновления платежа.",
-        "delete": "Ошибка удаления платежа.",
-        "markSuccess": "Ошибка при смене статуса на успех.",
-        "markFailed": "Ошибка при смене статуса на отказ."
-      },
-      "form": {
-        "createTitle": "Добавить платеж",
-        "editTitle": "Редактировать платеж",
-        "subscription": "Абонемент",
-        "selectSubscription": "Выберите абонемент",
-        "amount": "Сумма",
-        "paymentDate": "Дата платежа",
-        "installmentNumber": "Номер взноса",
-        "transactionId": "ID Транзакции",
-        "status": "Статус",
-        "create": "Создать",
-        "save": "Сохранить"
-      }
-    },
-    "workoutPlans": {
-      "title": "Планы тренировок",
-      "total": "Всего планов",
-      "add": "Добавить план",
-      "edit": "Редактировать",
-      "cloneBtn": "Клонировать",
-      "empty": "Планов нет.",
-      "columns": {
-        "id": "ID",
-        "name": "Название",
-        "client": "Клиент",
-        "trainer": "Тренер",
-        "goal": "Цель",
-        "difficulty": "Сложность",
         "duration": "Длительность",
-        "exercises": "Упражнения",
-        "actions": "Действия"
-      },
-      "errors": {
-        "load": "Не удалось загрузить планы.",
-        "create": "Не удалось создать план.",
-        "edit": "Не удалось сохранить.",
-        "clone": "Не удалось клонировать."
-      },
-      "form": {
-        "createTitle": "Создать план",
-        "editTitle": "Редактировать план",
-        "editHint": "Если на backend нет PUT, сохранение создаст новый план (копию).",
-        "name": "Название",
-        "nameRequired": "Название обязательно (мин 3 символа).",
-        "client": "Клиент",
-        "selectClient": "Выберите клиента",
-        "clientRequired": "Клиент обязателен.",
-        "trainer": "Тренер (необязательно)",
-        "noTrainer": "Без тренера",
-        "goal": "Цель",
-        "difficulty": "Сложность",
-        "durationWeeks": "Длительность (недели)",
-        "durationInvalid": "Длительность должна быть 1–52.",
-        "sessionMinutes": "Длительность сессии (мин)",
-        "sessionInvalid": "Сессия должна быть 15–240 мин.",
-        "restDays": "Дни отдыха (0-7)",
-        "days": "Дни тренировок",
-        "daysRequired": "Выберите хотя бы один день.",
-        "description": "Описание (необязательно)",
-        "specialNotes": "Заметки (необязательно)",
-        "exercises": "Упражнения",
-        "addExercise": "Добавить упражнение",
-        "removeExercise": "Удалить",
-        "exercise": "Упражнение",
-        "exercisesMin1": "Добавьте хотя бы одно упражнение.",
-        "exerciseNameRequired": "Название упражнения обязательно.",
-        "exerciseSetsInvalid": "Неверные sets.",
-        "exerciseRepsInvalid": "Неверные reps.",
-        "exerciseDurationInvalid": "Неверная длительность (сек).",
-        "exerciseName": "Название",
-        "exerciseSets": "Sets",
-        "exerciseReps": "Reps",
-        "exerciseDurationSeconds": "Длительность (сек)",
-        "exerciseNotes": "Заметки",
-        "optional": "необязательно",
-        "create": "Создать",
-        "save": "Сохранить"
-      },
-      "clone": {
-        "title": "Клонировать план",
-        "source": "Источник",
-        "targetClient": "Клиент",
-        "selectClient": "Выберите клиента",
-        "clientRequired": "Клиент обязателен.",
-        "newName": "Новое имя (необязательно)",
-        "nameTooLong": "Имя слишком длинное.",
-        "newTrainer": "Новый тренер (необязательно)",
-        "keepTrainer": "Оставить тренера",
-        "clone": "Клонировать"
-      }
+        "months": "мес.",
+        "account": "Аккаунт",
+        "notLoggedIn": "Вы не авторизованы",
+        "purchase": "Оплатить",
+        "processing": "Обработка...",
+        "continueToPay": "Перейти к оплате",
+        "note": "Выберите способ оплаты. Stripe отображает реальный интерфейс карты. PayPal — демо-версия (Adapter).",
+        "successTitle": "Платеж инициирован",
+        "successText": "Транзакция создана. Подробности можно посмотреть в Панели управления."
+    },
+        "client": {
+        "dashboardTitle": "Панель клиента",
+        "mySubscription": "Мой абонемент",
+        "trainer": "Мой тренер",
+        "workouts": "Мой план тренировок",
+        "expiresIn": "Истекает через",
+        "days": "дн.",
+        "status": "Статус",
+        "plan": "План",
+        "notAvailable": "Пока недоступно",
+        "loading": "Загрузка..."
     }
-  }
 }

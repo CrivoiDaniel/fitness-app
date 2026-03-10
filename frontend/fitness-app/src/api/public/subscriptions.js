@@ -8,3 +8,11 @@ export async function getPublicSubscriptionPlans(baseUrl = "http://localhost:514
 
   return await res.json();
 }
+
+// NEW (fallback): ia lista și filtrează
+export async function getPublicSubscriptionPlanById(id) {
+  const all = await getPublicSubscriptionPlans();
+  const found = (all || []).find((x) => Number(x.id) === Number(id));
+  if (!found) throw new Error("Subscription plan not found.");
+  return found;
+}

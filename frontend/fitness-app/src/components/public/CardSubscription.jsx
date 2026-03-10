@@ -1,6 +1,7 @@
 import React from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom"; // NEW
 
 import monthLogo from "../../assets/month-logo.png";
 import threeMonthLogo from "../../assets/3month-logo.png";
@@ -14,6 +15,7 @@ const typeToImage = {
 
 const CardSubscription = ({ plan, index }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate(); // NEW
 
   const imgSrc = typeToImage[plan.type] ?? monthLogo;
   const typeText = t(`subscription.type.${plan.type}`, plan.type);
@@ -58,7 +60,10 @@ const CardSubscription = ({ plan, index }) => {
         </div>
       </div>
 
-      <button className="mt-10 bg-white text-black py-2 rounded-md shadow-md shadow-yellow-400 font-semibold hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer">
+      <button
+        className="mt-10 bg-white text-black py-2 rounded-md shadow-md shadow-yellow-400 font-semibold hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+        onClick={() => navigate(`/subscription/checkout/${plan.id}`)} // NEW
+      >
         {t("home.purchase")}
       </button>
     </div>

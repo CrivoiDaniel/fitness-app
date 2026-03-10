@@ -1,657 +1,684 @@
 {
-  "nav": {
-    "subscriptions": "Subscriptions",
-    "trainers": "Trainers",
-    "contacts": "Contacts",
-    "services": "Services",
-    "login": "Login",
-    "language": "Language"
-  },
-  "auth": {
-    "loginTitle": "Login",
-    "email": "Email",
-    "password": "Password",
-    "connect": "Login",
-    "connecting": "Logging in...",
-    "emailRequired": "Email is required.",
-    "emailInvalid": "Invalid email.",
-    "passwordRequired": "Password is required.",
-    "passwordMin": "Password must be at least 6 characters.",
-    "missingToken": "Could not log in. Please try again.",
-    "loginFailed": "Login failed."
-  },
-  "home": {
-    "heroTitle": "6-MONTH GYM MEMBERSHIP",
-    "oldPrice": "2999 MDL",
-    "newPrice": "2600 MDL / MONTH",
-    "buyNow": "BUY NOW",
-    "subsTitleSmall": "GRIFFIT FITNESS SUBSCRIPTIONS",
-    "subsTitle1": "THE PERFECT",
-    "subsTitle2": "SUBSCRIPTION FOR YOU!",
-    "subsSubtitle": "Great results for small investments!",
-    "loadingSubscriptions": "Loading subscriptions...",
-    "benefitsTitle1": "WHY YOU SHOULD COME",
-    "benefitsTitle2": "TO GRIFFIT?",
-    "benefitsHeading1": "DISCOVER THE BENEFITS",
-    "benefitsHeading2": "FOR YOUR WELL-BEING",
-    "signUp": "Sign Up",
-    "location": "Location",
-    "servicesTitle": "Our Services",
-    "purchase": "Purchase",
-    "noBenefits": "No benefits in this package."
-  },
-  "benefits": {
-    "b1": "Modern and diverse equipment",
-    "b2": "High-level cleanliness",
-    "b3": "You will become part of the best fitness community",
-    "b4": "You will have more energy",
-    "b5": "Well-being will improve",
-    "b6": "Lose weight or gain muscle mass",
-    "b7": "Endurance will be higher",
-    "b8": "You will feel great"
-  },
-  "subscription": {
-    "type": {
-      "Monthly": "Month",
-      "Quarterly": "3 Months",
-      "Yearly": "Year"
+    "nav": {
+        "subscriptions": "Subscriptions",
+        "trainers": "Trainers",
+        "contacts": "Contacts",
+        "services": "Services",
+        "login": "Login",
+        "language": "Language"
     },
-    "status": {
-      "Pending": "Pending",
-      "Active": "Active",
-      "Expired": "Expired",
-      "Cancelled": "Cancelled"
-    }
-  },
-  "payment": {
-    "status": {
-      "Pending": "Pending",
-      "Success": "Success",
-      "Failed": "Failed"
-    }
-  },
-  "common": {
-    "ok": "OK",
-    "cancel": "Cancel",
-    "logout": "Logout",
-    "back": "Back",
-    "next": "Next",
-    "page": "Page",
-    "of": "of",
-    "total": "Total",
-    "loading": "Loading...",
-    "refresh": "Refresh",
-    "yes": "Yes",
-    "no": "No",
-    "days": {
-      "monday": "Monday",
-      "tuesday": "Tuesday",
-      "wednesday": "Wednesday",
-      "thursday": "Thursday",
-      "friday": "Friday",
-      "saturday": "Saturday",
-      "sunday": "Sunday"
-    }
-  },
-  "workouts": {
-    "goal": {
-      "WeightLoss": "Weight loss",
-      "MuscleGain": "Muscle gain",
-      "Endurance": "Endurance",
-      "Strength": "Strength",
-      "Flexibility": "Flexibility",
-      "GeneralFitness": "General fitness"
-    },
-    "difficulty": {
-      "Beginner": "Beginner",
-      "Intermediate": "Intermediate",
-      "Advanced": "Advanced"
-    }
-  },
-  "notFound": {
-    "title": "404",
-    "message": "Page not found.",
-    "backHome": "Back home"
-  },
-  "unauthorized": {
-    "title": "Access Denied",
-    "message": "You do not have permission to access this page.",
-    "backHome": "Back home",
-    "dashboard": "Dashboard"
-  },
-  "changePassword": {
-    "title": "Change Password",
-    "subtitle": "For security reasons, you must set a new password.",
-    "current": "Current password",
-    "new": "New password",
-    "confirmNew": "Confirm new password",
-    "saving": "Saving...",
-    "save": "Change password",
-    "success": "Password changed successfully. You can log in again.",
-    "newRequired": "New password is required.",
-    "newMin": "New password must be at least 6 characters.",
-    "confirmRequired": "Confirmation is required.",
-    "confirmMismatch": "Passwords do not match."
-  },
-  "dashboard": {
-    "adminTitle": "Admin Dashboard",
-    "trainerTitle": "Trainer Dashboard",
-    "clientTitle": "Client Dashboard"
-  },
-  "sidebar": {
-    "admin": {
-      "overview": "Overview",
-      "clients": "Clients",
-      "trainers": "Trainers",
-      "benefits": "Benefits",
-      "benefitPackages": "Benefit Packages",
-      "subscriptionPlans": "Subscription Plans",
-      "subscriptions": "Subscriptions",
-      "payments": "Payments",
-      "workoutPlans": "Workout plans"
-    },
-    "trainer": {
-      "overview": "Overview",
-      "plans": "Plans"
-    },
-    "client": {
-      "overview": "Overview",
-      "profile": "Profile"
-    }
-  },
-  "admin": {
-    "dashboard": {
-      "title": "Admin Dashboard",
-      "subtitle": "Subscription and revenue statistics (Singleton cache).",
-      "errors": {
-        "load": "Error loading statistics.",
-        "loadExpiring": "Error loading expiring subscriptions.",
-        "refresh": "Error refreshing cache."
-      },
-      "cards": {
-        "totalSubscriptions": "Total Subscriptions",
-        "active": "Active",
-        "totalRevenue": "Total Revenue",
-        "monthlyRevenue": "Monthly Revenue",
-        "growth": "Growth rate",
-        "churn": "Churn rate"
-      },
-      "status": {
-        "active": "Active",
-        "pending": "Pending",
-        "expired": "Expired",
-        "cancelled": "Cancelled"
-      },
-      "revenue": {
-        "today": "Today",
-        "week": "This Week",
-        "month": "This Month",
-        "year": "This Year",
-        "allTime": "All Time"
-      },
-      "charts": {
-        "subscriptionsStatus": "Subscription Status Distribution",
-        "subscriptionsStatusHint": "Active / Pending / Expired / Cancelled.",
-        "revenueBreakdown": "Revenue Breakdown",
-        "revenueBreakdownHint": "Quick revenue comparison.",
-        "trends": "Trends (12 months)",
-        "trendsHint": "New vs Cancelled vs Net Growth."
-      },
-      "trends": {
-        "new": "New",
-        "cancelled": "Cancelled",
-        "net": "Net"
-      },
-      "cache": {
-        "title": "Cache (Singleton)",
-        "hint": "Data is calculated and cached for performance.",
-        "refresh": "Refresh",
-        "lastUpdate": "Last update",
-        "expiresAt": "Expires at",
-        "isExpired": "Expired",
-        "cachedSubscriptions": "Subs cached",
-        "cachedPayments": "Payments cached"
-      },
-      "expiring": {
-        "title": "Expiring Subscriptions",
-        "hint": "List of subscriptions expiring in the following days.",
-        "daysAhead": "Days",
-        "empty": "Nothing to display.",
-        "columns": {
-          "client": "Client",
-          "plan": "Plan",
-          "endDate": "End date",
-          "daysRemaining": "Days remaining",
-          "subscriptionId": "Sub ID"
-        }
-      }
-    },
-    "createdUser": {
-      "title": "User Created",
-      "hint": "Copy the data and send it to the user (email/SMS).",
-      "email": "Email",
-      "tempPassword": "Temporary password",
-      "fullMessage": "Full message (copy/paste)",
-      "copyEmail": "Copy email",
-      "copyPassword": "Copy password",
-      "copyMessage": "Copy message",
-      "template": "Account successfully created.\n\nEmail: {{email}}\nTemporary password: {{password}}\n\nPlease log in and change your password after your first login."
-    },
-    "clients": {
-      "title": "Clients",
-      "total": "Total clients",
-      "add": "Add client",
-      "edit": "Edit",
-      "delete": "Delete",
-      "loading": "Loading...",
-      "empty": "No clients found.",
-      "statusActive": "Active",
-      "statusInactive": "Inactive",
-      "columns": {
-        "id": "ID",
-        "name": "Name",
+    "auth": {
+        "loginTitle": "Login",
         "email": "Email",
-        "phone": "Phone",
-        "status": "Status",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete client {{name}}? This action is irreversible.",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load clients.",
-        "create": "Failed to create client.",
-        "edit": "Failed to update client.",
-        "delete": "Failed to delete client."
-      },
-      "form": {
-        "createTitle": "Add Client",
-        "editTitle": "Edit Client",
-        "email": "Email",
-        "firstName": "First name",
-        "lastName": "Last name",
-        "phone": "Phone",
-        "dob": "Date of birth",
-        "active": "Active",
-        "create": "Create",
-        "save": "Save",
+        "password": "Password",
+        "connect": "Login",
+        "connecting": "Logging in...",
         "emailRequired": "Email is required.",
         "emailInvalid": "Invalid email.",
-        "firstNameRequired": "First name is required.",
-        "lastNameRequired": "Last name is required.",
-        "dobRequired": "Date of birth is required."
-      }
+        "passwordRequired": "Password is required.",
+        "passwordMin": "Password must be at least 6 characters.",
+        "missingToken": "Could not log in. Please try again.",
+        "loginFailed": "Login failed."
     },
-    "trainers": {
-      "title": "Trainers",
-      "total": "Total trainers",
-      "add": "Add trainer",
-      "edit": "Edit",
-      "delete": "Delete",
-      "loading": "Loading...",
-      "empty": "No trainers found.",
-      "columns": {
-        "id": "ID",
-        "name": "Name",
-        "email": "Email",
-        "phone": "Phone",
-        "specialization": "Specialization",
-        "years": "Experience (years)",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete trainer {{name}}? This action is irreversible.",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load trainers.",
-        "create": "Failed to create trainer.",
-        "edit": "Failed to update trainer.",
-        "delete": "Failed to delete trainer."
-      },
-      "form": {
-        "createTitle": "Add Trainer",
-        "editTitle": "Edit Trainer",
-        "email": "Email",
-        "firstName": "First name",
-        "lastName": "Last name",
-        "phone": "Phone",
-        "specialization": "Specialization",
-        "years": "Experience",
-        "active": "Active",
-        "create": "Create",
-        "save": "Save",
-        "emailRequired": "Email is required.",
-        "emailInvalid": "Invalid email.",
-        "firstNameRequired": "First name is required.",
-        "lastNameRequired": "Last name is required.",
-        "specializationRequired": "Specialization is required.",
-        "yearsRequired": "Experience is required.",
-        "yearsInvalid": "Invalid experience.",
-        "yearsRange": "Experience must be between 0 and 50."
-      }
+    "home": {
+        "heroTitle": "6-MONTH GYM MEMBERSHIP",
+        "oldPrice": "2999 MDL",
+        "newPrice": "2600 MDL / MONTH",
+        "buyNow": "BUY NOW",
+        "subsTitleSmall": "GRIFFIT FITNESS SUBSCRIPTIONS",
+        "subsTitle1": "THE PERFECT",
+        "subsTitle2": "SUBSCRIPTION FOR YOU!",
+        "subsSubtitle": "Great results for small investments!",
+        "loadingSubscriptions": "Loading subscriptions...",
+        "benefitsTitle1": "WHY YOU SHOULD COME",
+        "benefitsTitle2": "TO GRIFFIT?",
+        "benefitsHeading1": "DISCOVER THE BENEFITS",
+        "benefitsHeading2": "FOR YOUR WELL-BEING",
+        "signUp": "Sign Up",
+        "location": "Location",
+        "servicesTitle": "Our Services",
+        "purchase": "Purchase",
+        "noBenefits": "No benefits in this package."
     },
     "benefits": {
-      "title": "Benefits",
-      "total": "Total benefits",
-      "add": "Add benefit",
-      "edit": "Edit",
-      "delete": "Delete",
-      "loading": "Loading...",
-      "empty": "No benefits found.",
-      "statusActive": "Active",
-      "statusInactive": "Inactive",
-      "columns": {
-        "id": "ID",
-        "key": "Key",
-        "displayName": "Display name",
-        "active": "Active",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete benefit {{name}}?",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load benefits.",
-        "create": "Failed to create benefit.",
-        "edit": "Failed to update benefit.",
-        "delete": "Failed to delete benefit."
-      },
-      "form": {
-        "createTitle": "Add Benefit",
-        "editTitle": "Edit Benefit",
-        "name": "Key (slug)",
-        "nameHint": "Only lowercase letters and underscore (e.g. pool_access). Cannot be changed later.",
-        "displayName": "Display name (EN / fallback)",
-        "description": "Description",
-        "active": "Active",
-        "create": "Create",
-        "save": "Save",
-        "nameRequired": "Key is required.",
-        "nameInvalid": "Key must contain only lowercase letters and underscores (a-z, _).",
-        "displayNameRequired": "Display name is required."
-      }
+        "b1": "Modern and diverse equipment",
+        "b2": "High-level cleanliness",
+        "b3": "You will become part of the best fitness community",
+        "b4": "You will have more energy",
+        "b5": "Well-being will improve",
+        "b6": "Lose weight or gain muscle mass",
+        "b7": "Endurance will be higher",
+        "b8": "You will feel great"
     },
-    "benefitPackages": {
-      "title": "Benefit Packages",
-      "total": "Total packages",
-      "add": "Add package",
-      "edit": "Edit",
-      "delete": "Delete",
-      "loading": "Loading...",
-      "empty": "No packages found.",
-      "statusActive": "Active",
-      "statusInactive": "Inactive",
-      "columns": {
-        "id": "ID",
-        "name": "Name",
-        "weekday": "Weekday schedule",
-        "weekend": "Weekend schedule",
-        "active": "Active",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Are you sure you want to delete package {{name}}?",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load packages.",
-        "loadOne": "Failed to load package data.",
-        "create": "Failed to create package.",
-        "edit": "Failed to update package.",
-        "delete": "Failed to delete package."
-      },
-      "form": {
-        "createTitle": "Add Package",
-        "editTitle": "Edit Package",
-        "name": "Name",
-        "scheduleWeekday": "Weekday schedule",
-        "scheduleWeekend": "Weekend schedule",
-        "active": "Active",
-        "items": "Items",
-        "addItem": "Add item",
-        "removeItem": "Remove",
-        "selectBenefit": "Select benefit",
-        "valuePlaceholder": "Value (e.g. Unlimited / 10 visits / etc.)",
-        "create": "Create",
-        "save": "Save",
-        "nameRequired": "Name is required.",
-        "weekdayRequired": "Weekday schedule is required.",
-        "weekendRequired": "Weekend schedule is required.",
-        "itemsMin1": "At least one item is required.",
-        "itemBenefitRequired": "A benefit must be selected for each item.",
-        "itemValueRequired": "A value must be provided for each item.",
-        "itemsNoDuplicates": "The same benefit cannot be added twice."
-      }
+    "subscription": {
+        "type": {
+            "Monthly": "Month",
+            "Quarterly": "3 Months",
+            "Yearly": "Year"
+        },
+        "status": {
+            "Pending": "Pending",
+            "Active": "Active",
+            "Expired": "Expired",
+            "Cancelled": "Cancelled"
+        }
     },
-    "subscriptionPlans": {
-      "title": "Subscription Plans",
-      "total": "Total plans",
-      "add": "Add plan",
-      "edit": "Edit",
-      "delete": "Delete",
-      "empty": "No plans found.",
-      "statusActive": "Active",
-      "statusInactive": "Inactive",
-      "columns": {
-        "id": "ID",
-        "type": "Type",
-        "duration": "Months",
+    "payment": {
+        "status": {
+            "Pending": "Pending",
+            "Success": "Success",
+            "Failed": "Failed"
+        }
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Cancel",
+        "logout": "Logout",
+        "back": "Back",
+        "next": "Next",
+        "page": "Page",
+        "of": "of",
+        "total": "Total",
+        "loading": "Loading...",
+        "refresh": "Refresh",
+        "yes": "Yes",
+        "no": "No",
+        "days": {
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+        }
+    },
+    "workouts": {
+        "goal": {
+            "WeightLoss": "Weight loss",
+            "MuscleGain": "Muscle gain",
+            "Endurance": "Endurance",
+            "Strength": "Strength",
+            "Flexibility": "Flexibility",
+            "GeneralFitness": "General fitness"
+        },
+        "difficulty": {
+            "Beginner": "Beginner",
+            "Intermediate": "Intermediate",
+            "Advanced": "Advanced"
+        }
+    },
+    "notFound": {
+        "title": "404",
+        "message": "Page not found.",
+        "backHome": "Back home"
+    },
+    "unauthorized": {
+        "title": "Access Denied",
+        "message": "You do not have permission to access this page.",
+        "backHome": "Back home",
+        "dashboard": "Dashboard"
+    },
+    "changePassword": {
+        "title": "Change Password",
+        "subtitle": "For security reasons, you must set a new password.",
+        "current": "Current password",
+        "new": "New password",
+        "confirmNew": "Confirm new password",
+        "saving": "Saving...",
+        "save": "Change password",
+        "success": "Password changed successfully. You can log in again.",
+        "newRequired": "New password is required.",
+        "newMin": "New password must be at least 6 characters.",
+        "confirmRequired": "Confirmation is required.",
+        "confirmMismatch": "Passwords do not match."
+    },
+    "dashboard": {
+        "adminTitle": "Admin Dashboard",
+        "trainerTitle": "Trainer Dashboard",
+        "clientTitle": "Client Dashboard"
+    },
+    "sidebar": {
+        "admin": {
+            "overview": "Overview",
+            "clients": "Clients",
+            "trainers": "Trainers",
+            "benefits": "Benefits",
+            "benefitPackages": "Benefit Packages",
+            "subscriptionPlans": "Subscription Plans",
+            "subscriptions": "Subscriptions",
+            "payments": "Payments",
+            "workoutPlans": "Workout plans"
+        },
+        "trainer": {
+            "overview": "Overview",
+            "plans": "Plans"
+        },
+        "client": {
+            "overview": "Overview",
+            "profile": "Profile"
+        }
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Admin Dashboard",
+            "subtitle": "Subscription and revenue statistics (Singleton cache).",
+            "errors": {
+                "load": "Error loading statistics.",
+                "loadExpiring": "Error loading expiring subscriptions.",
+                "refresh": "Error refreshing cache."
+            },
+            "cards": {
+                "totalSubscriptions": "Total Subscriptions",
+                "active": "Active",
+                "totalRevenue": "Total Revenue",
+                "monthlyRevenue": "Monthly Revenue",
+                "growth": "Growth rate",
+                "churn": "Churn rate"
+            },
+            "status": {
+                "active": "Active",
+                "pending": "Pending",
+                "expired": "Expired",
+                "cancelled": "Cancelled"
+            },
+            "revenue": {
+                "today": "Today",
+                "week": "This Week",
+                "month": "This Month",
+                "year": "This Year",
+                "allTime": "All Time"
+            },
+            "charts": {
+                "subscriptionsStatus": "Subscription Status Distribution",
+                "subscriptionsStatusHint": "Active / Pending / Expired / Cancelled.",
+                "revenueBreakdown": "Revenue Breakdown",
+                "revenueBreakdownHint": "Quick revenue comparison.",
+                "trends": "Trends (12 months)",
+                "trendsHint": "New vs Cancelled vs Net Growth."
+            },
+            "trends": {
+                "new": "New",
+                "cancelled": "Cancelled",
+                "net": "Net"
+            },
+            "cache": {
+                "title": "Cache (Singleton)",
+                "hint": "Data is calculated and cached for performance.",
+                "refresh": "Refresh",
+                "lastUpdate": "Last update",
+                "expiresAt": "Expires at",
+                "isExpired": "Expired",
+                "cachedSubscriptions": "Subs cached",
+                "cachedPayments": "Payments cached"
+            },
+            "expiring": {
+                "title": "Expiring Subscriptions",
+                "hint": "List of subscriptions expiring in the following days.",
+                "daysAhead": "Days",
+                "empty": "Nothing to display.",
+                "columns": {
+                    "client": "Client",
+                    "plan": "Plan",
+                    "endDate": "End date",
+                    "daysRemaining": "Days remaining",
+                    "subscriptionId": "Sub ID"
+                }
+            }
+        },
+        "createdUser": {
+            "title": "User Created",
+            "hint": "Copy the data and send it to the user (email/SMS).",
+            "email": "Email",
+            "tempPassword": "Temporary password",
+            "fullMessage": "Full message (copy/paste)",
+            "copyEmail": "Copy email",
+            "copyPassword": "Copy password",
+            "copyMessage": "Copy message",
+            "template": "Account successfully created.\n\nEmail: {{email}}\nTemporary password: {{password}}\n\nPlease log in and change your password after your first login."
+        },
+        "clients": {
+            "title": "Clients",
+            "total": "Total clients",
+            "add": "Add client",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No clients found.",
+            "statusActive": "Active",
+            "statusInactive": "Inactive",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "email": "Email",
+                "phone": "Phone",
+                "status": "Status",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete client {{name}}? This action is irreversible.",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load clients.",
+                "create": "Failed to create client.",
+                "edit": "Failed to update client.",
+                "delete": "Failed to delete client."
+            },
+            "form": {
+                "createTitle": "Add Client",
+                "editTitle": "Edit Client",
+                "email": "Email",
+                "firstName": "First name",
+                "lastName": "Last name",
+                "phone": "Phone",
+                "dob": "Date of birth",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "emailRequired": "Email is required.",
+                "emailInvalid": "Invalid email.",
+                "firstNameRequired": "First name is required.",
+                "lastNameRequired": "Last name is required.",
+                "dobRequired": "Date of birth is required."
+            }
+        },
+        "trainers": {
+            "title": "Trainers",
+            "total": "Total trainers",
+            "add": "Add trainer",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No trainers found.",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "email": "Email",
+                "phone": "Phone",
+                "specialization": "Specialization",
+                "years": "Experience (years)",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete trainer {{name}}? This action is irreversible.",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load trainers.",
+                "create": "Failed to create trainer.",
+                "edit": "Failed to update trainer.",
+                "delete": "Failed to delete trainer."
+            },
+            "form": {
+                "createTitle": "Add Trainer",
+                "editTitle": "Edit Trainer",
+                "email": "Email",
+                "firstName": "First name",
+                "lastName": "Last name",
+                "phone": "Phone",
+                "specialization": "Specialization",
+                "years": "Experience",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "emailRequired": "Email is required.",
+                "emailInvalid": "Invalid email.",
+                "firstNameRequired": "First name is required.",
+                "lastNameRequired": "Last name is required.",
+                "specializationRequired": "Specialization is required.",
+                "yearsRequired": "Experience is required.",
+                "yearsInvalid": "Invalid experience.",
+                "yearsRange": "Experience must be between 0 and 50."
+            }
+        },
+        "benefits": {
+            "title": "Benefits",
+            "total": "Total benefits",
+            "add": "Add benefit",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No benefits found.",
+            "statusActive": "Active",
+            "statusInactive": "Inactive",
+            "columns": {
+                "id": "ID",
+                "key": "Key",
+                "displayName": "Display name",
+                "active": "Active",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete benefit {{name}}?",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load benefits.",
+                "create": "Failed to create benefit.",
+                "edit": "Failed to update benefit.",
+                "delete": "Failed to delete benefit."
+            },
+            "form": {
+                "createTitle": "Add Benefit",
+                "editTitle": "Edit Benefit",
+                "name": "Key (slug)",
+                "nameHint": "Only lowercase letters and underscore (e.g. pool_access). Cannot be changed later.",
+                "displayName": "Display name (EN / fallback)",
+                "description": "Description",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "nameRequired": "Key is required.",
+                "nameInvalid": "Key must contain only lowercase letters and underscores (a-z, _).",
+                "displayNameRequired": "Display name is required."
+            }
+        },
+        "benefitPackages": {
+            "title": "Benefit Packages",
+            "total": "Total packages",
+            "add": "Add package",
+            "edit": "Edit",
+            "delete": "Delete",
+            "loading": "Loading...",
+            "empty": "No packages found.",
+            "statusActive": "Active",
+            "statusInactive": "Inactive",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "weekday": "Weekday schedule",
+                "weekend": "Weekend schedule",
+                "active": "Active",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Are you sure you want to delete package {{name}}?",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load packages.",
+                "loadOne": "Failed to load package data.",
+                "create": "Failed to create package.",
+                "edit": "Failed to update package.",
+                "delete": "Failed to delete package."
+            },
+            "form": {
+                "createTitle": "Add Package",
+                "editTitle": "Edit Package",
+                "name": "Name",
+                "scheduleWeekday": "Weekday schedule",
+                "scheduleWeekend": "Weekend schedule",
+                "active": "Active",
+                "items": "Items",
+                "addItem": "Add item",
+                "removeItem": "Remove",
+                "selectBenefit": "Select benefit",
+                "valuePlaceholder": "Value (e.g. Unlimited / 10 visits / etc.)",
+                "create": "Create",
+                "save": "Save",
+                "nameRequired": "Name is required.",
+                "weekdayRequired": "Weekday schedule is required.",
+                "weekendRequired": "Weekend schedule is required.",
+                "itemsMin1": "At least one item is required.",
+                "itemBenefitRequired": "A benefit must be selected for each item.",
+                "itemValueRequired": "A value must be provided for each item.",
+                "itemsNoDuplicates": "The same benefit cannot be added twice."
+            }
+        },
+        "subscriptionPlans": {
+            "title": "Subscription Plans",
+            "total": "Total plans",
+            "add": "Add plan",
+            "edit": "Edit",
+            "delete": "Delete",
+            "empty": "No plans found.",
+            "statusActive": "Active",
+            "statusInactive": "Inactive",
+            "columns": {
+                "id": "ID",
+                "type": "Type",
+                "duration": "Months",
+                "price": "Price",
+                "package": "Package",
+                "installments": "Installments",
+                "active": "Active",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete plan {{name}}?",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load plans.",
+                "create": "Failed to create plan.",
+                "edit": "Failed to update plan.",
+                "delete": "Failed to delete plan."
+            },
+            "form": {
+                "createTitle": "Add Plan",
+                "editTitle": "Edit Plan",
+                "type": "Type",
+                "duration": "Duration (months)",
+                "price": "Price",
+                "package": "Benefit package",
+                "selectPackage": "Select package",
+                "recurring": "Recurring (auto-renew)",
+                "installments": "Allow installments",
+                "maxInstallments": "Max installments",
+                "active": "Active",
+                "create": "Create",
+                "save": "Save",
+                "priceRequired": "Price is required.",
+                "priceInvalid": "Invalid price.",
+                "durationInvalid": "Duration must be between 0 and 120 months.",
+                "packageRequired": "Benefit package is required.",
+                "maxInstallmentsInvalid": "Number of installments must be between 1 and 24."
+            }
+        },
+        "subscriptions": {
+            "title": "Subscriptions",
+            "total": "Total subscriptions",
+            "add": "Add subscription",
+            "edit": "Edit",
+            "delete": "Delete",
+            "cancel": "Cancel",
+            "renew": "Renew",
+            "empty": "No subscriptions found.",
+            "columns": {
+                "id": "ID",
+                "client": "Client",
+                "plan": "Plan",
+                "status": "Status",
+                "start": "Start",
+                "end": "End",
+                "autoRenew": "Auto-renew",
+                "payments": "Payments",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete subscription: {{name}}?",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load subscriptions.",
+                "create": "Failed to create subscription.",
+                "edit": "Failed to update subscription.",
+                "delete": "Failed to delete subscription.",
+                "cancel": "Failed to cancel subscription.",
+                "renew": "Failed to renew subscription."
+            },
+            "form": {
+                "createTitle": "Add Subscription",
+                "editTitle": "Edit Subscription",
+                "client": "Client",
+                "selectClient": "Select client",
+                "plan": "Subscription plan",
+                "selectPlan": "Select plan",
+                "startDate": "Start date",
+                "endDate": "End date",
+                "status": "Status",
+                "autoRenew": "Auto-renew",
+                "create": "Create",
+                "save": "Save"
+            }
+        },
+        "payments": {
+            "title": "Payments",
+            "total": "Total payments",
+            "add": "Add payment",
+            "edit": "Edit",
+            "delete": "Delete",
+            "markSuccess": "Success",
+            "markFailed": "Failed",
+            "empty": "No payments found.",
+            "columns": {
+                "id": "ID",
+                "subscriptionId": "Subscription",
+                "client": "Client",
+                "amount": "Amount",
+                "date": "Date",
+                "status": "Status",
+                "installment": "Installment",
+                "transactionId": "Transaction",
+                "actions": "Actions"
+            },
+            "confirmDelete": {
+                "title": "Confirm Delete",
+                "message": "Delete payment: {{name}}?",
+                "confirmText": "Delete"
+            },
+            "errors": {
+                "load": "Failed to load payments.",
+                "create": "Failed to create payment.",
+                "edit": "Failed to update payment.",
+                "delete": "Failed to delete payment.",
+                "markSuccess": "Failed to mark payment as successful.",
+                "markFailed": "Failed to mark payment as failed."
+            },
+            "form": {
+                "createTitle": "Add Payment",
+                "editTitle": "Edit Payment",
+                "subscription": "Subscription",
+                "selectSubscription": "Select subscription",
+                "amount": "Amount",
+                "paymentDate": "Payment date",
+                "installmentNumber": "Installment number",
+                "transactionId": "Transaction ID",
+                "status": "Status",
+                "create": "Create",
+                "save": "Save"
+            }
+        },
+        "workoutPlans": {
+            "title": "Workout plans",
+            "total": "Total plans",
+            "add": "Add plan",
+            "edit": "Edit",
+            "cloneBtn": "Clone",
+            "empty": "No plans.",
+            "columns": {
+                "id": "ID",
+                "name": "Name",
+                "client": "Client",
+                "trainer": "Trainer",
+                "goal": "Goal",
+                "difficulty": "Difficulty",
+                "duration": "Duration",
+                "exercises": "Exercises",
+                "actions": "Actions"
+            },
+            "errors": {
+                "load": "Failed to load workout plans.",
+                "create": "Failed to create workout plan.",
+                "edit": "Failed to save.",
+                "clone": "Failed to clone."
+            },
+            "form": {
+                "createTitle": "Create plan",
+                "editTitle": "Edit plan",
+                "editHint": "Note: if backend has no PUT, saving will create a new plan (copy).",
+                "name": "Name",
+                "nameRequired": "Name is required (min 3 chars).",
+                "client": "Client",
+                "selectClient": "Select client",
+                "clientRequired": "Client is required.",
+                "trainer": "Trainer (optional)",
+                "noTrainer": "No trainer",
+                "goal": "Goal",
+                "difficulty": "Difficulty",
+                "durationWeeks": "Duration (weeks)",
+                "durationInvalid": "Duration must be between 1 and 52.",
+                "sessionMinutes": "Session duration (min)",
+                "sessionInvalid": "Session duration must be between 15 and 240.",
+                "restDays": "Rest days (0-7)",
+                "days": "Workout days",
+                "daysRequired": "Select at least one day.",
+                "description": "Description (optional)",
+                "specialNotes": "Special notes (optional)",
+                "exercises": "Exercises",
+                "addExercise": "Add exercise",
+                "removeExercise": "Remove",
+                "exercise": "Exercise",
+                "exercisesMin1": "Add at least one exercise.",
+                "exerciseNameRequired": "Exercise name is required.",
+                "exerciseSetsInvalid": "Invalid sets.",
+                "exerciseRepsInvalid": "Invalid reps.",
+                "exerciseDurationInvalid": "Invalid duration (sec).",
+                "exerciseName": "Name",
+                "exerciseSets": "Sets",
+                "exerciseReps": "Reps",
+                "exerciseDurationSeconds": "Duration (sec)",
+                "exerciseNotes": "Notes",
+                "optional": "optional",
+                "create": "Create",
+                "save": "Save"
+            },
+            "clone": {
+                "title": "Clone plan",
+                "source": "Source",
+                "targetClient": "Target client",
+                "selectClient": "Select client",
+                "clientRequired": "Target client is required.",
+                "newName": "New name (optional)",
+                "nameTooLong": "Name is too long.",
+                "newTrainer": "New trainer (optional)",
+                "keepTrainer": "Keep trainer",
+                "clone": "Clone"
+            }
+        }
+    },
+    "checkout": {
+        "title": "Checkout",
+        "plan": "Subscription",
         "price": "Price",
-        "package": "Package",
-        "installments": "Installments",
-        "active": "Active",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete plan {{name}}?",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load plans.",
-        "create": "Failed to create plan.",
-        "edit": "Failed to update plan.",
-        "delete": "Failed to delete plan."
-      },
-      "form": {
-        "createTitle": "Add Plan",
-        "editTitle": "Edit Plan",
-        "type": "Type",
-        "duration": "Duration (months)",
-        "price": "Price",
-        "package": "Benefit package",
-        "selectPackage": "Select package",
-        "recurring": "Recurring (auto-renew)",
-        "installments": "Allow installments",
-        "maxInstallments": "Max installments",
-        "active": "Active",
-        "create": "Create",
-        "save": "Save",
-        "priceRequired": "Price is required.",
-        "priceInvalid": "Invalid price.",
-        "durationInvalid": "Duration must be between 0 and 120 months.",
-        "packageRequired": "Benefit package is required.",
-        "maxInstallmentsInvalid": "Number of installments must be between 1 and 24."
-      }
-    },
-    "subscriptions": {
-      "title": "Subscriptions",
-      "total": "Total subscriptions",
-      "add": "Add subscription",
-      "edit": "Edit",
-      "delete": "Delete",
-      "cancel": "Cancel",
-      "renew": "Renew",
-      "empty": "No subscriptions found.",
-      "columns": {
-        "id": "ID",
-        "client": "Client",
-        "plan": "Plan",
-        "status": "Status",
-        "start": "Start",
-        "end": "End",
-        "autoRenew": "Auto-renew",
-        "payments": "Payments",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete subscription: {{name}}?",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load subscriptions.",
-        "create": "Failed to create subscription.",
-        "edit": "Failed to update subscription.",
-        "delete": "Failed to delete subscription.",
-        "cancel": "Failed to cancel subscription.",
-        "renew": "Failed to renew subscription."
-      },
-      "form": {
-        "createTitle": "Add Subscription",
-        "editTitle": "Edit Subscription",
-        "client": "Client",
-        "selectClient": "Select client",
-        "plan": "Subscription plan",
-        "selectPlan": "Select plan",
-        "startDate": "Start date",
-        "endDate": "End date",
-        "status": "Status",
-        "autoRenew": "Auto-renew",
-        "create": "Create",
-        "save": "Save"
-      }
-    },
-    "payments": {
-      "title": "Payments",
-      "total": "Total payments",
-      "add": "Add payment",
-      "edit": "Edit",
-      "delete": "Delete",
-      "markSuccess": "Success",
-      "markFailed": "Failed",
-      "empty": "No payments found.",
-      "columns": {
-        "id": "ID",
-        "subscriptionId": "Subscription",
-        "client": "Client",
-        "amount": "Amount",
-        "date": "Date",
-        "status": "Status",
-        "installment": "Installment",
-        "transactionId": "Transaction",
-        "actions": "Actions"
-      },
-      "confirmDelete": {
-        "title": "Confirm Delete",
-        "message": "Delete payment: {{name}}?",
-        "confirmText": "Delete"
-      },
-      "errors": {
-        "load": "Failed to load payments.",
-        "create": "Failed to create payment.",
-        "edit": "Failed to update payment.",
-        "delete": "Failed to delete payment.",
-        "markSuccess": "Failed to mark payment as successful.",
-        "markFailed": "Failed to mark payment as failed."
-      },
-      "form": {
-        "createTitle": "Add Payment",
-        "editTitle": "Edit Payment",
-        "subscription": "Subscription",
-        "selectSubscription": "Select subscription",
-        "amount": "Amount",
-        "paymentDate": "Payment date",
-        "installmentNumber": "Installment number",
-        "transactionId": "Transaction ID",
-        "status": "Status",
-        "create": "Create",
-        "save": "Save"
-      }
-    },
-    "workoutPlans": {
-      "title": "Workout plans",
-      "total": "Total plans",
-      "add": "Add plan",
-      "edit": "Edit",
-      "cloneBtn": "Clone",
-      "empty": "No plans.",
-      "columns": {
-        "id": "ID",
-        "name": "Name",
-        "client": "Client",
-        "trainer": "Trainer",
-        "goal": "Goal",
-        "difficulty": "Difficulty",
         "duration": "Duration",
-        "exercises": "Exercises",
-        "actions": "Actions"
-      },
-      "errors": {
-        "load": "Failed to load workout plans.",
-        "create": "Failed to create workout plan.",
-        "edit": "Failed to save.",
-        "clone": "Failed to clone."
-      },
-      "form": {
-        "createTitle": "Create plan",
-        "editTitle": "Edit plan",
-        "editHint": "Note: if backend has no PUT, saving will create a new plan (copy).",
-        "name": "Name",
-        "nameRequired": "Name is required (min 3 chars).",
-        "client": "Client",
-        "selectClient": "Select client",
-        "clientRequired": "Client is required.",
-        "trainer": "Trainer (optional)",
-        "noTrainer": "No trainer",
-        "goal": "Goal",
-        "difficulty": "Difficulty",
-        "durationWeeks": "Duration (weeks)",
-        "durationInvalid": "Duration must be between 1 and 52.",
-        "sessionMinutes": "Session duration (min)",
-        "sessionInvalid": "Session duration must be between 15 and 240.",
-        "restDays": "Rest days (0-7)",
-        "days": "Workout days",
-        "daysRequired": "Select at least one day.",
-        "description": "Description (optional)",
-        "specialNotes": "Special notes (optional)",
-        "exercises": "Exercises",
-        "addExercise": "Add exercise",
-        "removeExercise": "Remove",
-        "exercise": "Exercise",
-        "exercisesMin1": "Add at least one exercise.",
-        "exerciseNameRequired": "Exercise name is required.",
-        "exerciseSetsInvalid": "Invalid sets.",
-        "exerciseRepsInvalid": "Invalid reps.",
-        "exerciseDurationInvalid": "Invalid duration (sec).",
-        "exerciseName": "Name",
-        "exerciseSets": "Sets",
-        "exerciseReps": "Reps",
-        "exerciseDurationSeconds": "Duration (sec)",
-        "exerciseNotes": "Notes",
-        "optional": "optional",
-        "create": "Create",
-        "save": "Save"
-      },
-      "clone": {
-        "title": "Clone plan",
-        "source": "Source",
-        "targetClient": "Target client",
-        "selectClient": "Select client",
-        "clientRequired": "Target client is required.",
-        "newName": "New name (optional)",
-        "nameTooLong": "Name is too long.",
-        "newTrainer": "New trainer (optional)",
-        "keepTrainer": "Keep trainer",
-        "clone": "Clone"
-      }
+        "months": "months",
+        "account": "Account",
+        "notLoggedIn": "You are not logged in",
+        "purchase": "Pay now",
+        "processing": "Processing...",
+        "continueToPay": "Continue to payment",
+        "note": "Choose your payment method. Stripe shows a real card UI. PayPal is demo (Adapter).",
+        "successTitle": "Payment Initiated",
+        "successText": "Transaction has been created. See details in the Dashboard."
+    },
+    "client": {
+        "dashboardTitle": "Client Dashboard",
+        "mySubscription": "My Subscription",
+        "trainer": "My Trainer",
+        "workouts": "My Workout Plan",
+        "expiresIn": "Expires in",
+        "days": "days",
+        "status": "Status",
+        "plan": "Plan",
+        "notAvailable": "Not available yet",
+        "loading": "Loading..."
     }
-  }
 }

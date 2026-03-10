@@ -17,6 +17,10 @@ using FitnessApp.Infrastructure.Repositories.Auth;
 using FitnessApp.Application.Factories;
 using FitnessApp.Application.Interfaces.Admin;
 using FitnessApp.Application.Services.Users;
+using FitnessApp.Infrastructure.Payments.Stripe;
+using FitnessApp.Infrastructure.Payments.Paypal;
+using FitnessApp.Infrastructure.Payments;
+using FitnessApp.Application.Payments.Gateways;
 
 namespace FitnessApp.Infrastructure;
 
@@ -87,6 +91,17 @@ public static class DependencyInjection
 
         //ADD RefreshToken Repository
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+
+        // în AddInfrastructure(...)
+        services.Configure<PaymentGatewayOptions>(configuration.GetSection("PaymentGateway"));
+        services.Configure<StripeOptions>(configuration.GetSection("Stripe"));
+
+        // adapters
+        services.AddSingleton<StripePaymentGatewayAdapter>();
+        services.AddSingleton<PaypalPaymentGatewayAdapter>();
+
+        // factory as IPaymentGatewayFactory
+        services.AddSingleton<IPaymentGatewayFactory, PaymentGatewayFactory>();
 
         return services;
     }
