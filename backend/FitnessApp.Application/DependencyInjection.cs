@@ -13,6 +13,7 @@ using FitnessApp.Application.Features.Statistics;
 using FitnessApp.Application.Features.Workouts;
 using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Application.Services.Auth;
+using FitnessApp.Application.Facades;
 
 namespace FitnessApp.Application;
 
@@ -57,6 +58,8 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
 
         services.AddScoped<IPurchaseSubscriptionService, PurchaseSubscriptionService>();
+
+        services.AddScoped<CheckoutFacade>();
         return services;
     }
 }

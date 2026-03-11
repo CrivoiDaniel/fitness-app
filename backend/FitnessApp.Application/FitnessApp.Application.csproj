@@ -13,6 +13,7 @@
     <Folder Include="DTOs/Subscriptions/Purchase/" />
     <Folder Include="DTOs/Subscriptions/Subscription/" />
     <Folder Include="DTOs/Subscriptions/SubscriptionPlan/" />
+    <Folder Include="Facades/" />
     <Folder Include="Factories/" />
     <Folder Include="Interfaces/Authentication/" />
     <Folder Include="Interfaces/Repositories/Subscriptions/" />

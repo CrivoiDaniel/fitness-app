@@ -1,7 +1,7 @@
 using System;
 using System.Security.Claims;
 using FitnessApp.Application.DTOs.Subscriptions.Purchase;
-using FitnessApp.Application.Interfaces.Subscriptions;
+using FitnessApp.Application.Facades;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +13,11 @@ namespace FitnessApp.API.Controllers.Subscriptions;
 [Authorize(Roles = "Client,Admin")]
 public class PurchaseSubscriptionController : ControllerBase
 {
-    private readonly IPurchaseSubscriptionService _service;
+     private readonly CheckoutFacade _checkout;
 
-    public PurchaseSubscriptionController(IPurchaseSubscriptionService service)
+    public PurchaseSubscriptionController(CheckoutFacade checkout)
     {
-        _service = service;
+        _checkout = checkout;
     }
 
     [HttpPost]
@@ -30,7 +30,7 @@ public class PurchaseSubscriptionController : ControllerBase
         if (!int.TryParse(userIdStr, out var userId) || userId <= 0)
             return Unauthorized(new { message = "Invalid user id in token." });
 
-        var result = await _service.PurchaseAsync(userId, dto, cancellationToken);
+         var result = await _checkout.PurchaseSubscriptionAsync(userId, dto, cancellationToken);
         return Ok(result);
     }
 }
