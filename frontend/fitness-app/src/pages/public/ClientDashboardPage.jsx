@@ -72,7 +72,10 @@ export default function ClientDashboardPage() {
     return byPriority[0];
   }, [subs]);
 
-  const myPlan = plans?.[0] ?? null;
+  const myPlan =
+      plans?.find((p) => (p.exercises || []).some((e) => e.muscleGroup || e.equipment)) ??
+      plans?.[0] ??
+      null;
 
   const startDate = safeDate(current?.startDate);
   const endDate = safeDate(current?.endDate);
@@ -204,7 +207,10 @@ export default function ClientDashboardPage() {
                             {e.orderInWorkout}. {e.name}
                           </span>
                           <span className="text-gray-600 text-sm">
-                            {e.sets}x{e.reps}{e.durationSeconds ? ` • ${e.durationSeconds}s` : ""}
+                            {e.sets}x{e.reps}
+                            {e.durationSeconds ? ` • ${e.durationSeconds}s` : ""}
+                            {e.muscleGroup ? ` • ${e.muscleGroup}` : ""}
+                            {e.equipment ? ` • ${e.equipment}` : ""}
                           </span>
                         </li>
                       ))}
@@ -218,4 +224,4 @@ export default function ClientDashboardPage() {
       </div>
     </div>
   );
-}
+} 

@@ -14,6 +14,7 @@ using FitnessApp.Application.Features.Workouts;
 using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Application.Services.Auth;
 using FitnessApp.Application.Facades;
+using FitnessApp.Application.Interfaces.Flyweight;
 
 namespace FitnessApp.Application;
 
@@ -60,6 +61,8 @@ public static class DependencyInjection
         services.AddScoped<IPurchaseSubscriptionService, PurchaseSubscriptionService>();
 
         services.AddScoped<CheckoutFacade>();
+        
+        services.AddSingleton<IExerciseCatalog, InMemoryExerciseCatalog>();
         return services;
     }
 }

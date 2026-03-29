@@ -1,5 +1,6 @@
 using System;
 using FitnessApp.Application.DTOs.Workouts;
+using FitnessApp.Application.Interfaces.Flyweight;
 using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Application.Interfaces.Workout;
 using FitnessApp.Domain.Builders;
@@ -21,16 +22,21 @@ public class WorkoutPlanService : IWorkoutPlanService
     private readonly ITrainerRepository _trainerRepository;
     private readonly WorkoutPlanBuilder _builder;
     private readonly WorkoutPlanDirector _director;
+    
+    //flyweight
+    private readonly IExerciseCatalog _exerciseCatalog;
 
     public WorkoutPlanService(
     IWorkoutPlanRepository workoutPlanRepository,
     IClientRepository clientRepository,
-    ITrainerRepository trainerRepository)
+    ITrainerRepository trainerRepository,
+    IExerciseCatalog exerciseCatalog)
     {
         _workoutPlanRepository = workoutPlanRepository;
         _clientRepository = clientRepository;
         _trainerRepository = trainerRepository;
-
+        _exerciseCatalog = exerciseCatalog; 
+        
         // Initialize Builder and Director
         _builder = new WorkoutPlanBuilder();
         _director = new WorkoutPlanDirector(_builder);
@@ -180,15 +186,24 @@ public class WorkoutPlanService : IWorkoutPlanService
 
             Exercises = workoutPlan.Exercises?
             .OrderBy(e => e.OrderInWorkout)
-            .Select(e => new ExerciseResponse
+            .Select(e =>
             {
-                Id = e.Id,
-                Name = e.ExerciseName,
-                Sets = e.Sets,
-                Reps = e.Reps,
-                DurationSeconds = e.DurationSeconds,
-                OrderInWorkout = e.OrderInWorkout,
-                Notes = e.Notes
+                var fly = _exerciseCatalog.Get(e.ExerciseName);
+
+                return new ExerciseResponse
+                {
+                    Id = e.Id,
+                    Name = e.ExerciseName,
+                    Sets = e.Sets,
+                    Reps = e.Reps,
+                    DurationSeconds = e.DurationSeconds,
+                    OrderInWorkout = e.OrderInWorkout,
+                    Notes = e.Notes,
+
+                    // NEW (Flyweight meta)
+                    MuscleGroup = fly.MuscleGroup,
+                    Equipment = fly.Equipment
+                };
             })
             .ToList() ?? new List<ExerciseResponse>(),
 

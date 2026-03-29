@@ -14,4 +14,8 @@ public class ExerciseResponse
     public int? DurationSeconds { get; set; }
     public int OrderInWorkout { get; set; }
     public string? Notes { get; set; }
+    
+    // NEW (Flyweight meta, derived from shared catalog by Name)
+    public string? MuscleGroup { get; set; }
+    public string? Equipment { get; set; }
 }
