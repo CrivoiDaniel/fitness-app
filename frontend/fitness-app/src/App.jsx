@@ -34,6 +34,8 @@ import AdminDashboardPage from "./pages/admin/dashboard/AdminDashboardPage";
 import SubscriptionCheckout from "./pages/public/SubscriptionCheckout";
 import SubscriptionSuccess from "./pages/public/SubscriptionSuccess";
 import ClientDashboardPage from "./pages/public/ClientDashboardPage";
+
+import PaymentGatewayLogsPage from "./pages/admin/PaymentGatewayLogsPage.jsx";
 // Dashboards (temporar)
 const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
 const ClientDashboard = () => <div className="text-2xl font-bold">Client Dashboard</div>;
@@ -163,6 +165,14 @@ const App = () => {
                   </RoleRoute>
                 }
               />
+                <Route
+                    path="admin/payment-gateway-logs"
+                    element={
+                        <RoleRoute allowedRoles={["Admin"]}>
+                            <PaymentGatewayLogsPage />
+                        </RoleRoute>
+                    }
+                />
 
               {/* Trainer only */}
               <Route

@@ -98,10 +98,10 @@ using (var scope = app.Services.CreateScope())
     if (app.Environment.IsDevelopment())
     {
         // Apply migrations
-        await context.Database.MigrateAsync();
+        //await context.Database.MigrateAsync();
 
         // Seed data
-        await DatabaseSeeder.SeedAsync(context);
+        //await DatabaseSeeder.SeedAsync(context);
     }
 }
 

@@ -1,7 +1,10 @@
 using System;
 using FitnessApp.Application.Payments.Gateways;
+using FitnessApp.Infrastructure.Payments.Decorators;
 using FitnessApp.Infrastructure.Payments.Paypal;
 using FitnessApp.Infrastructure.Payments.Stripe;
+using FitnessApp.Infrastructure.Repositories.Decorator;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 namespace FitnessApp.Infrastructure.Payments;
@@ -9,17 +12,17 @@ namespace FitnessApp.Infrastructure.Payments;
 public class PaymentGatewayFactory : IPaymentGatewayFactory
 {
     private readonly PaymentGatewayOptions _options;
-    private readonly StripePaymentGatewayAdapter _stripe;
-    private readonly PaypalPaymentGatewayAdapter _paypal;
+    private readonly IServiceProvider _sp;
+    private readonly IPaymentGatewayLogRepository _logRepo;
 
     public PaymentGatewayFactory(
         IOptions<PaymentGatewayOptions> options,
-        StripePaymentGatewayAdapter stripe,
-        PaypalPaymentGatewayAdapter paypal)
+        IServiceProvider sp,
+        IPaymentGatewayLogRepository logRepo)
     {
         _options = options.Value;
-        _stripe = stripe;
-        _paypal = paypal;
+        _sp = sp;
+        _logRepo = logRepo;
     }
 
     public string DefaultCurrency => string.IsNullOrWhiteSpace(_options.Currency) ? "mdl" : _options.Currency;
@@ -30,8 +33,15 @@ public class PaymentGatewayFactory : IPaymentGatewayFactory
     {
         var p = (provider ?? "Stripe").Trim();
 
-        return p.Equals("Stripe", StringComparison.OrdinalIgnoreCase)
-            ? _stripe
-            : _paypal;
+        IPaymentGateway baseGateway =
+            p.Equals("Stripe", StringComparison.OrdinalIgnoreCase)
+                ? _sp.GetRequiredService<StripePaymentGatewayAdapter>()
+                : _sp.GetRequiredService<PaypalPaymentGatewayAdapter>();
+
+        return new RetryPaymentGatewayDecorator(
+            new DbLoggingPaymentGatewayDecorator(baseGateway, _logRepo),
+            maxAttempts: 3,
+            delayMs: 250
+        );
     }
 }

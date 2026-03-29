@@ -1,4 +1,5 @@
 using System;
+using FitnessApp.Domain.Decorator;
 using FitnessApp.Domain.Entities.Auth;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Entities.Users;
@@ -36,4 +37,7 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
+    
+    //public DbSet<PaymentGatewayLog> PaymentGatewayLogs => Set<PaymentGatewayLog>();
+    
 }

@@ -21,6 +21,7 @@ using FitnessApp.Infrastructure.Payments.Stripe;
 using FitnessApp.Infrastructure.Payments.Paypal;
 using FitnessApp.Infrastructure.Payments;
 using FitnessApp.Application.Payments.Gateways;
+using FitnessApp.Infrastructure.Repositories.Decorator;
 
 namespace FitnessApp.Infrastructure;
 
@@ -55,7 +56,7 @@ public static class DependencyInjection
                 options.EnableDetailedErrors();
             }
         });
-
+        
         // ========== REPOSITORIES - USER MANAGEMENT ==========
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IClientRepository, ClientRepository>();
@@ -68,6 +69,9 @@ public static class DependencyInjection
         services.AddScoped<ISubscriptionPlanRepository, SubscriptionPlanRepository>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();
+        
+        // Payment gateway logs repository (Decorator DB logging)
+        services.AddScoped<IPaymentGatewayLogRepository,PaymentGatewayLogRepository>();
 
         //Workout Repositories
         services.AddScoped<IWorkoutPlanRepository, WorkoutPlanRepository>();
@@ -97,11 +101,11 @@ public static class DependencyInjection
         services.Configure<StripeOptions>(configuration.GetSection("Stripe"));
 
         // adapters
-        services.AddSingleton<StripePaymentGatewayAdapter>();
-        services.AddSingleton<PaypalPaymentGatewayAdapter>();
+        services.AddScoped<StripePaymentGatewayAdapter>();
+        services.AddScoped<PaypalPaymentGatewayAdapter>();
 
         // factory as IPaymentGatewayFactory
-        services.AddSingleton<IPaymentGatewayFactory, PaymentGatewayFactory>();
+        services.AddScoped<IPaymentGatewayFactory, PaymentGatewayFactory>();
 
         return services;
     }
