@@ -7,6 +7,7 @@ using FitnessApp.Domain.Builders;
 using FitnessApp.Domain.Directors;
 using FitnessApp.Domain.Entities.Workouts;
 using FitnessApp.Domain.Enums;
+using FitnessApp.Application.Bridge;
 
 namespace FitnessApp.Application.Features.Workouts;
 
@@ -456,5 +457,36 @@ public class WorkoutPlanService : IWorkoutPlanService
 
         var plans = await _workoutPlanRepository.GetByClientIdAsync(client.Id, cancellationToken);
         return plans.Select(MapToResponse).ToList();
+    }
+
+    public async Task<(byte[] FileBytes, string ContentType, string FileName)> ExportWorkoutPlanAsync(int id, string format, string detailLevel, CancellationToken cancellationToken = default)
+    {
+        var workoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(id, cancellationToken);
+        if (workoutPlan == null)
+            throw new InvalidOperationException($"Workout plan with ID {id} not found");
+
+        IExportFormat exportFormat = format.ToLower() switch
+        {
+            "json" => new JsonExportFormat(),
+            "html" => new HtmlExportFormat(),
+            "pdf" => new PdfExportFormat(),
+            "excel" => new ExcelExportFormat(),
+            _ => new PdfExportFormat() // Changed default to PDF
+        };
+
+        WorkoutExporter exporter = detailLevel.ToLower() switch
+        {
+            "detailed" => new DetailedWorkoutExporter(exportFormat),
+            "simple" => new SimpleWorkoutExporter(exportFormat),
+            _ => new SimpleWorkoutExporter(exportFormat) // Default to Simple
+        };
+
+        var fileBytes = exporter.GenerateExport(workoutPlan);
+
+        string contentType = exportFormat.GetContentType();
+        string extension = exportFormat.GetFileExtension();
+        string fileName = $"WorkoutPlan_{workoutPlan.Id}_{detailLevel}.{extension}";
+
+        return (fileBytes, contentType, fileName);
     }
 }

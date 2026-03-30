@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../context/AuthContext";
 import { getMySubscriptions } from "../../api/client/subscriptions";
-import { getMyWorkoutPlans } from "../../api/client/workoutPlans";
+import { getMyWorkoutPlans, exportWorkoutPlan } from "../../api/client/workoutPlans";
 import { Link } from "react-router-dom";
 
 function badgeClass(status) {
@@ -33,6 +33,10 @@ export default function ClientDashboardPage() {
 
   const [subs, setSubs] = useState([]);
   const [plans, setPlans] = useState([]);
+
+  const [exportFormat, setExportFormat] = useState("pdf");
+  const [exportDetail, setExportDetail] = useState("detailed");
+  const [isExporting, setIsExporting] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -80,6 +84,19 @@ export default function ClientDashboardPage() {
   const startDate = safeDate(current?.startDate);
   const endDate = safeDate(current?.endDate);
   const daysLeft = endDate ? Math.max(daysBetween(new Date(), endDate), 0) : null;
+
+  const handleExport = async () => {
+    if (!myPlan) return;
+    try {
+      setIsExporting(true);
+      setError("");
+      await exportWorkoutPlan(token, myPlan.id, exportFormat, exportDetail);
+    } catch (err) {
+      setError(err.message || "Export failed.");
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -172,7 +189,41 @@ export default function ClientDashboardPage() {
 
             {/* Workouts REAL */}
             <div className="lg:col-span-3 rounded-3xl border bg-white p-6 shadow-sm">
-              <h2 className="text-xl font-extrabold">{t("client.workouts")}</h2>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h2 className="text-xl font-extrabold">{t("client.workouts")}</h2>
+                
+                {myPlan && (
+                  <div className="flex items-center gap-2">
+                    <select 
+                      className="border rounded-lg px-2 py-1 text-sm bg-gray-50"
+                      value={exportFormat}
+                      onChange={(e) => setExportFormat(e.target.value)}
+                    >
+                      <option value="pdf">PDF</option>
+                      <option value="excel">Excel</option>
+                      <option value="html">HTML</option>
+                      <option value="json">JSON</option>
+                    </select>
+
+                    <select 
+                      className="border rounded-lg px-2 py-1 text-sm bg-gray-50"
+                      value={exportDetail}
+                      onChange={(e) => setExportDetail(e.target.value)}
+                    >
+                      <option value="detailed">Detailed</option>
+                      <option value="simple">Simple</option>
+                    </select>
+
+                    <button
+                      onClick={handleExport}
+                      disabled={isExporting}
+                      className="bg-black text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-gray-800 disabled:opacity-50"
+                    >
+                      {isExporting ? "Exporting..." : "Export"}
+                    </button>
+                  </div>
+                )}
+              </div>
 
               {!myPlan ? (
                 <div className="mt-5 rounded-2xl border bg-gray-50 p-4">

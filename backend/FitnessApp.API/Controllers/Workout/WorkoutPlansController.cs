@@ -231,4 +231,43 @@ public class WorkoutPlansController : ControllerBase
         var workoutPlans = await _workoutPlanService.GetByUserIdAsync(userId, cancellationToken);
         return Ok(workoutPlans);
     }
+
+    /// <summary>
+    /// Exports a specific workout plan using the Bridge Pattern
+    /// </summary>
+    [HttpGet("{id}/export")]
+    [ProducesResponseType(typeof(FileContentResult), 200)]
+    [ProducesResponseType(typeof(ErrorResponse), 404)]
+    [ProducesResponseType(typeof(ErrorResponse), 500)]
+    public async Task<IActionResult> ExportWorkoutPlan(
+        int id,
+        [FromQuery] string format = "html",
+        [FromQuery] string detailLevel = "detailed",
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var (fileBytes, contentType, fileName) = await _workoutPlanService.ExportWorkoutPlanAsync(
+                id, format, detailLevel, cancellationToken);
+
+            return File(fileBytes, contentType, fileName);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new ErrorResponse
+            {
+                Message = "An error occurred while exporting workout plan",
+                Details = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
+    }
 }

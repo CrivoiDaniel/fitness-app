@@ -20,4 +20,6 @@ public interface IWorkoutPlanService
     Task<WorkoutPlanResponse> CreateEnduranceProgramAsync(int clientId, CancellationToken cancellationToken = default);
 
     Task<List<WorkoutPlanResponse>> GetByUserIdAsync(int userId, CancellationToken cancellationToken = default);
+
+    Task<(byte[] FileBytes, string ContentType, string FileName)> ExportWorkoutPlanAsync(int id, string format, string detailLevel, CancellationToken cancellationToken = default);
 }
