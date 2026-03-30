@@ -43,6 +43,14 @@ public class WorkoutPlansController : ControllerBase
                 response
             );
         }
+        catch (UnauthorizedAccessException ex)
+        {
+            return StatusCode(403, new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
         catch (InvalidOperationException ex)
         {
             return NotFound(new ErrorResponse
@@ -139,6 +147,14 @@ public class WorkoutPlansController : ControllerBase
                 response
             );
         }
+        catch (UnauthorizedAccessException ex)
+        {
+            return StatusCode(403, new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
+        }
         catch (InvalidOperationException ex)
         {
             return NotFound(new ErrorResponse
@@ -197,6 +213,14 @@ public class WorkoutPlansController : ControllerBase
                 new { id = response.Id },
                 response
             );
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            return StatusCode(403, new ErrorResponse
+            {
+                Message = ex.Message,
+                Timestamp = DateTime.UtcNow
+            });
         }
         catch (InvalidOperationException ex)
         {

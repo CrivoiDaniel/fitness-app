@@ -11,6 +11,7 @@ using FitnessApp.Application.Services.Subscriptions;
 using FitnessApp.Application.Features.Subscriptions;
 using FitnessApp.Application.Features.Statistics;
 using FitnessApp.Application.Features.Workouts;
+using Microsoft.AspNetCore.Http;
 using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Application.Services.Auth;
 using FitnessApp.Application.Facades;
@@ -52,8 +53,14 @@ public static class DependencyInjection
         // Statistics Service
         services.AddScoped<IStatisticsService, StatisticsService>();
 
-        // ========== WORKOUT PLAN SERVICE ==========
-        services.AddScoped<IWorkoutPlanService, WorkoutPlanService>();
+        // ========== WORKOUT PLAN SERVICE (PROTECTION PROXY) ==========
+        services.AddScoped<WorkoutPlanService>(); // Înregistrăm Serviciul Original (ascuns public)
+        services.AddScoped<IWorkoutPlanService>(provider => 
+        {
+            var realService = provider.GetRequiredService<WorkoutPlanService>();
+            var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
+            return new WorkoutPlanServiceProxy(realService, httpContextAccessor);
+        });
 
         //AUTH SERVICES
         services.AddScoped<IAuthService, AuthService>();
