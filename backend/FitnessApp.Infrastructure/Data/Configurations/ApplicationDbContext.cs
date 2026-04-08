@@ -4,6 +4,7 @@ using FitnessApp.Domain.Entities.Auth;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Domain.Entities.Workouts;
+using FitnessApp.Domain.Entities.Appointments;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitnessApp.Infrastructure.Data.Configurations;
@@ -31,6 +32,9 @@ public class ApplicationDbContext : DbContext
     
     // ========== AUTH MODULE ========== ← ADD THIS SECTION
     public DbSet<RefreshToken> RefreshTokens { get; set; } = null!;
+    
+    // ========== APPOINTMENT MODULE ==========
+    public DbSet<Appointment> Appointments { get; set; } = null!;
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

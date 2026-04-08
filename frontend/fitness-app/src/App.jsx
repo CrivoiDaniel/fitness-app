@@ -36,6 +36,9 @@ import SubscriptionSuccess from "./pages/public/SubscriptionSuccess";
 import ClientDashboardPage from "./pages/public/ClientDashboardPage";
 
 import PaymentGatewayLogsPage from "./pages/admin/PaymentGatewayLogsPage.jsx";
+import GoogleCallback from "./pages/public/GoogleCallback";
+import CalendarDashboard from "./pages/Calendar/CalendarDashboard";
+
 // Dashboards (temporar)
 const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
 const ClientDashboard = () => <div className="text-2xl font-bold">Client Dashboard</div>;
@@ -66,6 +69,7 @@ const App = () => {
               {/* NEW: checkout flow */}
               <Route path="/subscription/checkout/:planId" element={<SubscriptionCheckout />} />
               <Route path="/subscription/success" element={<SubscriptionSuccess />} />
+              <Route path="/google-callback" element={<GoogleCallback />} />
 
               <Route
                 path="/change-password"
@@ -183,6 +187,14 @@ const App = () => {
                   </RoleRoute>
                 }
               />
+              <Route
+                path="trainer/calendar"
+                element={
+                  <RoleRoute allowedRoles={["Trainer"]}>
+                    <CalendarDashboard />
+                  </RoleRoute>
+                }
+              />
 
               {/* Client only */}
               <Route
@@ -190,6 +202,14 @@ const App = () => {
                 element={
                   <RoleRoute allowedRoles={["Client"]}>
                     <ClientDashboardPage />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="client/calendar"
+                element={
+                  <RoleRoute allowedRoles={["Client"]}>
+                    <CalendarDashboard />
                   </RoleRoute>
                 }
               />

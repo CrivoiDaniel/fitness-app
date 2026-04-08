@@ -118,6 +118,16 @@ public class User : BaseEntity
         return $"{FirstName} {LastName}";
     }
 
+    public string? GoogleRefreshToken { get; private set; }
+    public string? GoogleEmail { get; private set; }
+
+    public void UpdateGoogleTokens(string? refreshToken, string? email)
+    {
+        GoogleRefreshToken = refreshToken;
+        GoogleEmail = email;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
     // Navigation property pentru Refresh Tokens
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

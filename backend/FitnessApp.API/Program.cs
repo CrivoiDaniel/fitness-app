@@ -97,11 +97,25 @@ using (var scope = app.Services.CreateScope())
 
     if (app.Environment.IsDevelopment())
     {
-        // Apply migrations
-        //await context.Database.MigrateAsync();
+        try 
+        {
+            // 1. Sync migration history if it's broken
+            await context.Database.ExecuteSqlRawAsync("INSERT IGNORE INTO __EFMigrationsHistory (MigrationId, ProductVersion) VALUES ('20260329140449_AddPaymentGatewayLogs', '9.0.0');");
+            
+            // 2. Safely add Google columns to users table (MySQL syntax)
+            await context.Database.ExecuteSqlRawAsync("SET @col_exists = (SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'users' AND table_schema = DATABASE() AND column_name = 'GoogleEmail'); SET @sql = IF(@col_exists = 0, 'ALTER TABLE users ADD COLUMN GoogleEmail LONGTEXT NULL', 'SELECT 1'); PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;");
+            await context.Database.ExecuteSqlRawAsync("SET @col_exists = (SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'users' AND table_schema = DATABASE() AND column_name = 'GoogleRefreshToken'); SET @sql = IF(@col_exists = 0, 'ALTER TABLE users ADD COLUMN GoogleRefreshToken LONGTEXT NULL', 'SELECT 1'); PREPARE stmt FROM @sql; EXECUTE stmt; DEALLOCATE PREPARE stmt;");
 
-        // Seed data
-        //await DatabaseSeeder.SeedAsync(context);
+            // 3. Apply all pending migrations (including the new Appointments table)
+            await context.Database.MigrateAsync();
+            
+            // 4. Seed data (including Ion trainer)
+            await DatabaseSeeder.SeedAsync(context);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[DB SYNC ERROR] {ex.Message}");
+        }
     }
 }
 

@@ -12,7 +12,7 @@ function isValidEmail(email) {
 
 function roleToDashboard(role) {
   if (role === "Admin") return "/dashboard/admin/clients";
-  if (role === "Trainer") return "/dashboard/trainer";
+  if (role === "Trainer") return "/dashboard/trainer/calendar";
   return "/dashboard/client";
 }
 

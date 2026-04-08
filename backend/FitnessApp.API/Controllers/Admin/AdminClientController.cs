@@ -12,7 +12,7 @@ namespace FitnessApp.API.Controllers.Admin;
 /// </summary>
 [ApiController]
 [Route("api/admin/clients")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,Trainer")]
 public class AdminClientController : ControllerBase
 {
     private readonly IClientCreationService _clientCreationService;
@@ -37,6 +37,7 @@ public class AdminClientController : ControllerBase
     /// <param name="dto">Client creation data</param>
     /// <returns>Created client with temporary password</returns>
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(CreateUserResponseDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -111,6 +112,7 @@ public class AdminClientController : ControllerBase
     /// Admin can modify: email, name, phone, status, all fitness data
     /// </summary>
     [HttpPut("{id:int}")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(typeof(ClientDetailsDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -144,6 +146,7 @@ public class AdminClientController : ControllerBase
     /// Use only for GDPR compliance or data cleanup
     /// </summary>
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

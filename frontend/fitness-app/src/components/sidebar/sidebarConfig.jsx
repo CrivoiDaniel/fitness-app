@@ -1,5 +1,4 @@
-import React from "react";
-import { FiUsers, FiUser, FiClipboard, FiGift, FiPackage, FiCreditCard, FiDollarSign, FiActivity, FiList } from "react-icons/fi";
+import { FiUsers, FiUser, FiClipboard, FiGift, FiPackage, FiCreditCard, FiDollarSign, FiActivity, FiList, FiCalendar } from "react-icons/fi";
 
 export const adminSidebarItems = [
   { to: "/dashboard/admin/clients", labelKey: "sidebar.admin.clients", icon: <FiUsers /> },
@@ -14,9 +13,10 @@ export const adminSidebarItems = [
 ];
 
 export const trainerSidebarItems = [
+  { to: "/dashboard/trainer/calendar", labelKey: "sidebar.trainer.calendar", icon: <FiCalendar /> },
   { to: "/dashboard/trainer/plans", labelKey: "sidebar.trainer.plans", icon: <FiClipboard /> }
 ];
 
 export const clientSidebarItems = [
-  // momentan gol sau adaugi ce vrei
+  { to: "/dashboard/client/calendar", labelKey: "sidebar.client.calendar", icon: <FiCalendar /> }
 ];

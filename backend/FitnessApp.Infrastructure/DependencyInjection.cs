@@ -1,6 +1,8 @@
 using FitnessApp.Application.Interfaces.Repositories.Subscriptions;
 using FitnessApp.Infrastructure.Repositories;
 using FitnessApp.Infrastructure.Repositories.Subscriptions;
+using FitnessApp.Application.Interfaces.Repositories.Appointments;
+using FitnessApp.Infrastructure.Repositories.Appointments;
 using FitnessApp.Application.Interfaces.Repositories;
 using FitnessApp.Application.Interfaces.Repositories.Users;
 using FitnessApp.Infrastructure.Repositories.Users;
@@ -22,6 +24,8 @@ using FitnessApp.Infrastructure.Payments.Paypal;
 using FitnessApp.Infrastructure.Payments;
 using FitnessApp.Application.Payments.Gateways;
 using FitnessApp.Infrastructure.Repositories.Decorator;
+using FitnessApp.Application.Interfaces.Google;
+using FitnessApp.Infrastructure.Services.Google;
 
 namespace FitnessApp.Infrastructure;
 
@@ -76,6 +80,9 @@ public static class DependencyInjection
         //Workout Repositories
         services.AddScoped<IWorkoutPlanRepository, WorkoutPlanRepository>();
 
+        //Appointment Repositories
+        services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
         //JWT SETTINGS
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
@@ -106,6 +113,9 @@ public static class DependencyInjection
 
         // factory as IPaymentGatewayFactory
         services.AddScoped<IPaymentGatewayFactory, PaymentGatewayFactory>();
+
+        // ========== GOOGLE CALENDAR SERVICE ==========
+        services.AddScoped<IGoogleCalendarService, GoogleCalendarService>();
 
         return services;
     }
