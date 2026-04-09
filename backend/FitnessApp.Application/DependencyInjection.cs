@@ -16,6 +16,8 @@ using FitnessApp.Application.Interfaces.Auth;
 using FitnessApp.Application.Services.Auth;
 using FitnessApp.Application.Facades;
 using FitnessApp.Application.Interfaces.Flyweight;
+using FitnessApp.Application.Observer;
+using FitnessApp.Domain.Observer;
 
 namespace FitnessApp.Application;
 
@@ -68,8 +70,14 @@ public static class DependencyInjection
         services.AddScoped<IPurchaseSubscriptionService, PurchaseSubscriptionService>();
 
         services.AddScoped<CheckoutFacade>();
-        
+
         services.AddSingleton<IExerciseCatalog, InMemoryExerciseCatalog>();
+
+        // ========== OBSERVER PATTERN ==========
+        services.AddScoped<ISubscriptionObserver, EmailPurchaseObserver>();
+        services.AddScoped<ISubscriptionObserver, StatisticsUpdateObserver>();
+        services.AddScoped<ISubscriptionPublisher, SubscriptionPurchasePublisher>();
+
         return services;
     }
 }

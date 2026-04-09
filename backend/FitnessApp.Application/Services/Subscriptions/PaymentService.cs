@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Application.DTOs.Subscriptions.Payment;
 using FitnessApp.Application.Interfaces.Repositories.Subscriptions;
 using FitnessApp.Application.Interfaces.Subscriptions;
+using FitnessApp.Application.Observer;
 using FitnessApp.Application.Payments.Gateways;
 using FitnessApp.Domain.Entities.Subscriptions;
 using FitnessApp.Domain.Enums;
@@ -13,15 +14,18 @@ public class PaymentService : IPaymentService
     private readonly IPaymentRepository _paymentRepository;
     private readonly ISubscriptionRepository _subscriptionRepository;
     private readonly IPaymentGatewayFactory _gatewayFactory;
+    private readonly ISubscriptionPublisher _publisher;
 
     public PaymentService(
         IPaymentRepository paymentRepository,
         ISubscriptionRepository subscriptionRepository,
-        IPaymentGatewayFactory gatewayFactory)
+        IPaymentGatewayFactory gatewayFactory,
+        ISubscriptionPublisher publisher)
     {
         _paymentRepository = paymentRepository;
         _subscriptionRepository = subscriptionRepository;
         _gatewayFactory = gatewayFactory;
+        _publisher = publisher;
     }
 
     public async Task<IEnumerable<PaymentDto>> GetAllAsync(CancellationToken cancellationToken = default)
@@ -143,6 +147,22 @@ public class PaymentService : IPaymentService
         payment.MarkAsSuccess(transactionId);  // ← Entity primește transactionId direct
 
         await _paymentRepository.UpdateAsync(payment, cancellationToken);
+        
+        // OBSERVER PATTERN: Notify observers only after SUCCESS
+        try 
+        {
+            var subscription = await _subscriptionRepository.GetByIdAsync(payment.SubscriptionId, cancellationToken);
+            if (subscription != null)
+            {
+                await _publisher.NotifyPurchaseAsync(subscription, payment.Amount);
+            }
+        }
+        catch (Exception ex)
+        {
+            // We catch but don't rethrow to avoid failing the payment confirmation because of secondary notifications.
+            Console.WriteLine("[OBSERVER ERROR] Failed to notify purchase success: {0}", ex.Message);
+        }
+
         return MapToDto(payment);
     }
 
@@ -175,13 +195,14 @@ public class PaymentService : IPaymentService
     {
         return await _paymentRepository.GetTotalRevenueAsync(startDate, endDate, cancellationToken);
     }
-    public async Task<(PaymentDto Payment, GatewayChargeResult Charge)> CreateWithGatewayAsync(CreatePaymentDto dto, CancellationToken cancellationToken = default)
+    public async Task<(PaymentDto Payment, GatewayChargeResult Charge)> CreateWithGatewayAsync(CreatePaymentDto dto, string? provider = null, CancellationToken cancellationToken = default)
     {
         var subscription = await _subscriptionRepository.GetByIdAsync(dto.SubscriptionId, cancellationToken);
         if (subscription == null)
             throw new InvalidOperationException($"Subscription with ID {dto.SubscriptionId} not found.");
-
-        var gateway = _gatewayFactory.GetGateway();
+            
+        // pass provider if specified
+        var gateway = string.IsNullOrWhiteSpace(provider) ? _gatewayFactory.GetGateway() : _gatewayFactory.GetGateway(provider);
         var charge = await gateway.CreateChargeAsync(new GatewayChargeRequest
         {
             Amount = dto.Amount,

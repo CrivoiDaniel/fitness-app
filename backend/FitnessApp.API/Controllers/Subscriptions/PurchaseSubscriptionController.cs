@@ -9,7 +9,7 @@ namespace FitnessApp.API.Controllers.Subscriptions;
 
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/subscriptions/purchase")]
 [Authorize(Roles = "Client,Admin")]
 public class PurchaseSubscriptionController : ControllerBase
 {

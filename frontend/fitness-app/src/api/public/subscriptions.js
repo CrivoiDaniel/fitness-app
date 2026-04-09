@@ -1,3 +1,4 @@
+import { apiFetch } from "../http";
 export async function getPublicSubscriptionPlans(baseUrl = "http://localhost:5140") {
   const res = await fetch(`${baseUrl}/api/public/subscription-plans`);
 
@@ -15,4 +16,10 @@ export async function getPublicSubscriptionPlanById(id) {
   const found = (all || []).find((x) => Number(x.id) === Number(id));
   if (!found) throw new Error("Subscription plan not found.");
   return found;
+}
+
+export async function calculatePlanPrice(id, discountType, token, baseUrl = "http://localhost:5140") {
+  return apiFetch(`${baseUrl}/api/subscription-plans/${id}/calculate-price?discountType=${discountType}`, {
+    token
+  });
 }

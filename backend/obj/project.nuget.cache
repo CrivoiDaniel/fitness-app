@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tjpTbURECrg=",
+  "dgSpecHash": "wAf19B6HQWY=",
   "success": true,
-  "projectFilePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+  "projectFilePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
   "expectedPackageFiles": [
     "/Users/crivoidan/.nuget/packages/closedxml/0.104.2/closedxml.0.104.2.nupkg.sha512",
     "/Users/crivoidan/.nuget/packages/closedxml.parser/1.2.0/closedxml.parser.1.2.0.nupkg.sha512",
@@ -21,9 +21,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-2cmq-823j-5qj8",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -33,9 +33,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-5x7m-6737-26cr",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -45,9 +45,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-63p8-c4ww-9cg7",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -57,9 +57,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-65x7-c272-7g7r",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -69,9 +69,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-g85r-6x2q-45w7",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -81,9 +81,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-qxrv-gp6x-rc23",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"
@@ -93,9 +93,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'SixLabors.ImageSharp' 1.0.4 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-rxmq-m78w-7wmc",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "warningLevel": 1,
-      "filePath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "filePath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "libraryId": "SixLabors.ImageSharp",
       "targetGraphs": [
         "net10.0"

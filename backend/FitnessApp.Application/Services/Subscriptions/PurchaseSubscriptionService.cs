@@ -72,7 +72,7 @@ public class PurchaseSubscriptionService : IPurchaseSubscriptionService
             PaymentDate = DateTime.UtcNow,
             InstallmentNumber = 1,
             TransactionId = null
-        }, cancellationToken);
+        }, dto.Provider, cancellationToken);
 
         // 5) Return
         return new PurchaseSubscriptionResultDto

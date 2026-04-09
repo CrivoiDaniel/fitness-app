@@ -14,4 +14,6 @@ public class PurchaseSubscriptionRequestDto
     // NEW: ca să se vadă Adapter-ul (Stripe vs PayPal demo)
     [Required]
     public string Provider { get; set; } = "Stripe"; // "Stripe" | "PayPal"
+
+    public string? DiscountType { get; set; }
 }

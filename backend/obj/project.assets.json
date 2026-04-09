@@ -418,11 +418,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectUniqueName": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "projectName": "TestExport",
-      "projectPath": "/Users/crivoidan/Desktop/fitnessApp/backend/TestExport.csproj",
+      "projectPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/TestExport.csproj",
       "packagesPath": "/Users/crivoidan/.nuget/packages/",
-      "outputPath": "/Users/crivoidan/Desktop/fitnessApp/backend/obj/",
+      "outputPath": "/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/crivoidan/.nuget/NuGet/NuGet.Config"

@@ -27,6 +27,7 @@ public sealed class RetryPaymentGatewayDecorator : PaymentGatewayDecoratorBase
             catch (OperationCanceledException) { throw; }
             catch (Exception ex)
             {
+                Console.WriteLine($"[Stripe Error] Attempt {attempt} failed: {ex.Message}");
                 last = ex;
                 if (attempt == _maxAttempts) break;
 

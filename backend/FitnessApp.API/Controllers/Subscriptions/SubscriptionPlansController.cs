@@ -4,10 +4,12 @@ using FitnessApp.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using FitnessApp.Application.Strategy;
+using FitnessApp.Domain.Strategy;
 
 namespace FitnessApp.API.Controllers.Subscriptions;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/subscription-plans")]
 [Authorize]
 public class SubscriptionPlansController : ControllerBase
 {
@@ -146,5 +148,37 @@ public class SubscriptionPlansController : ControllerBase
         {
             return NotFound(new { message = ex.Message });
         }
+    }
+
+    /// <summary>
+    /// Calculate the price for a subscription plan with a discount strategy
+    /// Pattern: Strategy
+    /// </summary>
+    [HttpGet("{id}/calculate-price")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> CalculatePrice(int id, [FromQuery] string discountType, CancellationToken cancellationToken)
+    {
+        var plan = await _planService.GetByIdAsync(id, cancellationToken);
+        
+        if (plan == null)
+            return NotFound(new { message = $"Subscription plan with ID {id} not found." });
+
+        // STRATEGY PATTERN IMPLEMENTATION
+        // 1. Get the strategy from the factory based on client input
+        var strategy = DiscountStrategyFactory.CreateStrategy(discountType);
+        
+        // 2. Initialize the Context with the strategy
+        var context = new DiscountStrategyContext(strategy);
+        
+        // 3. Execute the strategy
+        var discountedPrice = context.ExecuteStrategy(plan.Price);
+
+        return Ok(new { 
+            originalPrice = plan.Price, 
+            discountedPrice = discountedPrice,
+            discountType = discountType,
+            strategyName = context.GetStrategyName()
+        });
     }
 }

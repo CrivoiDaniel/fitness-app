@@ -4,3 +4,9 @@
 /Users/crivoidan/Desktop/fitnessApp/backend/obj/Debug/net10.0/TestExport.AssemblyInfo.cs
 /Users/crivoidan/Desktop/fitnessApp/backend/obj/Debug/net10.0/TestExport.csproj.CoreCompileInputs.cache
 /Users/crivoidan/Desktop/fitnessApp/backend/obj/Debug/net10.0/TestExport.sourcelink.json
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.csproj.AssemblyReference.cache
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.GeneratedMSBuildEditorConfig.editorconfig
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.AssemblyInfoInputs.cache
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.AssemblyInfo.cs
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.csproj.CoreCompileInputs.cache
+/Users/crivoidan/Desktop/all/fitnessApp/backend/obj/Debug/net10.0/TestExport.sourcelink.json

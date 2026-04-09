@@ -1,4 +1,5 @@
 using FitnessApp.Application.Interfaces.Repositories.Subscriptions;
+using FitnessApp.Domain.Interfaces;
 using FitnessApp.Infrastructure.Repositories;
 using FitnessApp.Infrastructure.Repositories.Subscriptions;
 using FitnessApp.Application.Interfaces.Repositories.Appointments;
@@ -26,6 +27,7 @@ using FitnessApp.Application.Payments.Gateways;
 using FitnessApp.Infrastructure.Repositories.Decorator;
 using FitnessApp.Application.Interfaces.Google;
 using FitnessApp.Infrastructure.Services.Google;
+using FitnessApp.Infrastructure.Services.Observer;
 
 namespace FitnessApp.Infrastructure;
 
@@ -116,6 +118,9 @@ public static class DependencyInjection
 
         // ========== GOOGLE CALENDAR SERVICE ==========
         services.AddScoped<IGoogleCalendarService, GoogleCalendarService>();
+
+        // ========== NOTIFICATION SERVICE (REAL SMTP) ==========
+        services.AddScoped<INotificationSender, SmtpEmailNotificationSender>();
 
         return services;
     }

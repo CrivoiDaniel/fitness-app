@@ -20,5 +20,5 @@ public interface IPaymentService
     Task<PaymentDto> MarkAsFailedAsync(int id, CancellationToken cancellationToken = default);
     Task DeleteAsync(int id, CancellationToken cancellationToken = default);
     Task<decimal> GetTotalRevenueAsync(DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
-    Task<(PaymentDto Payment, GatewayChargeResult Charge)> CreateWithGatewayAsync(CreatePaymentDto dto, CancellationToken cancellationToken = default);
+    Task<(PaymentDto Payment, GatewayChargeResult Charge)> CreateWithGatewayAsync(CreatePaymentDto dto, string? provider = null, CancellationToken cancellationToken = default);
 }

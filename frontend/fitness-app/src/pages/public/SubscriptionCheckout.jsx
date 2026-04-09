@@ -3,13 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { useAuth } from "../../context/AuthContext";
-import { getPublicSubscriptionPlans } from "../../api/public/subscriptions";
+import { getPublicSubscriptionPlans, calculatePlanPrice } from "../../api/public/subscriptions";
 import { purchaseSubscription } from "../../api/client/purchase";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { STRIPE_PUBLISHABLE_KEY } from "../../../config/env";
 import StripeCheckoutForm from "./StripeCheckoutForm";
+import eventBus from "../../utils/Observer/EventBus";
 
 const stripePromise = STRIPE_PUBLISHABLE_KEY ? loadStripe(STRIPE_PUBLISHABLE_KEY) : null;
 
@@ -43,6 +44,10 @@ export default function SubscriptionCheckout() {
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState("");
 
+  const [discountType, setDiscountType] = useState("none");
+  const [calculatedPrice, setCalculatedPrice] = useState(null);
+  const [calculatingPrice, setCalculatingPrice] = useState(false);
+
   const [payment, setPayment] = useState(null);
   // payment expected from backend:
   // { subscriptionId, paymentId, paymentStatus, transactionId, provider, clientSecret? }
@@ -72,6 +77,46 @@ export default function SubscriptionCheckout() {
     };
   }, [planId, t]);
 
+  // STRATEGY PATTERN: Update price when discount type changes
+  useEffect(() => {
+    if (!plan || !token) return;
+
+    if (discountType === "none") {
+      setCalculatedPrice(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      try {
+        setCalculatingPrice(true);
+        const data = await calculatePlanPrice(planId, discountType, token);
+        if (!cancelled) {
+          setCalculatedPrice(data);
+        }
+      } catch (e) {
+        console.error("Price calculation failed", e);
+        if (!cancelled) setCalculatedPrice(null);
+      } finally {
+        if (!cancelled) setCalculatingPrice(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [planId, discountType, plan, token]);
+
+  // OBSERVER PATTERN (Frontend): Subscribe to success events
+  useEffect(() => {
+    const unsubscribe = eventBus.subscribe("PURCHASE_SUCCESS", (data) => {
+      console.log("Observer caught success event:", data);
+      // We could use this to show a generic toast or log to analytics
+    });
+    return () => unsubscribe();
+  }, []);
+
   const onContinue = async () => {
     if (!token) {
       navigate(`/login?returnUrl=${encodeURIComponent(`/subscription/checkout/${planId}`)}`);
@@ -86,12 +131,14 @@ export default function SubscriptionCheckout() {
         subscriptionPlanId: Number(planId),
         autoRenew: true,
         provider, // IMPORTANT: adapter choice
+        discountType: discountType === "none" ? null : discountType, // STRATEGY PATTERN
       });
 
       setPayment(res);
 
       if (provider === "PayPal") {
         // demo adapter -> arătăm success imediat
+        eventBus.notify("PURCHASE_SUCCESS", { provider: "PayPal", planId });
         navigate(`/subscription/success?paymentId=${res.paymentId}&tx=${encodeURIComponent(res.transactionId || "")}`, {
           replace: true,
         });
@@ -144,8 +191,50 @@ export default function SubscriptionCheckout() {
               <div className="mt-6 rounded-2xl border bg-gray-50 p-4">
                 <div className="flex justify-between">
                   <span className="text-gray-600">{t("checkout.price")}</span>
-                  <span className="font-extrabold">{plan.price} MDL</span>
+                  <span className={calculatedPrice ? "text-gray-400 line-through text-sm" : "font-extrabold"}>
+                    {plan.price} MDL
+                  </span>
                 </div>
+                {calculatedPrice && (
+                  <div className="flex justify-between mt-2 pt-2 border-t border-gray-200">
+                    <span className="text-green-600 font-semibold">{calculatedPrice.strategyName}</span>
+                    <span className="font-extrabold text-green-700 text-xl">
+                      {calculatedPrice.discountedPrice} MDL
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* STRATEGY PATTERN: Discount Selection */}
+              <div className="mt-6">
+                <div className="text-sm text-gray-500 mb-3 ml-1">Select a Discount (Strategy Pattern)</div>
+                <div className="grid grid-cols-1 gap-2">
+                  <button
+                    onClick={() => setDiscountType("none")}
+                    className={`px-4 py-2 rounded-xl border text-sm transition ${
+                      discountType === "none" ? "bg-black text-white border-black" : "bg-white text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    No Discount
+                  </button>
+                  <button
+                    onClick={() => setDiscountType("student")}
+                    className={`px-4 py-2 rounded-xl border text-sm transition ${
+                      discountType === "student" ? "bg-black text-white border-black" : "bg-white text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    Student Discount (20%)
+                  </button>
+                  <button
+                    onClick={() => setDiscountType("seasonal")}
+                    className={`px-4 py-2 rounded-xl border text-sm transition ${
+                      discountType === "seasonal" ? "bg-black text-white border-black" : "bg-white text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    Seasonal Sale (15%)
+                  </button>
+                </div>
+                {calculatingPrice && <div className="text-xs text-gray-400 mt-2 animate-pulse">Calculating...</div>}
               </div>
 
               {payment?.transactionId ? (
@@ -206,12 +295,15 @@ export default function SubscriptionCheckout() {
                     <div className="mt-6">
                       <Elements stripe={stripePromise} options={elementsOptions}>
                         <StripeCheckoutForm
-                          onSuccess={() =>
-                            navigate(
-                              `/subscription/success?paymentId=${payment.paymentId}&tx=${encodeURIComponent(payment.transactionId || "")}`,
-                              { replace: true }
-                            )
-                          }
+                          onSuccess={() => {
+                            if (payment) {
+                              eventBus.notify("PURCHASE_SUCCESS", { provider: "Stripe", paymentId: payment.paymentId });
+                              navigate(
+                                `/subscription/success?paymentId=${payment.paymentId}&tx=${encodeURIComponent(payment.transactionId || "")}`,
+                                { replace: true }
+                              );
+                            }
+                          }}
                         />
                       </Elements>
                     </div>

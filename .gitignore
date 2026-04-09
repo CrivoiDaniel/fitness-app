@@ -23,4 +23,9 @@ docker/mysql/data/
 .DS_Store
 Thumbs.db
 
+# Secrets
 .env
+**/appsettings.Development.json
+secrets.txt
+**/secrets.txt
+backend/backend.log
