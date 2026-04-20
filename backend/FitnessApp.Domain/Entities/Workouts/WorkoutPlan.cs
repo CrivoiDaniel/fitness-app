@@ -2,6 +2,7 @@ using System;
 using FitnessApp.Domain.Entities.Base;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Domain.Enums;
+using FitnessApp.Domain.Memento;
 
 namespace FitnessApp.Domain.Entities.Workouts;
 
@@ -245,6 +246,49 @@ public class WorkoutPlan : BaseEntity
         var cloned = this.Clone();
         cloned.UpdateName(newName);
         return cloned;
+    }
+
+    // ========== MEMENTO PATTERN ==========
+
+    /// <summary>
+    /// Saves the current state of the plan into a memento.
+    /// Originator method
+    /// </summary>
+    public IWorkoutPlanMemento Save(string checkpointName)
+    {
+        return new WorkoutPlanMemento(checkpointName, this);
+    }
+
+    /// <summary>
+    /// Restores the plan state from a memento.
+    /// Originator method
+    /// </summary>
+    public void Restore(IWorkoutPlanMemento memento)
+    {
+        if (memento is not WorkoutPlanMemento state)
+            throw new ArgumentException("Invalid memento type.");
+
+        // Restore properties
+        Name = state.PlanName;
+        Description = state.Description;
+        Goal = state.Goal;
+        Difficulty = state.Difficulty;
+        DurationWeeks = state.DurationWeeks;
+        WorkoutDays = state.WorkoutDays;
+        SessionsPerWeek = state.SessionsPerWeek;
+        SessionDurationMinutes = state.SessionDurationMinutes;
+        RestDaysBetweenSessions = state.RestDaysBetweenSessions;
+        SpecialNotes = state.SpecialNotes;
+        IsActive = state.IsActive;
+
+        // Restore Exercises (deep copy from memento)
+        Exercises.Clear();
+        foreach (var exercise in state.Exercises)
+        {
+            AddExercise(exercise.Clone());
+        }
+
+        Console.WriteLine("[MEMENTO RESTORED] Plan state reverted to checkpoint: {0}", memento.Name);
     }
 
     public string DisplayName => Name;

@@ -1,35 +1,45 @@
 # Design Pattern: Command (Comandă)
 
-## 1. Diagrama UML Schematică
-Următoarea diagramă vizualizează modul în care cererile sunt încapsulate în obiecte de tip Comandă și gestionate de un Invoker pentru a permite Undo/Redo.
+## 1. Structura Pattern-ului în Proiect
+Următoarea diagramă vizualizează modul în care acțiunile de editare sunt încapsulate și gestionate pentru a permite funcționalitatea de **Undo/Redo**.
 
 ```mermaid
 classDiagram
+    direction TB
+
+    class Client_Trainer {
+        <<Client>>
+        +WorkoutPlanEditorPage
+        +OnAddExercise()
+    }
+
     class WorkoutEditorController {
-        <<Sender/API>>
+        <<Sender / Invoker API>>
+        -WorkoutPlanEditor _editor
         +AddExercise()
         +Undo()
         +Redo()
     }
 
     class WorkoutPlanEditor {
-        <<Invoker>>
+        <<Invoker / History Manager>>
         -Stack _undoStack
         -Stack _redoStack
         +ExecuteCommandAsync()
-        +Undo()
-        +Redo()
+        +UndoAsync()
+        +RedoAsync()
     }
 
     class IWorkoutCommand {
         <<interface>>
-        +ExecuteAsync()
-        +UndoAsync()
+        +Name string
+        +ExecuteAsync()*
+        +UndoAsync()*
     }
 
     class AddExerciseCommand {
         <<Concrete Command>>
-        -WorkoutPlan _plan
+        -WorkoutPlan _receiver
         -WorkoutExercise _exercise
         +ExecuteAsync()
         +UndoAsync()
@@ -38,8 +48,8 @@ classDiagram
     class UpdateExerciseCommand {
         <<Concrete Command>>
         -WorkoutExercise _exercise
-        -int _newSets
         -int _oldSets
+        -int _newSets
         +ExecuteAsync()
         +UndoAsync()
     }
@@ -50,38 +60,39 @@ classDiagram
         +RemoveExercise()
     }
 
-    WorkoutEditorController --> WorkoutPlanEditor : Invokes
-    WorkoutPlanEditor --> IWorkoutCommand : Stores history
+    Client_Trainer ..> WorkoutEditorController : Triggers
+    WorkoutEditorController --> WorkoutPlanEditor : Delegates
+    WorkoutPlanEditor "1" o-- "*" IWorkoutCommand : History
     AddExerciseCommand ..|> IWorkoutCommand : Implements
     UpdateExerciseCommand ..|> IWorkoutCommand : Implements
     AddExerciseCommand --> WorkoutPlan : Modifies
+    UpdateExerciseCommand --> WorkoutPlan : Modifies
 ```
 
----
+## 2. Rolurile Componentelor (Conform Refactoring.Guru)
+Iată cum se mapează codul tău pe structura standard a pattern-ului Command:
 
-## 2. Definiție pe scurt
-**Command** este un pattern de design comportamental care transformă o cerere (o acțiune) într-un obiect de sine stătător care conține toate informațiile despre acea cerere. Această transformare permite:
-*   Transmiterea cererilor ca argumente.
-*   Amânarea sau adăugarea cererilor într-o coadă (queue).
-*   **Suportarea operațiilor reversibile (Undo/Redo).**
-
----
-
-## 3. Problema rezolvată în proiectul tău
-Atunci când un antrenor editează un plan de antrenament, acesta poate face greșeli (ex: adaugă un exercițiu greșit sau modifică numărul de serii incorect).
-
-**Fără Command:**
-Acțiunile ar fi executate direct pe modelul de date. Dacă antrenorul vrea să anuleze o acțiune, sistemul nu ar avea nicio memorie a stării anterioare, forțând utilizatorul să modifice totul manual înapoi.
-
-**Prin implementarea Command:**
-*   **Encapsulare:** Fiecare acțiune de editare devine un obiect (`AddExerciseCommand`, `UpdateExerciseCommand`).
-*   **Istoric Reversibil:** `WorkoutPlanEditor` păstrează o stivă de comenzi. Când apeși "Undo", sistemul știe exact ce comandă a fost ultima și apelează metoda ei de `UndoAsync()`, care știe cum să inverseze efectul (ex: dacă am adăugat, acum șterg).
-*   **Separarea Responsabilităților:** Controller-ul de API doar primește cererea, dar nu știe *cum* se execută ea; el doar deleagă lucrul obiectului Command.
+| Rol | Componenta din Proiect | Responsabilitate |
+| :--- | :--- | :--- |
+| **Command** | `IWorkoutCommand` | Definește interfața comună pentru toate comenzile (`Execute`, `Undo`). |
+| **Concrete Command** | `AddExerciseCommand`, `UpdateExerciseCommand` | Implementează acțiunea și salvează backup-ul stării (ex: `_oldSets`). |
+| **Invoker** | `WorkoutPlanEditor` | Păstrează istoricul (stivele) și declanșează execuția comenzilor. |
+| **Receiver** | `WorkoutPlan` / `WorkoutExercise` | Obiectele finale care conțin logica de business și sunt modificate. |
+| **Sender** | `WorkoutEditorController` | Inițiază cererea către Invoker. |
+| **Client** | `WorkoutPlanEditorPage` (UI) | Configurează obiectele comandă și le asociază cu expeditorii. |
 
 ---
 
-## 4. Rezultatul observat (Demonstrație)
-În terminalul de backend, vei vedea log-uri de tipul:
-*   `[COMMAND EXECUTED] Add Exercise: Bench Press`
-*   `[COMMAND UNDO] Add Exercise: Bench Press` -> Exercițiul este eliminat automat din plan.
-*   `[COMMAND REDO] Add Exercise: Bench Press` -> Exercițiul reapare în plan.
+## 3. Implementarea Undo/Redo
+Proiectul tău folosește o abordare bazată pe **Istoric de Obiecte**:
+1.  **Backup**: Înainte de execuție, comenzile stochează starea anterioară (ex: numărul vechi de repetări).
+2.  **Undo Stack**: După `Execute()`, comanda este pusă în `_undoStack`.
+3.  **Redo Stack**: Când se apelează `Undo()`, comanda este scoasă din `_undoStack`, inversată, și pusă în `_redoStack`.
+4.  **Reset**: Orice comandă nouă executată golește `_redoStack` pentru a menține consistența istoricului.
+
+---
+
+## 4. De ce am folosit acest pattern?
+*   **Decuplare**: UI-ul nu știe cum să salveze un plan, el doar trimite o comandă.
+*   **Extensibilitate**: Putem adăuga oricând o comandă de `DeletePlanCommand` sau `ReorderCommand` fără să modificăm restul codului.
+*   **Siguranță**: Antrenorul poate experimenta cu planul de antrenament fără teama de a strica ceva, având mereu butonul de Undo la dispoziție.

@@ -39,5 +39,19 @@ export const workoutEditorApi = {
 
   savePlan: async (token) => {
     return await apiFetch(`${BASE_URL}/save`, { method: "POST", token });
+  },
+
+  createCheckpoint: async (token, name) => {
+    return await apiFetch(`${BASE_URL}/checkpoint?name=${encodeURIComponent(name)}`, { 
+      method: "POST", 
+      token 
+    });
+  },
+
+  loadCheckpoint: async (token, index) => {
+    return await apiFetch(`${BASE_URL}/load-checkpoint/${index}`, { 
+      method: "POST", 
+      token 
+    });
   }
 };

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FitnessApp.Domain.Entities.Workouts;
 using FitnessApp.Application.Features.Workouts.Command;
+using FitnessApp.Application.Memento;
 using FitnessApp.Domain.Enums;
 using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Workout;
@@ -25,6 +26,7 @@ public class WorkoutEditorController : ControllerBase
     // Pentru demo, folosim o instanță statică pentru a păstra starea de Undo/Redo
     private static WorkoutPlan? _activePlan;
     private static WorkoutPlanEditor? _editor;
+    private static WorkoutPlanCaretaker? _caretaker;
 
     public WorkoutEditorController(
         IClientQueryService clientQueryService,
@@ -38,6 +40,11 @@ public class WorkoutEditorController : ControllerBase
         if (_editor == null)
         {
             _editor = new WorkoutPlanEditor();
+        }
+
+        if (_caretaker == null)
+        {
+            _caretaker = new WorkoutPlanCaretaker();
         }
     }
 
@@ -74,6 +81,7 @@ public class WorkoutEditorController : ControllerBase
              // Încărcăm planul existent (cu detalii)
              _activePlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(existingPlan.Id);
              _editor = new WorkoutPlanEditor(); // Resetăm Undo/Redo pentru noua sesiune de editare
+             _caretaker = new WorkoutPlanCaretaker(); // Resetăm punctele de control
              return Ok(new { Message = $"Restored existing session for {client.FirstName} {client.LastName}", IsResume = true });
         }
 
@@ -90,6 +98,8 @@ public class WorkoutEditorController : ControllerBase
         _activePlan.AssignTrainer(trainer.Id);
             
         _editor = new WorkoutPlanEditor();
+        _caretaker = new WorkoutPlanCaretaker();
+        
         return Ok(new { Message = $"New session started for {client.FirstName} {client.LastName}", IsResume = false });
     }
 
@@ -128,7 +138,8 @@ public class WorkoutEditorController : ControllerBase
             UndoHistory = _editor?.GetUndoHistory(),
             RedoHistory = _editor?.GetRedoHistory(),
             CanUndo = _editor?.CanUndo,
-            CanRedo = _editor?.CanRedo
+            CanRedo = _editor?.CanRedo,
+            Checkpoints = _caretaker?.GetAllMementos().Select(m => new { m.Name, m.CreatedAt })
         });
     }
 
@@ -180,6 +191,36 @@ public class WorkoutEditorController : ControllerBase
     {
         _activePlan = null;
         _editor = null;
+        _caretaker = null;
         return Ok(new { Message = "Lab session reset" });
+    }
+
+    // ========== MEMENTO ENDPOINTS ==========
+
+    [HttpPost("checkpoint")]
+    public IActionResult CreateCheckpoint([FromQuery] string name)
+    {
+        if (_activePlan == null) return BadRequest("No active session");
+        
+        var memento = _activePlan.Save(name);
+        _caretaker!.AddMemento(memento);
+        
+        return Ok(new { Message = $"Checkpoint '{name}' created successfully" });
+    }
+
+    [HttpPost("load-checkpoint/{index}")]
+    public IActionResult LoadCheckpoint(int index)
+    {
+        if (_activePlan == null) return BadRequest("No active session");
+        
+        var memento = _caretaker!.GetMemento(index);
+        if (memento == null) return NotFound("Checkpoint not found");
+        
+        _activePlan.Restore(memento);
+        
+        // Când restaurăm tot planul, istoria de Undo/Redo devine invalidă
+        _editor = new WorkoutPlanEditor(); 
+        
+        return Ok(new { Message = $"Restored to checkpoint: {memento.Name}" });
     }
 }

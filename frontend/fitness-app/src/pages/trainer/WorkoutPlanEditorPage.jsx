@@ -11,7 +11,10 @@ import {
   LuChevronRight,
   LuClipboardList,
   LuUser,
-  LuSearch
+  LuSearch,
+  LuCamera,
+  LuDownload,
+  LuSave
 } from "react-icons/lu";
 
 export default function WorkoutPlanEditorPage() {
@@ -25,6 +28,7 @@ export default function WorkoutPlanEditorPage() {
   const [planName, setPlanName] = useState("Plan Nou");
   const [lastAction, setLastAction] = useState("");
   const [search, setSearch] = useState("");
+  const [checkpointName, setCheckpointName] = useState("Versiune Noua");
 
   // FETCH CLIENTS
   useEffect(() => {
@@ -99,6 +103,22 @@ export default function WorkoutPlanEditorPage() {
       `Adăugat: ${form.name}`
     );
     setForm({ ...form, name: "" });
+  };
+
+  const onCreateCheckpoint = () => {
+    if (!checkpointName) return;
+    handleAction(
+      workoutEditorApi.createCheckpoint(token, checkpointName),
+      `Checkpoint salvat: ${checkpointName}`
+    );
+  };
+
+  const onLoadCheckpoint = (idx, name) => {
+    if (!window.confirm(`Ești sigur că vrei să încarci versiunea "${name}"? Istoricul curent de Undo/Redo va fi resetat.`)) return;
+    handleAction(
+      workoutEditorApi.loadCheckpoint(token, idx),
+      `Restaurat la versiunea: ${name}`
+    );
   };
 
   const filteredClients = clients.filter(c => 
@@ -382,6 +402,58 @@ export default function WorkoutPlanEditorPage() {
                    <div className="text-xs font-black text-white italic">"{lastAction}"</div>
                 </div>
               )}
+            </div>
+
+            {/* ========== MEMENTO SECTION: CHECKPOINTS ========== */}
+            <div className="bg-white rounded-[40px] p-8 border border-neutral-200 shadow-sm space-y-6">
+              <h3 className="text-lg font-black uppercase tracking-tight flex items-center gap-2 text-neutral-900 leading-tight">
+                <LuCamera size={20} className="text-indigo-600" />
+                Versiuni Plan (Memento)
+              </h3>
+              
+              <div className="space-y-4">
+                <div className="flex gap-2">
+                  <input 
+                    type="text" 
+                    value={checkpointName}
+                    onChange={e => setCheckpointName(e.target.value)}
+                    placeholder="Numele versiunii..."
+                    className="flex-1 px-4 py-3 rounded-xl bg-neutral-100 border-transparent text-xs font-bold focus:bg-white focus:ring-2 focus:ring-indigo-500 transition-all"
+                  />
+                  <button 
+                    onClick={onCreateCheckpoint}
+                    disabled={loading}
+                    className="p-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100"
+                    title="Salvează Snapshot"
+                  >
+                    <LuSave size={18} />
+                  </button>
+                </div>
+
+                <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                  {!state?.checkpoints?.length ? (
+                    <div className="py-8 text-center border-2 border-dashed border-neutral-100 rounded-2xl text-neutral-400 text-[10px] font-black uppercase tracking-widest">
+                      Nicio versiune salvată
+                    </div>
+                  ) : (
+                    state.checkpoints.map((m, i) => (
+                      <div key={i} className="flex items-center justify-between p-3 rounded-2xl bg-neutral-50 border border-neutral-100 group hover:border-indigo-200 transition-all">
+                        <div className="min-w-0">
+                          <div className="text-[11px] font-black text-neutral-900 truncate uppercase leading-tight">{m.name}</div>
+                          <div className="text-[9px] text-neutral-400 font-bold">{new Date(m.createdAt).toLocaleTimeString()}</div>
+                        </div>
+                        <button 
+                          onClick={() => onLoadCheckpoint(i, m.name)}
+                          disabled={loading}
+                          className="p-2.5 rounded-xl bg-white text-indigo-600 border border-neutral-100 hover:bg-indigo-600 hover:text-white transition-all shadow-sm opacity-0 group-hover:opacity-100"
+                        >
+                          <LuDownload size={14} />
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="bg-white rounded-3xl p-8 border border-neutral-200 shadow-sm">
