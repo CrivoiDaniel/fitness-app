@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import Pagination from "../../../components/common/Pagination";
 import ConfirmDialog from "../../../components/common/ConfirmDialog";
@@ -17,7 +18,11 @@ const PAGE_SIZE = 15;
 
 const ClientsPage = () => {
   const { t } = useTranslation();
-  const { token } = useAuth();
+  const { token, user } = useAuth();
+  const navigate = useNavigate();
+
+  const isAdmin = user?.role === "Admin";
+  const isTrainer = user?.role === "Trainer";
 
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -131,13 +136,15 @@ const ClientsPage = () => {
             {t("admin.clients.total")}: {total}
           </p>
         </div>
-
-        <button
-          onClick={() => setCreateOpen(true)}
-          className="px-4 py-2 rounded bg-black text-white font-semibold hover:bg-gray-800"
-        >
-          {t("admin.clients.add")}
-        </button>
+ 
+        {isAdmin && (
+          <button
+            onClick={() => setCreateOpen(true)}
+            className="px-4 py-2 rounded bg-black text-white font-semibold hover:bg-gray-800"
+          >
+            {t("admin.clients.add")}
+          </button>
+        )}
       </div>
 
       {error && (
@@ -178,15 +185,27 @@ const ClientsPage = () => {
                 </span>
               </div>
               <div className="flex justify-end gap-2">
-                <button className="px-3 py-1 rounded border" onClick={() => onEdit(c)}>
-                  {t("admin.clients.edit")}
-                </button>
-                <button
-                  className="px-3 py-1 rounded border border-red-300 text-red-700 hover:bg-red-50"
-                  onClick={() => onAskDelete(c)}
-                >
-                  {t("admin.clients.delete")}
-                </button>
+                {isAdmin && (
+                  <>
+                    <button className="px-3 py-1 rounded border" onClick={() => onEdit(c)}>
+                      {t("admin.clients.edit")}
+                    </button>
+                    <button
+                      className="px-3 py-1 rounded border border-red-300 text-red-700 hover:bg-red-50"
+                      onClick={() => onAskDelete(c)}
+                    >
+                      {t("admin.clients.delete")}
+                    </button>
+                  </>
+                )}
+                {isTrainer && (
+                  <button 
+                    onClick={() => navigate("/dashboard/trainer/workout-editor")}
+                    className="px-3 py-1 rounded bg-indigo-600 text-white font-bold text-xs uppercase hover:bg-indigo-700 transition-all shadow-sm"
+                  >
+                    Creează Plan
+                  </button>
+                )}
               </div>
             </div>
           ))

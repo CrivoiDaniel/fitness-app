@@ -38,10 +38,8 @@ import ClientDashboardPage from "./pages/public/ClientDashboardPage";
 import PaymentGatewayLogsPage from "./pages/admin/PaymentGatewayLogsPage.jsx";
 import GoogleCallback from "./pages/public/GoogleCallback";
 import CalendarDashboard from "./pages/Calendar/CalendarDashboard";
-
-// Dashboards (temporar)
-const TrainerDashboard = () => <div className="text-2xl font-bold">Trainer Dashboard</div>;
-const ClientDashboard = () => <div className="text-2xl font-bold">Client Dashboard</div>;
+import TrainerDashboard from "./pages/TrainerDashboard";
+import WorkoutPlanEditorPage from "./pages/trainer/WorkoutPlanEditorPage";
 
 function PublicLayout() {
   return (
@@ -103,7 +101,7 @@ const App = () => {
               <Route
                 path="admin/clients"
                 element={
-                  <RoleRoute allowedRoles={["Admin"]}>
+                  <RoleRoute allowedRoles={["Admin", "Trainer"]}>
                     <ClientsPage />
                   </RoleRoute>
                 }
@@ -192,6 +190,14 @@ const App = () => {
                 element={
                   <RoleRoute allowedRoles={["Trainer"]}>
                     <CalendarDashboard />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="trainer/workout-editor"
+                element={
+                  <RoleRoute allowedRoles={["Trainer"]}>
+                    <WorkoutPlanEditorPage />
                   </RoleRoute>
                 }
               />

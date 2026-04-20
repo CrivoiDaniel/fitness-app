@@ -143,6 +143,14 @@ public class WorkoutPlan : BaseEntity
         Exercises.Add(exercise);
     }
 
+    public void RemoveExercise(WorkoutExercise exercise)
+    {
+        if (exercise == null)
+            throw new ArgumentNullException(nameof(exercise));
+
+        Exercises.Remove(exercise);
+    }
+
     // COMPUTED PROPERTIES
 
     public int TotalSessions()
