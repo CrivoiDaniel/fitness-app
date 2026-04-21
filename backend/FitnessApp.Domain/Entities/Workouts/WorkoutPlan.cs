@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using FitnessApp.Domain.Entities.Base;
 using FitnessApp.Domain.Entities.Users;
 using FitnessApp.Domain.Enums;
 using FitnessApp.Domain.Memento;
+using FitnessApp.Domain.Iterator;
 
 namespace FitnessApp.Domain.Entities.Workouts;
 
@@ -10,7 +13,7 @@ namespace FitnessApp.Domain.Entities.Workouts;
 /// Workout Plan entity
 /// Represents a structured workout program for a client
 /// </summary>
-public class WorkoutPlan : BaseEntity
+public class WorkoutPlan : BaseEntity, IExerciseAggregate
 {
     // Basic Info
     public string Name { get; private set; }
@@ -289,6 +292,17 @@ public class WorkoutPlan : BaseEntity
         }
 
         Console.WriteLine("[MEMENTO RESTORED] Plan state reverted to checkpoint: {0}", memento.Name);
+    }
+
+    // ========== ITERATOR PATTERN ==========
+
+    public IWorkoutIterator CreateIterator(string type = "sequential")
+    {
+        return type.ToLower() switch
+        {
+            "intensity" => new IntensityWorkoutIterator(Exercises),
+            _ => new SequentialWorkoutIterator(Exercises)
+        };
     }
 
     public string DisplayName => Name;

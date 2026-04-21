@@ -14,7 +14,12 @@ import {
   LuSearch,
   LuCamera,
   LuDownload,
-  LuSave
+  LuSave,
+  LuPlay,
+  LuSkipForward,
+  LuListOrdered,
+  LuZap,
+  LuRefreshCw
 } from "react-icons/lu";
 
 export default function WorkoutPlanEditorPage() {
@@ -29,6 +34,8 @@ export default function WorkoutPlanEditorPage() {
   const [lastAction, setLastAction] = useState("");
   const [search, setSearch] = useState("");
   const [checkpointName, setCheckpointName] = useState("Versiune Noua");
+  const [iteratorType, setIteratorType] = useState("sequential");
+  const [currentNav, setCurrentNav] = useState(null);
 
   // FETCH CLIENTS
   useEffect(() => {
@@ -119,6 +126,36 @@ export default function WorkoutPlanEditorPage() {
       workoutEditorApi.loadCheckpoint(token, idx),
       `Restaurat la versiunea: ${name}`
     );
+  };
+
+  const onStartNavigation = () => {
+    handleAction(
+      workoutEditorApi.startNavigation(token, iteratorType),
+      `Navigarea a început (${iteratorType})`
+    ).then(res => {
+      if (res?.exercise) setCurrentNav(res.exercise);
+    });
+  };
+
+  const onNextExercise = () => {
+    handleAction(
+      workoutEditorApi.nextExercise(token),
+      `Următorul exercițiu...`
+    ).then(res => {
+        if (res?.finished) {
+           setCurrentNav(null);
+           setLastAction("Antrenament Finalizat!");
+        } else if (res?.exercise) {
+           setCurrentNav(res.exercise);
+        }
+    });
+  };
+
+  const onResetNavigation = () => {
+    handleAction(
+      workoutEditorApi.resetNavigation(token),
+      `Navigarea a fost resetată`
+    ).then(() => setCurrentNav(null));
   };
 
   const filteredClients = clients.filter(c => 
@@ -451,6 +488,68 @@ export default function WorkoutPlanEditorPage() {
                         </button>
                       </div>
                     ))
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* ========== ITERATOR SECTION: NAVIGATOR ========== */}
+            <div className="bg-neutral-900 rounded-[40px] p-8 border border-white/5 shadow-2xl relative overflow-hidden group">
+              {/* Background Glow */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-indigo-500/10 blur-3xl group-hover:bg-indigo-500/20 transition-all" />
+              
+              <div className="relative space-y-6">
+                <h3 className="text-lg font-black uppercase tracking-tight flex items-center gap-2 text-white leading-tight">
+                  <LuPlay size={20} className="text-indigo-400" />
+                  Mod Navigator (Iterator)
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="flex bg-white/5 p-1 rounded-2xl border border-white/5">
+                    <button 
+                      onClick={() => setIteratorType("sequential")}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${iteratorType === 'sequential' ? 'bg-indigo-600 text-white shadow-lg' : 'text-neutral-500 hover:text-white'}`}
+                    >
+                      <LuListOrdered size={14} /> Secvențial
+                    </button>
+                    <button 
+                      onClick={() => setIteratorType("intensity")}
+                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${iteratorType === 'intensity' ? 'bg-indigo-600 text-white shadow-lg' : 'text-neutral-500 hover:text-white'}`}
+                    >
+                      <LuZap size={14} /> Intensitate
+                    </button>
+                  </div>
+
+                  {currentNav ? (
+                    <div className="bg-white/5 rounded-3xl p-5 border border-indigo-500/20 animate-in zoom-in-95">
+                      <div className="text-[9px] uppercase font-bold text-indigo-400 mb-2 tracking-widest">Acum urmează:</div>
+                      <div className="text-lg font-black text-white leading-tight mb-1">{currentNav.exerciseName}</div>
+                      <div className="text-[10px] font-black text-neutral-400 uppercase tracking-tighter">
+                        {currentNav.sets} Seturi &bull; {currentNav.reps} Repetări
+                      </div>
+                      
+                      <div className="mt-6 flex gap-3">
+                        <button 
+                          onClick={onNextExercise}
+                          className="flex-1 py-3 bg-white text-neutral-900 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-400 transition-all flex items-center justify-center gap-2"
+                        >
+                          Următorul <LuSkipForward size={14} />
+                        </button>
+                        <button 
+                          onClick={onResetNavigation}
+                          className="p-3 bg-white/10 text-white rounded-2xl hover:bg-red-500/20 hover:text-red-400 transition-all"
+                        >
+                          <LuRefreshCw size={14} />
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={onStartNavigation}
+                      className="w-full py-5 bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 rounded-3xl text-xs font-black uppercase tracking-[0.2em] hover:bg-indigo-600 hover:text-white transition-all group"
+                    >
+                      Start Antrenament
+                    </button>
                   )}
                 </div>
               </div>

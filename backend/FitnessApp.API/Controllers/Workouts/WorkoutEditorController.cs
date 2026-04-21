@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FitnessApp.Domain.Entities.Workouts;
 using FitnessApp.Application.Features.Workouts.Command;
 using FitnessApp.Application.Memento;
+using FitnessApp.Domain.Iterator;
 using FitnessApp.Domain.Enums;
 using FitnessApp.Application.Interfaces.Admin.Clients;
 using FitnessApp.Application.Interfaces.Workout;
@@ -27,6 +28,7 @@ public class WorkoutEditorController : ControllerBase
     private static WorkoutPlan? _activePlan;
     private static WorkoutPlanEditor? _editor;
     private static WorkoutPlanCaretaker? _caretaker;
+    private static IWorkoutIterator? _currentIterator;
 
     public WorkoutEditorController(
         IClientQueryService clientQueryService,
@@ -139,7 +141,9 @@ public class WorkoutEditorController : ControllerBase
             RedoHistory = _editor?.GetRedoHistory(),
             CanUndo = _editor?.CanUndo,
             CanRedo = _editor?.CanRedo,
-            Checkpoints = _caretaker?.GetAllMementos().Select(m => new { m.Name, m.CreatedAt })
+            Checkpoints = _caretaker?.GetAllMementos().Select(m => new { m.Name, m.CreatedAt }),
+            NavigationPosition = _currentIterator?.CurrentPosition ?? -1,
+            CurrentNavExercise = _currentIterator?.Current()?.ExerciseName
         });
     }
 
@@ -192,6 +196,7 @@ public class WorkoutEditorController : ControllerBase
         _activePlan = null;
         _editor = null;
         _caretaker = null;
+        _currentIterator = null;
         return Ok(new { Message = "Lab session reset" });
     }
 
@@ -222,5 +227,44 @@ public class WorkoutEditorController : ControllerBase
         _editor = new WorkoutPlanEditor(); 
         
         return Ok(new { Message = $"Restored to checkpoint: {memento.Name}" });
+    }
+
+    // ========== ITERATOR ENDPOINTS ==========
+
+    [HttpPost("navigation/start")]
+    public IActionResult StartNavigation([FromQuery] string type = "sequential")
+    {
+        if (_activePlan == null) return BadRequest("No active session");
+        
+        _currentIterator = _activePlan.CreateIterator(type);
+        var exercise = _currentIterator.GetNext();
+        
+        return Ok(new { 
+            Message = $"Navigation started using {type} iterator",
+            Exercise = exercise != null ? new { exercise.ExerciseName, exercise.Sets, exercise.Reps } : null
+        });
+    }
+
+    [HttpPost("navigation/next")]
+    public IActionResult NextExercise()
+    {
+        if (_currentIterator == null) return BadRequest("Navigation not started");
+        
+        if (!_currentIterator.HasMore())
+            return Ok(new { Message = "Workout completed!", Finished = true });
+            
+        var exercise = _currentIterator.GetNext();
+        return Ok(new { 
+            Exercise = new { exercise!.ExerciseName, exercise.Sets, exercise.Reps },
+            Finished = false
+        });
+    }
+
+    [HttpPost("navigation/reset")]
+    public IActionResult ResetNavigation()
+    {
+        if (_currentIterator == null) return BadRequest("Navigation not started");
+        _currentIterator.Reset();
+        return Ok(new { Message = "Navigation reset" });
     }
 }

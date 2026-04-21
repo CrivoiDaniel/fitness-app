@@ -53,5 +53,26 @@ export const workoutEditorApi = {
       method: "POST", 
       token 
     });
+  },
+
+  startNavigation: async (token, type) => {
+    return await apiFetch(`${BASE_URL}/navigation/start?type=${type}`, { 
+      method: "POST", 
+      token 
+    });
+  },
+
+  nextExercise: async (token) => {
+    return await apiFetch(`${BASE_URL}/navigation/next`, { 
+      method: "POST", 
+      token 
+    });
+  },
+
+  resetNavigation: async (token) => {
+    return await apiFetch(`${BASE_URL}/navigation/reset`, { 
+      method: "POST", 
+      token 
+    });
   }
 };
