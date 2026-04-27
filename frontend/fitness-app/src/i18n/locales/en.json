@@ -152,11 +152,14 @@
         },
         "trainer": {
             "overview": "Overview",
-            "plans": "Plans"
+            "plans": "Plans",
+            "requests": "Client Requests"
         },
         "client": {
             "overview": "Overview",
-            "profile": "Profile"
+            "profile": "Profile",
+            "calendar": "Calendar",
+            "labChain": "Lab: Trainer Allocation"
         }
     },
     "admin": {

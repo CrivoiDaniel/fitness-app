@@ -112,6 +112,18 @@ export default function WorkoutPlanEditorPage() {
     setForm({ ...form, name: "" });
   };
 
+  const onUpdateSets = (index, currentSets, currentReps) => {
+    const newSets = prompt("Introdu noul număr de seturi:", currentSets);
+    if (newSets === null) return;
+    const newReps = prompt("Introdu noul număr de repetări:", currentReps);
+    if (newReps === null) return;
+
+    handleAction(
+      workoutEditorApi.updateSets(token, index, parseInt(newSets), parseInt(newReps)),
+      `Actualizat exercițiul la index ${index}`
+    );
+  };
+
   const onCreateCheckpoint = () => {
     if (!checkpointName) return;
     handleAction(
@@ -366,7 +378,16 @@ export default function WorkoutPlanEditorPage() {
                           <span className="text-xs text-indigo-600 font-black uppercase">{ex.sets} Sets × {ex.reps} Reps</span>
                         </div>
                       </div>
-                      <LuChevronRight size={20} className="text-neutral-200 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all" />
+                      <div className="flex items-center gap-3">
+                        <button 
+                          onClick={() => onUpdateSets(idx, ex.sets, ex.reps)}
+                          className="p-2 rounded-xl bg-white border border-neutral-100 text-indigo-600 hover:bg-indigo-50 transition-all shadow-sm"
+                          title="Modifică (Fires Update Command)"
+                        >
+                          <LuRefreshCw size={18} />
+                        </button>
+                        <LuChevronRight size={20} className="text-neutral-200 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all" />
+                      </div>
                     </div>
                   ))}
                   <div className="pt-10 flex justify-center">

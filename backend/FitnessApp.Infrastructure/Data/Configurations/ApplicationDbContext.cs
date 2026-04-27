@@ -17,6 +17,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Client> Clients { get; set; } = null!;
     public DbSet<Trainer> Trainers { get; set; } = null!;
+    public DbSet<TrainerRequest> TrainerRequests { get; set; } = null!;
 
     // ========== SUBSCRIPTION MODULE ==========
     public DbSet<Benefit> Benefits { get; set; } = null!;
@@ -41,7 +42,29 @@ public class ApplicationDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
-    
-    //public DbSet<PaymentGatewayLog> PaymentGatewayLogs => Set<PaymentGatewayLog>();
-    
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is FitnessApp.Domain.Entities.Base.BaseEntity && (
+                e.State == EntityState.Added || e.State == EntityState.Modified));
+
+        foreach (var entityEntry in entries)
+        {
+            var entity = (FitnessApp.Domain.Entities.Base.BaseEntity)entityEntry.Entity;
+            
+            // Folosim reflection pentru a seta proprietățile protected
+            var updatedAtProp = typeof(FitnessApp.Domain.Entities.Base.BaseEntity).GetProperty("UpdatedAt");
+            updatedAtProp?.SetValue(entity, DateTime.UtcNow);
+
+            if (entityEntry.State == EntityState.Added)
+            {
+                var createdAtProp = typeof(FitnessApp.Domain.Entities.Base.BaseEntity).GetProperty("CreatedAt");
+                createdAtProp?.SetValue(entity, DateTime.UtcNow);
+            }
+        }
+
+        return await base.SaveChangesAsync(cancellationToken);
+    }
 }

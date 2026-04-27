@@ -152,11 +152,14 @@
         },
         "trainer": {
             "overview": "Prezentare generală",
-            "plans": "Planuri"
+            "plans": "Planuri",
+            "requests": "Cereri Clienți"
         },
         "client": {
             "overview": "Prezentare generală",
-            "profile": "Profil"
+            "profile": "Profil",
+            "calendar": "Calendar",
+            "labChain": "Lab: Alocare Antrenor"
         }
     },
     "admin": {

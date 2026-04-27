@@ -14,9 +14,11 @@ export const adminSidebarItems = [
 
 export const trainerSidebarItems = [
   { to: "/dashboard/trainer/calendar", labelKey: "sidebar.trainer.calendar", icon: <FiCalendar /> },
-  { to: "/dashboard/trainer/plans", labelKey: "sidebar.trainer.plans", icon: <FiClipboard /> }
+  { to: "/dashboard/trainer/plans", labelKey: "sidebar.trainer.plans", icon: <FiClipboard /> },
+  { to: "/dashboard/trainer/requests", labelKey: "sidebar.trainer.requests", icon: <FiList /> }
 ];
 
 export const clientSidebarItems = [
-  { to: "/dashboard/client/calendar", labelKey: "sidebar.client.calendar", icon: <FiCalendar /> }
+  { to: "/dashboard/client/calendar", labelKey: "sidebar.client.calendar", icon: <FiCalendar /> },
+  { to: "/dashboard/client/lab/chain-of-responsibility", labelKey: "sidebar.client.labChain", icon: <FiActivity /> }
 ];

@@ -25,6 +25,13 @@ export const workoutEditorApi = {
     });
   },
 
+  updateSets: async (token, index, newSets, newReps) => {
+    return await apiFetch(`${BASE_URL}/update-sets?index=${index}&newSets=${newSets}&newReps=${newReps}`, {
+      method: "POST",
+      token
+    });
+  },
+
   undo: async (token) => {
     return await apiFetch(`${BASE_URL}/undo`, { method: "POST", token });
   },

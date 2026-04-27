@@ -10,5 +10,7 @@ public abstract class BaseEntity
 
     protected BaseEntity()
     {
+        CreatedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
     }
 }

@@ -26,6 +26,7 @@ builder.Services.AddApplication();
 builder.Services.AddControllers().AddJsonOptions(o =>
     {
         o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });;
 
 // OpenAPI/Swagger

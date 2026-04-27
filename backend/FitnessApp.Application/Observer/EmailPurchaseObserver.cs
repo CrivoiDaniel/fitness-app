@@ -8,6 +8,8 @@ namespace FitnessApp.Application.Observer;
 /// <summary>
 /// Observer Pattern: Concrete Observer
 /// Trimiterea unui email de bun venit / confirmare după plată.
+/// Observer este un pattern de design comportamental care permite unui obiect (Publisher) să notifice automat mai multe alte obiecte (Subscribers)
+/// despre orice eveniment care îi schimbă starea. Este ca un abonament la o revistă: editorul trimite revista tuturor abonaților imediat ce este publicată.
 /// </summary>
 public class EmailPurchaseObserver : ISubscriptionObserver
 {

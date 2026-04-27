@@ -72,7 +72,7 @@ public class WorkoutEditorController : ControllerBase
         if (trainer == null) return BadRequest("Only registered trainers can start a session");
 
         // Verificăm dacă există deja un plan pentru acest client și antrenor
-        var existingPlans = await _workoutPlanRepository.GetByClientIdAsync(clientId);
+        var existingPlans = await _workoutPlanRepository.GetByClientIdAsync(client.ClientId);
         var existingPlan = existingPlans
             .Where(p => p.TrainerId == trainer.Id)
             .OrderByDescending(p => p.CreatedAt)
@@ -89,7 +89,7 @@ public class WorkoutEditorController : ControllerBase
 
         _activePlan = new WorkoutPlan(
             planName, 
-            clientId, 
+            client.ClientId, 
             WorkoutGoal.MuscleGain, 
             DifficultyLevel.Intermediate, 
             12, 
@@ -108,7 +108,7 @@ public class WorkoutEditorController : ControllerBase
     [HttpPost("save")]
     public async Task<IActionResult> Save()
     {
-        if (_activePlan == null) return BadRequest("No active session to save");
+        if (_activePlan == null) return BadRequest(new { Message = "No active session to save" });
 
         try 
         {
@@ -125,7 +125,7 @@ public class WorkoutEditorController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, $"Internal server error while saving: {ex.Message}");
+            return StatusCode(500, new { Message = $"Internal server error while saving: {ex.Message}", Details = ex.InnerException?.Message });
         }
     }
 

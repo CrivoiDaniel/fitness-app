@@ -18,6 +18,7 @@ using FitnessApp.Application.Facades;
 using FitnessApp.Application.Interfaces.Flyweight;
 using FitnessApp.Application.Observer;
 using FitnessApp.Domain.Observer;
+using FitnessApp.Application.ChainOfResponsibility.TrainerAssignment;
 
 namespace FitnessApp.Application;
 
@@ -32,6 +33,7 @@ public static class DependencyInjection
         // ========== USER SERVICES ==========
         services.AddScoped<IUserQueryService, UserQueryService>();
         services.AddScoped<IUserManagementService, UserManagementService>();
+        services.AddScoped<TrainerRequestService>();
 
         // ========== ADMIN - CLIENT SERVICES ==========
         services.AddScoped<IClientCreationService, ClientCreationService>();
@@ -77,6 +79,9 @@ public static class DependencyInjection
         services.AddScoped<ISubscriptionObserver, EmailPurchaseObserver>();
         services.AddScoped<ISubscriptionObserver, StatisticsUpdateObserver>();
         services.AddScoped<ISubscriptionPublisher, SubscriptionPurchasePublisher>();
+
+        // ========== CHAIN OF RESPONSIBILITY ==========
+        services.AddScoped<TrainerAssignmentService>();
 
         return services;
     }

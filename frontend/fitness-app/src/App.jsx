@@ -22,6 +22,8 @@ import Subscription from "./components/public/Subscription";
 
 import AppDashboardLayout from "./layouts/AppDashboardLayout";
 
+import ChainOfResponsibilityDemo from "./pages/ChainOfResponsibilityDemo";
+import TrainerRequests from "./pages/TrainerRequests";
 import BenefitsPage from "./pages/admin/benefits/BenefitsPage";
 import BenefitPackagesPage from "./pages/admin/benefitPackages/BenefitPackagesPage";
 import SubscriptionPlansPage from "./pages/admin/subscriptionPlans/SubscriptionPlansPage";
@@ -186,6 +188,14 @@ const App = () => {
                 }
               />
               <Route
+                path="trainer/requests"
+                element={
+                  <RoleRoute allowedRoles={["Trainer"]}>
+                    <TrainerRequests />
+                  </RoleRoute>
+                }
+              />
+              <Route
                 path="trainer/calendar"
                 element={
                   <RoleRoute allowedRoles={["Trainer"]}>
@@ -216,6 +226,14 @@ const App = () => {
                 element={
                   <RoleRoute allowedRoles={["Client"]}>
                     <CalendarDashboard />
+                  </RoleRoute>
+                }
+              />
+              <Route
+                path="client/lab/chain-of-responsibility"
+                element={
+                  <RoleRoute allowedRoles={["Client"]}>
+                    <ChainOfResponsibilityDemo />
                   </RoleRoute>
                 }
               />

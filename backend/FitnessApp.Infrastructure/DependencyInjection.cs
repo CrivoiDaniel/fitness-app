@@ -67,6 +67,7 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<ITrainerRepository, TrainerRepository>();
+        services.AddScoped<ITrainerRequestRepository, TrainerRequestRepository>();
 
         // ========== REPOSITORIES - SUBSCRIPTIONS ==========
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
