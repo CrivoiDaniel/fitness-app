@@ -34,6 +34,9 @@ const designPatternsApi = {
             method: "POST",
             body: { from, role, message }
         })
+    },
+    templateMethod: {
+        generateReport: (type, clientId) => apiFetch(`${BASE_URL}/api/TemplateMethod/generate/${type}?clientId=${clientId}`)
     }
 };
 

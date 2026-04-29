@@ -43,6 +43,7 @@ import CalendarDashboard from "./pages/Calendar/CalendarDashboard";
 import TrainerDashboard from "./pages/TrainerDashboard";
 import WorkoutPlanEditorPage from "./pages/trainer/WorkoutPlanEditorPage";
 import MediatorDemo from "./pages/MediatorDemo";
+import TemplateMethodDemo from "./pages/TemplateMethodDemo";
 
 function PublicLayout() {
   return (
@@ -243,6 +244,14 @@ const App = () => {
                 element={
                   <ProtectedRoute>
                     <MediatorDemo />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="lab/template-method"
+                element={
+                  <ProtectedRoute>
+                    <TemplateMethodDemo />
                   </ProtectedRoute>
                 }
               />
