@@ -56,11 +56,24 @@ namespace FitnessApp.API.Controllers.DesignPatterns
             }));
         }
 
-        [HttpPost("respond-to-request/{requestId}")]
-        public async Task<IActionResult> RespondToRequest(int requestId, [FromBody] bool accept)
+        [HttpPost("mark-under-review/{requestId}")]
+        public async Task<IActionResult> MarkUnderReview(int requestId)
         {
-            await _requestService.RespondToRequestAsync(requestId, accept);
-            return Ok(new { Message = accept ? "Request accepted." : "Request rejected." });
+            await _requestService.MarkAsUnderReviewAsync(requestId);
+            return Ok(new { Message = "Request is now under review." });
+        }
+
+        public class ResponseDto
+        {
+            public bool Accept { get; set; }
+            public string? Reason { get; set; }
+        }
+
+        [HttpPost("respond-to-request/{requestId}")]
+        public async Task<IActionResult> RespondToRequest(int requestId, [FromBody] ResponseDto response)
+        {
+            await _requestService.RespondToRequestAsync(requestId, response.Accept, response.Reason);
+            return Ok(new { Message = response.Accept ? "Request accepted." : "Request rejected." });
         }
 
         [HttpPost("assign-trainer")]

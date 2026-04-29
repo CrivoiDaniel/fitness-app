@@ -33,7 +33,16 @@ namespace FitnessApp.Application.Services.Users
             return await _requestRepository.GetPendingByTrainerUserIdAsync(trainerUserId);
         }
 
-        public async Task RespondToRequestAsync(int requestId, bool accept)
+        public async Task MarkAsUnderReviewAsync(int requestId)
+        {
+            var request = await _requestRepository.GetByIdAsync(requestId);
+            if (request == null) return;
+
+            request.StartReview();
+            await _requestRepository.UpdateAsync(request);
+        }
+
+        public async Task RespondToRequestAsync(int requestId, bool accept, string? reason = null)
         {
             var request = await _requestRepository.GetByIdAsync(requestId);
             if (request == null) throw new Exception("Request not found");
@@ -41,11 +50,10 @@ namespace FitnessApp.Application.Services.Users
             if (accept)
             {
                 request.Accept();
-                // Optionally: link client to trainer here if your domain allows it
             }
             else
             {
-                request.Reject();
+                request.Reject(reason ?? "No reason provided");
             }
 
             await _requestRepository.UpdateAsync(request);

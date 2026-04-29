@@ -18,9 +18,13 @@ const designPatternsApi = {
         getMyRequests: (token) => apiFetch(`${BASE_URL}/api/ChainOfResponsibility/my-requests`, {
             token
         }),
-        respondToRequest: (requestId, accept, token) => apiFetch(`${BASE_URL}/api/ChainOfResponsibility/respond-to-request/${requestId}`, {
+        markAsUnderReview: (requestId, token) => apiFetch(`${BASE_URL}/api/ChainOfResponsibility/mark-under-review/${requestId}`, {
             method: "POST",
-            body: accept,
+            token
+        }),
+        respondToRequest: (requestId, accept, reason, token) => apiFetch(`${BASE_URL}/api/ChainOfResponsibility/respond-to-request/${requestId}`, {
+            method: "POST",
+            body: { accept, reason },
             token
         })
     }
