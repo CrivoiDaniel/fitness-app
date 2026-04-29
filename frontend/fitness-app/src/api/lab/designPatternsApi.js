@@ -27,6 +27,13 @@ const designPatternsApi = {
             body: { accept, reason },
             token
         })
+    },
+    mediator: {
+        getMessages: () => apiFetch(`${BASE_URL}/api/Mediator/messages`),
+        sendMessage: (from, role, message) => apiFetch(`${BASE_URL}/api/Mediator/send`, {
+            method: "POST",
+            body: { from, role, message }
+        })
     }
 };
 

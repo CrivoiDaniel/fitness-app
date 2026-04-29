@@ -42,6 +42,7 @@ import GoogleCallback from "./pages/public/GoogleCallback";
 import CalendarDashboard from "./pages/Calendar/CalendarDashboard";
 import TrainerDashboard from "./pages/TrainerDashboard";
 import WorkoutPlanEditorPage from "./pages/trainer/WorkoutPlanEditorPage";
+import MediatorDemo from "./pages/MediatorDemo";
 
 function PublicLayout() {
   return (
@@ -235,6 +236,14 @@ const App = () => {
                   <RoleRoute allowedRoles={["Client"]}>
                     <ChainOfResponsibilityDemo />
                   </RoleRoute>
+                }
+              />
+              <Route
+                path="lab/mediator"
+                element={
+                  <ProtectedRoute>
+                    <MediatorDemo />
+                  </ProtectedRoute>
                 }
               />
               <Route path="*" element={<NotFound />} />
