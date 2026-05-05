@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin,Trainer")]
 [Produces("application/json")]
 public class WorkoutPlansController : ControllerBase
 {
@@ -108,6 +109,16 @@ public class WorkoutPlansController : ControllerBase
     public async Task<ActionResult<List<WorkoutPlanResponse>>> GetAllWorkoutPlans(
         CancellationToken cancellationToken)
     {
+        if (User.IsInRole("Trainer"))
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (int.TryParse(userIdStr, out var userId))
+            {
+                var trainerPlans = await _workoutPlanService.GetByTrainerUserIdAsync(userId, cancellationToken);
+                return Ok(trainerPlans);
+            }
+        }
+
         var workoutPlans = await _workoutPlanService.GetAllAsync(cancellationToken);
         return Ok(workoutPlans);
     }

@@ -37,6 +37,9 @@ const designPatternsApi = {
     },
     templateMethod: {
         generateReport: (type, clientId) => apiFetch(`${BASE_URL}/api/TemplateMethod/generate/${type}?clientId=${clientId}`)
+    },
+    visitor: {
+        runAnalysis: () => apiFetch(`${BASE_URL}/api/Visitor/analyze`)
     }
 };
 

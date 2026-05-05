@@ -129,7 +129,7 @@ const TrainerRequests = () => {
                                         </button>
                                     )}
                                     
-                                    {(req.status === 'Submitted' || req.status === 'UnderReview') && (
+                                    {(req.status === 'Submitted' || req.status === 'UnderReview' || req.status === 'Pending') && (
                                         <>
                                             <button 
                                                 onClick={() => handleRespond(req.id, true)}

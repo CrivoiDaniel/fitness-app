@@ -459,6 +459,16 @@ public class WorkoutPlanService : IWorkoutPlanService
         return plans.Select(MapToResponse).ToList();
     }
 
+    public async Task<List<WorkoutPlanResponse>> GetByTrainerUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        var trainer = await _trainerRepository.GetByUserIdAsync(userId, cancellationToken);
+        if (trainer == null)
+            throw new InvalidOperationException("Trainer profile not found for current user.");
+
+        var plans = await _workoutPlanRepository.GetByTrainerIdAsync(trainer.Id, cancellationToken);
+        return plans.Select(MapToResponse).ToList();
+    }
+
     public async Task<(byte[] FileBytes, string ContentType, string FileName)> ExportWorkoutPlanAsync(int id, string format, string detailLevel, CancellationToken cancellationToken = default)
     {
         var workoutPlan = await _workoutPlanRepository.GetByIdWithDetailsAsync(id, cancellationToken);

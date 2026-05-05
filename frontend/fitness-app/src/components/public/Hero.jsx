@@ -20,7 +20,7 @@ const Hero = () => {
 
         <a
           href="#subscriptions"
-          className="inline-block mt-10 backdrop-blur border border-white/10 rounded-md shadow shadow-yellow-400 py-3 px-5 text-md text-white font-semibold hover:bg-amber-300/80 hover:text-black cursor-pointer transition-all duration-300"
+          className="inline-block mt-10 bg-yellow-400 border-2 border-yellow-400 rounded-lg shadow-lg shadow-yellow-400/20 py-4 px-10 text-lg text-black font-black uppercase italic hover:bg-black hover:text-yellow-400 transition-all duration-300"
         >
           {t("home.buyNow")}
         </a>

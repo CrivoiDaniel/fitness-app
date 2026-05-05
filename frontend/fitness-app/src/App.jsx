@@ -44,6 +44,7 @@ import TrainerDashboard from "./pages/TrainerDashboard";
 import WorkoutPlanEditorPage from "./pages/trainer/WorkoutPlanEditorPage";
 import MediatorDemo from "./pages/MediatorDemo";
 import TemplateMethodDemo from "./pages/TemplateMethodDemo";
+import VisitorDemo from "./pages/VisitorDemo";
 
 function PublicLayout() {
   return (
@@ -206,6 +207,14 @@ const App = () => {
                 }
               />
               <Route
+                path="trainer/plans"
+                element={
+                  <RoleRoute allowedRoles={["Trainer"]}>
+                    <WorkoutPlansPage />
+                  </RoleRoute>
+                }
+              />
+              <Route
                 path="trainer/workout-editor"
                 element={
                   <RoleRoute allowedRoles={["Trainer"]}>
@@ -252,6 +261,14 @@ const App = () => {
                 element={
                   <ProtectedRoute>
                     <TemplateMethodDemo />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="lab/visitor"
+                element={
+                  <ProtectedRoute>
+                    <VisitorDemo />
                   </ProtectedRoute>
                 }
               />

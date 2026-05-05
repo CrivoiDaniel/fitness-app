@@ -52,5 +52,10 @@ public class Trainer : BaseEntity
         }
         Rating = rating;
     }
+
+    public void Accept(Domain.Visitor.IVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }
 

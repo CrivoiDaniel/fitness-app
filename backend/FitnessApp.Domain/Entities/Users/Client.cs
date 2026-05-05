@@ -32,4 +32,9 @@ public class Client : BaseEntity
             throw new ArgumentException("Invalid date of birth");
         DateOfBirth = dateOfBirth;
     }
+
+    public void Accept(Domain.Visitor.IVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }

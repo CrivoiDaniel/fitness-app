@@ -110,6 +110,11 @@ public class WorkoutPlanServiceProxy : IWorkoutPlanService
         return _innerService.GetByUserIdAsync(userId, cancellationToken);
     }
 
+    public Task<List<WorkoutPlanResponse>> GetByTrainerUserIdAsync(int userId, CancellationToken cancellationToken = default)
+    {
+        return _innerService.GetByTrainerUserIdAsync(userId, cancellationToken);
+    }
+
     public Task<(byte[] FileBytes, string ContentType, string FileName)> ExportWorkoutPlanAsync(int id, string format, string detailLevel, CancellationToken cancellationToken = default)
     {
         // Clients can export their plans freely

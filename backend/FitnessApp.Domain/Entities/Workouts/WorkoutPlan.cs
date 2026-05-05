@@ -315,4 +315,9 @@ public class WorkoutPlan : BaseEntity, IExerciseAggregate
 
     public int GetTotalDurationSeconds()
         => Exercises?.Sum(e => e.GetTotalDurationSeconds()) ?? 0;
+
+    public void Accept(Domain.Visitor.IVisitor visitor)
+    {
+        visitor.Visit(this);
+    }
 }

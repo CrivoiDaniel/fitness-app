@@ -13,7 +13,7 @@ namespace FitnessApp.API.Controllers.Admin;
 /// </summary>
 [ApiController]
 [Route("api/admin/trainers")]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,Trainer")]
 public class AdminTrainerController : ControllerBase
 {
     // ========== FIELDS ==========
